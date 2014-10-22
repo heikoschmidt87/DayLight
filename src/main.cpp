@@ -7,6 +7,10 @@
 
 #include <avr/io.h>
 
+/**
+ *
+ * @return
+ */
 int main() {
 
 	while(1) {

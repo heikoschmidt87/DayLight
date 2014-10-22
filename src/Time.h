@@ -8,20 +8,19 @@
 #ifndef SRC_TIME_H_
 #define SRC_TIME_H_
 
-////////////////////////////////////
-// INCLUDES
-////////////////////////////////////
+/*
+ * INCLUDES
+ */
 #include "system.h"
 
-////////////////////////////////////
-// CLASS
-////////////////////////////////////
-
+/**
+ * This is a class for representing time and enabling to compare times.
+ */
 class Time {
 private:
-	uint8_t m_nHour;
-	uint8_t m_nMinute;
-	uint8_t m_nSecond;
+	uint8_t m_nHour;		/**< uint8_t value, representing current hour value */
+	uint8_t m_nMinute;		/**< uint8_t value, representing current minute value */
+	uint8_t m_nSecond;		/**< uint8_t value, representing current second value */
 
 public:
 	Time();
