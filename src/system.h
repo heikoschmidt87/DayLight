@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
+#include <util/delay.h>
 
 ////////////////////////////////////
 // ERRORS
