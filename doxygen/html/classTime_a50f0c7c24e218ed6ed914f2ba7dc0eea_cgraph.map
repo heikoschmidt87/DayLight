@@ -1,0 +1,5 @@
+<map id="Time::GetDifferenceInSecs" name="Time::GetDifferenceInSecs">
+<area shape="rect" id="node2" href="$classTime.html#a31c07a0db831f1fcccd6c784131b6bfd" title="Time::GetHour" alt="" coords="253,5,365,32"/>
+<area shape="rect" id="node3" href="$classTime.html#aaf42d2d6baa89daa5999ad848871a7be" title="Time::GetMinute" alt="" coords="247,56,371,83"/>
+<area shape="rect" id="node4" href="$classTime.html#a32e2b2622e1d747b79e6ad1f4eef0caf" title="Time::GetSecond" alt="" coords="244,107,375,133"/>
+</map>

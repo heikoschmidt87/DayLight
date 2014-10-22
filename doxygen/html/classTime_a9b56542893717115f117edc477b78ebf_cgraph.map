@@ -1,0 +1,5 @@
+<map id="Time::IsEqualTo" name="Time::IsEqualTo">
+<area shape="rect" id="node2" href="$classTime.html#a31c07a0db831f1fcccd6c784131b6bfd" title="Time::GetHour" alt="" coords="185,5,297,32"/>
+<area shape="rect" id="node3" href="$classTime.html#aaf42d2d6baa89daa5999ad848871a7be" title="Time::GetMinute" alt="" coords="179,56,303,83"/>
+<area shape="rect" id="node4" href="$classTime.html#a32e2b2622e1d747b79e6ad1f4eef0caf" title="Time::GetSecond" alt="" coords="176,107,307,133"/>
+</map>
