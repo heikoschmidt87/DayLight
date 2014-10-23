@@ -104,7 +104,8 @@ $(document).ready(function(){initNavTree('system_8h.html','');});
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">system.h File Reference</div>  </div>
 </div><!--header-->
@@ -114,6 +115,7 @@ $(document).ready(function(){initNavTree('system_8h.html','');});
 <code>#include &lt;avr/interrupt.h&gt;</code><br />
 <code>#include &lt;avr/io.h&gt;</code><br />
 <code>#include &lt;util/delay.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for system.h:</div>
 <div class="dyncontent">
@@ -124,7 +126,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="system_8h__dep__incl.png" border="0" usemap="#_2home_2heiko_2Projekte_2Tageslichtwecker_230__CG_2DayLight_2src_2system_8hdep" alt=""/></div>
 <map name="_2home_2heiko_2Projekte_2Tageslichtwecker_230__CG_2DayLight_2src_2system_8hdep" id="_2home_2heiko_2Projekte_2Tageslichtwecker_230__CG_2DayLight_2src_2system_8hdep">
-<area shape="rect" id="node2" href="system_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/system.cpp" alt="" coords="5,109,213,165"/><area shape="rect" id="node3" href="Time_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.h" alt="" coords="238,109,418,165"/><area shape="rect" id="node4" href="Time_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.cpp" alt="" coords="231,213,425,269"/></map>
+<area shape="rect" id="node2" href="Date_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Date.h" alt="" coords="13,109,192,165"/><area shape="rect" id="node4" href="system_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/system.cpp" alt="" coords="216,109,424,165"/><area shape="rect" id="node5" href="Time_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.h" alt="" coords="449,109,629,165"/><area shape="rect" id="node3" href="Date_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Date.cpp" alt="" coords="5,213,200,269"/><area shape="rect" id="node6" href="Time_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.cpp" alt="" coords="441,213,636,269"/></map>
 </div>
 </div>
 <p><a href="system_8h_source.html">Go to the source code of this file.</a></p>
@@ -147,6 +149,20 @@ Functions</h2></td></tr>
 <tr class="separator:a205ed048fdf5259c2e8e0cb60ee8f719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d97a7e2a0208075b4b37328c96ed390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system_8h.html#a3d97a7e2a0208075b4b37328c96ed390">operator delete</a> (void *ptr)</td></tr>
 <tr class="separator:a3d97a7e2a0208075b4b37328c96ed390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a10d358b94b4046bad928393f38c319ea"><td class="memItemLeft" >struct {</td></tr>
+<tr class="memitem:a9b793ed9159857a4d52e6c92b9e34510"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="system_8h.html#a618730fa4a71463d36bc576d9934a05d">bRefreshDisplay</a>: 1</td></tr>
+<tr class="separator:a9b793ed9159857a4d52e6c92b9e34510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c66ff1581bc6f080345edbd56d83cd"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="system_8h.html#ac6048e0413be82ad68a344d4f8d34689">bDcfFallingEdge</a>: 1</td></tr>
+<tr class="separator:af1c66ff1581bc6f080345edbd56d83cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be771d87d9868982c1894d84f40a360"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="system_8h.html#a1b8d7e44bb449301300b107a9604f1e3">bDoAlarm</a>: 1</td></tr>
+<tr class="separator:a2be771d87d9868982c1894d84f40a360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701e6fbb8f998c45f19318acf142a408"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="system_8h.html#a7e2a53511c444b7ce8884e4d411ab8db">bSnooze</a>: 1</td></tr>
+<tr class="separator:a701e6fbb8f998c45f19318acf142a408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10d358b94b4046bad928393f38c319ea"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system_8h.html#a10d358b94b4046bad928393f38c319ea">oFlags</a></td></tr>
+<tr class="separator:a10d358b94b4046bad928393f38c319ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a99e73667f3ffd6ea8c3a732a82dc3116"></a>
@@ -219,13 +235,74 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="ac6048e0413be82ad68a344d4f8d34689"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bDcfFallingEdge</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1b8d7e44bb449301300b107a9604f1e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bDoAlarm</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a618730fa4a71463d36bc576d9934a05d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bRefreshDisplay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7e2a53511c444b7ce8884e4d411ab8db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t bSnooze</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a10d358b94b4046bad928393f38c319ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct { ... }   oFlags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="system_8h.html">system.h</a></li>
-    <li class="footer">Generated on Wed Oct 22 2014 21:40:15 for DayLight by
+    <li class="footer">Generated on Thu Oct 23 2014 20:16:07 for DayLight by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

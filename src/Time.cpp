@@ -10,6 +10,7 @@
 #include <string.h>
 #include "Time.h"
 
+
 Time::Time() {
 	this->m_nHour = 0;
 	this->m_nMinute = 0;

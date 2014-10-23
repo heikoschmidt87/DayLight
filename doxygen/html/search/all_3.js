@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_20delete',['operator delete',['../system_8cpp.html#a3d97a7e2a0208075b4b37328c96ed390',1,'operator delete(void *ptr):&#160;system.cpp'],['../system_8h.html#a3d97a7e2a0208075b4b37328c96ed390',1,'operator delete(void *ptr):&#160;system.cpp']]],
-  ['operator_20new',['operator new',['../system_8cpp.html#a205ed048fdf5259c2e8e0cb60ee8f719',1,'operator new(size_t size):&#160;system.cpp'],['../system_8h.html#a205ed048fdf5259c2e8e0cb60ee8f719',1,'operator new(size_t size):&#160;system.cpp']]]
+  ['increase',['Increase',['../classDate.html#a2e477d031ebafda54ecc38e427b4bbd8',1,'Date::Increase()'],['../classTime.html#a5b48b36ba1addfa1fb362979bdd34b7e',1,'Time::Increase()']]],
+  ['isequalto',['IsEqualTo',['../classTime.html#a9b56542893717115f117edc477b78ebf',1,'Time']]]
 ];

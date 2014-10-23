@@ -1,5 +1,7 @@
 <map id="/home/heiko/Projekte/Tageslichtwecker/30_CG/DayLight/src/system.h" name="/home/heiko/Projekte/Tageslichtwecker/30_CG/DayLight/src/system.h">
-<area shape="rect" id="node2" href="$system_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/system.cpp" alt="" coords="5,109,213,165"/>
-<area shape="rect" id="node3" href="$Time_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.h" alt="" coords="238,109,418,165"/>
-<area shape="rect" id="node4" href="$Time_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.cpp" alt="" coords="231,213,425,269"/>
+<area shape="rect" id="node2" href="$Date_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Date.h" alt="" coords="13,109,192,165"/>
+<area shape="rect" id="node4" href="$system_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/system.cpp" alt="" coords="216,109,424,165"/>
+<area shape="rect" id="node5" href="$Time_8h.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.h" alt="" coords="449,109,629,165"/>
+<area shape="rect" id="node3" href="$Date_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Date.cpp" alt="" coords="5,213,200,269"/>
+<area shape="rect" id="node6" href="$Time_8cpp.html" title="/home/heiko/Projekte\l/Tageslichtwecker/30\l_CG/DayLight/src/Time.cpp" alt="" coords="441,213,636,269"/>
 </map>

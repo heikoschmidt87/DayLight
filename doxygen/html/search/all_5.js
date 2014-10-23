@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['sethour',['SetHour',['../classTime.html#ab29aed59bfe99415dd24321a3bdd9493',1,'Time']]],
-  ['setminute',['SetMinute',['../classTime.html#a8a56788d38b549eade5857c90f54059c',1,'Time']]],
-  ['setsecond',['SetSecond',['../classTime.html#ad22e03c283a530ecb2e78c0c8a9b4fae',1,'Time']]],
-  ['system_2ecpp',['system.cpp',['../system_8cpp.html',1,'']]],
-  ['system_2eh',['system.h',['../system_8h.html',1,'']]]
+  ['oflags',['oFlags',['../system_8h.html#a10d358b94b4046bad928393f38c319ea',1,'system.h']]],
+  ['operator_20delete',['operator delete',['../system_8cpp.html#a3d97a7e2a0208075b4b37328c96ed390',1,'operator delete(void *ptr):&#160;system.cpp'],['../system_8h.html#a3d97a7e2a0208075b4b37328c96ed390',1,'operator delete(void *ptr):&#160;system.cpp']]],
+  ['operator_20new',['operator new',['../system_8cpp.html#a205ed048fdf5259c2e8e0cb60ee8f719',1,'operator new(size_t size):&#160;system.cpp'],['../system_8h.html#a205ed048fdf5259c2e8e0cb60ee8f719',1,'operator new(size_t size):&#160;system.cpp']]]
 ];

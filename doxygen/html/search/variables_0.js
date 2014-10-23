@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['m_5fnhour',['m_nHour',['../classTime.html#a77ac2c25cb1282dcdcd8cbd46e6e32ef',1,'Time']]],
-  ['m_5fnminute',['m_nMinute',['../classTime.html#a4ea04ab5b696c0f6b07c94b725206be8',1,'Time']]],
-  ['m_5fnsecond',['m_nSecond',['../classTime.html#a417fbd4b501f9b5aad04de75e8028dc2',1,'Time']]]
+  ['bdcffallingedge',['bDcfFallingEdge',['../system_8h.html#ac6048e0413be82ad68a344d4f8d34689',1,'system.h']]],
+  ['bdoalarm',['bDoAlarm',['../system_8h.html#a1b8d7e44bb449301300b107a9604f1e3',1,'system.h']]],
+  ['brefreshdisplay',['bRefreshDisplay',['../system_8h.html#a618730fa4a71463d36bc576d9934a05d',1,'system.h']]],
+  ['bsnooze',['bSnooze',['../system_8h.html#a7e2a53511c444b7ce8884e4d411ab8db',1,'system.h']]]
 ];

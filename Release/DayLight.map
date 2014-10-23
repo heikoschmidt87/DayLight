@@ -1,13 +1,15 @@
 Archive member included because of file (symbol)
 
+/usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                              ./src/Date.o (__udivmodhi4)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o (exit)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
-                              ./src/Time.o (__do_copy_data)
+                              ./src/Date.o (__do_copy_data)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                               ./src/system.o (malloc)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-                              ./src/Time.o (sprintf)
+                              ./src/Date.o (sprintf)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o) (vfprintf)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
@@ -34,6 +36,46 @@ __flp               0x2               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib
 Discarded input sections
 
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
+ .group         0x0000000000000000        0x8 ./src/Date.o
+ .text          0x0000000000000000        0x0 ./src/Date.o
+ .bss           0x0000000000000000        0x0 ./src/Date.o
+ .text._ZN4DateD2Ev
+                0x0000000000000000        0x2 ./src/Date.o
+ .text._ZN4DateD0Ev
+                0x0000000000000000        0x2 ./src/Date.o
+ .text._ZN4DateC2Ev
+                0x0000000000000000       0x1c ./src/Date.o
+ .text._ZN4DateC2Ehhhj
+                0x0000000000000000       0x1e ./src/Date.o
+ .text._ZN4Date12SetDayOfWeekEh
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date6SetDayEh
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date8SetMonthEh
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date7SetYearEj
+                0x0000000000000000        0x8 ./src/Date.o
+ .text._ZN4Date12GetDayOfWeekEv
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date6GetDayEv
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date8GetMonthEv
+                0x0000000000000000        0x6 ./src/Date.o
+ .text._ZN4Date7GetYearEv
+                0x0000000000000000        0x8 ./src/Date.o
+ .text._ZN4Date8IncreaseEv
+                0x0000000000000000       0x7e ./src/Date.o
+ .progmem.gcc_sw_table._ZN4Date8IncreaseEv
+                0x0000000000000000       0x18 ./src/Date.o
+ .rodata.str1.1
+                0x0000000000000000       0x38 ./src/Date.o
+ .text._ZN4Date13GetDatestringEbPc
+                0x0000000000000000       0x8e ./src/Date.o
+ .text._ZN4Date10bIsEqualToEPS_b
+                0x0000000000000000       0x40 ./src/Date.o
+ .rodata._ZTV4Date
+                0x0000000000000000        0x8 ./src/Date.o
+ .data.sDays    0x0000000000000000        0xe ./src/Date.o
  .group         0x0000000000000000        0x8 ./src/Time.o
  .text          0x0000000000000000        0x0 ./src/Time.o
  .bss           0x0000000000000000        0x0 ./src/Time.o
@@ -75,6 +117,21 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 ./src/system.o
  .text._Znwj    0x0000000000000000        0x2 ./src/system.o
  .text._ZdlPv   0x0000000000000000        0x2 ./src/system.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.div
+                0x0000000000000000       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .text.libgcc.mul
@@ -194,6 +251,7 @@ signature        0x0000000000840000 0x0000000000000400 rw !x
 Linker script and memory map
 
 LOAD /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
+LOAD ./src/Date.o
 LOAD ./src/Time.o
 LOAD ./src/main.o
 LOAD ./src/system.o
@@ -407,9 +465,11 @@ END GROUP
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
+ .data          0x0000000000800060        0x0 ./src/Date.o
  .data          0x0000000000800060        0x0 ./src/Time.o
  .data          0x0000000000800060        0x0 ./src/main.o
  .data          0x0000000000800060        0x0 ./src/system.o
+ .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
  .data          0x0000000000800060        0x6 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
@@ -485,8 +545,9 @@ END GROUP
 
 .comment        0x0000000000000000       0x11
  *(.comment)
- .comment       0x0000000000000000       0x11 ./src/Time.o
+ .comment       0x0000000000000000       0x11 ./src/Date.o
                                          0x12 (size before relaxing)
+ .comment       0x0000000000000000       0x12 ./src/Time.o
  .comment       0x0000000000000000       0x12 ./src/main.o
  .comment       0x0000000000000000       0x12 ./src/system.o
  .comment       0x0000000000000000       0x12 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
@@ -566,6 +627,24 @@ LOAD linker stubs
 Cross Reference Table
 
 Symbol                                            File
+Date::Date()                                      ./src/Date.o
+Date::Date()                                      ./src/Date.o
+Date::Date(unsigned char, unsigned char, unsigned char, unsigned int) ./src/Date.o
+Date::Date(unsigned char, unsigned char, unsigned char, unsigned int) ./src/Date.o
+Date::GetDatestring(bool, char*)                  ./src/Date.o
+Date::GetDay()                                    ./src/Date.o
+Date::GetDayOfWeek()                              ./src/Date.o
+Date::GetMonth()                                  ./src/Date.o
+Date::GetYear()                                   ./src/Date.o
+Date::Increase()                                  ./src/Date.o
+Date::SetDay(unsigned char)                       ./src/Date.o
+Date::SetDayOfWeek(unsigned char)                 ./src/Date.o
+Date::SetMonth(unsigned char)                     ./src/Date.o
+Date::SetYear(unsigned int)                       ./src/Date.o
+Date::bIsEqualTo(Date*, bool)                     ./src/Date.o
+Date::~Date()                                     ./src/Date.o
+Date::~Date()                                     ./src/Date.o
+Date::~Date()                                     ./src/Date.o
 Time::GetDifferenceInSecs(Time*)                  ./src/Time.o
 Time::GetHour()                                   ./src/Time.o
 Time::GetMinute()                                 ./src/Time.o
@@ -595,6 +674,7 @@ __do_clear_bss                                    /usr/lib/gcc/avr/4.9.1/avr4/li
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                                                   ./src/Time.o
+                                                  ./src/Date.o
 __epilogue_restores__                             /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
@@ -610,6 +690,8 @@ __prologue_saves__                                /usr/lib/gcc/avr/4.9.1/avr4/li
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
 __stack                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
+__udivmodhi4                                      /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                                                  ./src/Date.o
 __ultoa_invert                                    /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 __vector_1                                        /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
@@ -645,13 +727,17 @@ malloc                                            /usr/lib/gcc/avr/4.9.1/../../.
                                                   ./src/system.o
 operator delete(void*)                            ./src/system.o
                                                   ./src/Time.o
+                                                  ./src/Date.o
 operator new(unsigned int)                        ./src/system.o
+sDays                                             ./src/Date.o
 sprintf                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
                                                   ./src/Time.o
+                                                  ./src/Date.o
 strnlen                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 strnlen_P                                         /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 vfprintf                                          /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
+vtable for Date                                   ./src/Date.o
 vtable for Time                                   ./src/Time.o

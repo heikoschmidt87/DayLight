@@ -23,25 +23,25 @@ private:
 	uint8_t m_nSecond;		/**< uint8_t value, representing current second value */
 
 public:
-	Time();
-	Time(uint8_t nHour, uint8_t nMinute, uint8_t nSecond);
-	virtual ~Time();
+	Time();														/**< default constructor */
+	Time(uint8_t nHour, uint8_t nMinute, uint8_t nSecond);		/**< constructor with variable initialization */
+	virtual ~Time();											/**< default destructor */
 
-	void Increase();
+	void Increase();											/**< increases time by one second */
 
-	void SetSecond(uint8_t nSecond);
-	void SetMinute(uint8_t nMinute);
-	void SetHour(uint8_t nHour);
+	void SetSecond(uint8_t nSecond);							/**< setter-method for second */
+	void SetMinute(uint8_t nMinute);							/**< setter-method for minute */
+	void SetHour(uint8_t nHour);								/**< setter-method for hour */
 
-	uint8_t GetSecond();
-	uint8_t GetMinute();
-	uint8_t GetHour();
+	uint8_t GetSecond();										/**< getter-method for second */
+	uint8_t GetMinute();										/**< getter-method for minute */
+	uint8_t GetHour();											/**< getter-method for hour */
 
-	void GetTimestring(bool bWithSecs, char* sString);
+	void GetTimestring(bool bWithSecs, char* sString);			/**< getter for formatted timestring */
 
-	bool IsEqualTo(Time* oTime);
+	bool IsEqualTo(Time* oTime);								/**< check method for testing if times are equal */
 
-	uint32_t GetDifferenceInSecs(Time *oTime);
+	uint32_t GetDifferenceInSecs(Time *oTime);					/**< calculates the difference between two times in seconds */
 };
 
 #endif /* SRC_TIME_H_ */
