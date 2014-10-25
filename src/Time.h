@@ -11,15 +11,19 @@
 /**
  * This is a class for representing time and enabling to compare times.
  */
+typedef struct {
+	uint32_t nHour : 5;
+	uint32_t nMinute : 6;
+	uint32_t nSecond : 6;
+} Time_t;
+
 class Time {
 private:
-	uint8_t m_nHour;		/**< uint8_t value, representing current hour value */
-	uint8_t m_nMinute;		/**< uint8_t value, representing current minute value */
-	uint8_t m_nSecond;		/**< uint8_t value, representing current second value */
+	Time_t m_tmTime;
 
 public:
 	Time();														/**< default constructor */
-	Time(uint8_t nHour, uint8_t nMinute, uint8_t nSecond);		/**< constructor with variable initialization */
+	Time(Time_t tmTime);										/**< constructor with variable initialization */
 	virtual ~Time();											/**< default destructor */
 
 	void Increase();											/**< increases time by one second */
@@ -37,6 +41,7 @@ public:
 	bool IsEqualTo(Time* oTime);								/**< check method for testing if times are equal */
 
 	uint32_t GetDifferenceInSecs(Time *oTime);					/**< calculates the difference between two times in seconds */
+
 };
 
 #endif /* SRC_TIME_H_ */

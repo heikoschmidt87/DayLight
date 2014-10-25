@@ -12,15 +12,13 @@
 
 
 Time::Time() {
-	this->m_nHour = 0;
-	this->m_nMinute = 0;
-	this->m_nSecond = 0;
+	this->m_tmTime.nHour = 0;
+	this->m_tmTime.nMinute = 0;
+	this->m_tmTime.nSecond = 0;
 }
 
-Time::Time(uint8_t nHour, uint8_t nMinute, uint8_t nSecond) {
-	this->m_nHour = nHour;
-	this->m_nMinute = nMinute;
-	this->m_nSecond = nSecond;
+Time::Time(Time_t tmTime) {
+	this->m_tmTime = tmTime;
 }
 
 Time::~Time() {
@@ -28,14 +26,14 @@ Time::~Time() {
 }
 
 void Time::Increase() {
-	if(++this->m_nSecond == 60) {
-		this->m_nSecond = 0;
+	if(++this->m_tmTime.nSecond == 60) {
+		this->m_tmTime.nSecond = 0;
 
-		if(++this->m_nMinute == 60) {
-			this->m_nMinute = 0;
+		if(++this->m_tmTime.nMinute == 60) {
+			this->m_tmTime.nMinute = 0;
 
-			if(++this->m_nHour == 24) {
-				this->m_nHour = 0;
+			if(++this->m_tmTime.nHour == 24) {
+				this->m_tmTime.nHour = 0;
 			}
 		}
 	}
@@ -45,53 +43,53 @@ uint32_t Time::GetDifferenceInSecs(Time *oTime) {
 
 	int16_t nHourDiffSecs = 0, nMinDiffSecs = 0, nSecDiffSecs = 0;
 
-	if(this->m_nHour <= oTime->GetHour())
-		nHourDiffSecs = (oTime->GetHour() - this->m_nHour) * 3600;
+	if(this->m_tmTime.nHour <= oTime->GetHour())
+		nHourDiffSecs = (oTime->GetHour() - this->m_tmTime.nHour) * 3600;
 	else
-		nHourDiffSecs = (24 - this->m_nHour + oTime->GetHour()) + 3600;
+		nHourDiffSecs = (24 - this->m_tmTime.nHour + oTime->GetHour()) + 3600;
 
-	nMinDiffSecs = (oTime->GetMinute() - this->m_nMinute) * 60;
-	nSecDiffSecs = oTime->GetSecond() - this->m_nSecond;
+	nMinDiffSecs = (oTime->GetMinute() - this->m_tmTime.nMinute) * 60;
+	nSecDiffSecs = oTime->GetSecond() - this->m_tmTime.nSecond;
 
 	return static_cast<uint32_t>(nHourDiffSecs + nMinDiffSecs + nSecDiffSecs);
 }
 
 void Time::SetSecond(uint8_t nSecond) {
-	this->m_nSecond = nSecond;
+	this->m_tmTime.nSecond = nSecond;
 }
 
 void Time::SetMinute(uint8_t nMinute) {
-	this->m_nMinute = nMinute;
+	this->m_tmTime.nMinute = nMinute;
 }
 
 void Time::SetHour(uint8_t nHour) {
-	this->m_nHour = nHour;
+	this->m_tmTime.nHour = nHour;
 }
 
 uint8_t Time::GetSecond() {
-	return this->m_nSecond;
+	return this->m_tmTime.nSecond;
 }
 
 uint8_t Time::GetMinute() {
-	return this->m_nMinute;
+	return this->m_tmTime.nMinute;
 }
 
 uint8_t Time::GetHour() {
-	return this->m_nHour;
+	return this->m_tmTime.nHour;
 }
 
 void Time::GetTimestring(bool bWithSecs, char* sString) {
 
 	if(bWithSecs) {
-			sprintf(sString, "%.2d:%.2d:%.2d", this->m_nHour, this->m_nMinute, this->m_nSecond);
+			sprintf(sString, "%.2d:%.2d:%.2d", this->m_tmTime.nHour, this->m_tmTime.nMinute, this->m_tmTime.nSecond);
 	}
 	else {
-			sprintf(sString, "%.2d:%.2d", this->m_nHour, this->m_nMinute);
+			sprintf(sString, "%.2d:%.2d", this->m_tmTime.nHour, this->m_tmTime.nMinute);
 	}
 }
 
 bool Time::IsEqualTo(Time* oTime) {
-	return		(this->m_nHour == oTime->GetHour())
-			&&	(this->m_nMinute == oTime->GetMinute())
-			&&	(this->m_nSecond == oTime->GetSecond());
+	return		(this->m_tmTime.nHour == oTime->GetHour())
+			&&	(this->m_tmTime.nMinute == oTime->GetMinute())
+			&&	(this->m_tmTime.nSecond == oTime->GetSecond());
 }

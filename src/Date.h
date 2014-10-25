@@ -18,18 +18,22 @@
 /**
  * This is a class for representing date
  */
+typedef struct {
+	uint32_t nDayOfWeek : 3;
+	uint32_t nDay : 5;
+	uint32_t nMonth : 4;
+	uint32_t nYear : 12;
+} Date_t;
+
 class Date {
 private:
 	static const char *sDays[7];
 
-	uint8_t m_nDayOfWeek;	/**< uint8_t value, representing current day of the week */
-	uint8_t m_nDay;			/**< uint8_t value, representing current day */
-	uint8_t m_nMonth;		/**< uint8_t value, representing current month */
-	uint16_t m_nYear;		/**< uint16_t value, representing current year */
+	Date_t m_dtDate;
 
 public:
 	Date();																	/**< default constructor */
-	Date(uint8_t nDayOfWeek, uint8_t nDay, uint8_t nMonth, uint16_t nYear);	/**< constructor with variable initialization */
+	Date(Date_t dtDate);													/**< constructor with variable initialization */
 	virtual ~Date();														/**< default destructor */
 
 	void Increase();														/**< increases date by one day */

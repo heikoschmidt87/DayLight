@@ -1,7 +1,7 @@
 Archive member included because of file (symbol)
 
-/usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
-                              ./src/Date.o (__udivmodhi4)
+/usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+                              ./src/Date.o (__divmodhi4)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o (exit)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
@@ -12,6 +12,8 @@ Archive member included because of file (symbol)
                               ./src/system.o (__do_global_ctors)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
                               ./src/system.o (__do_global_dtors)
+/usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                              /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o) (__udivmodhi4)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
                               /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o) (__tablejump__)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
@@ -45,61 +47,61 @@ Discarded input sections
  .group         0x0000000000000000        0x8 ./src/Date.o
  .text          0x0000000000000000        0x0 ./src/Date.o
  .bss           0x0000000000000000        0x0 ./src/Date.o
- .text._ZN4DateC2Ehhhj
-                0x0000000000000000       0x1e ./src/Date.o
+ .text._ZN4DateC2E6Date_t
+                0x0000000000000000       0x12 ./src/Date.o
  .text._ZN4Date12SetDayOfWeekEh
-                0x0000000000000000        0x6 ./src/Date.o
+                0x0000000000000000        0xe ./src/Date.o
  .text._ZN4Date6SetDayEh
-                0x0000000000000000        0x6 ./src/Date.o
+                0x0000000000000000       0x12 ./src/Date.o
  .text._ZN4Date8SetMonthEh
-                0x0000000000000000        0x6 ./src/Date.o
+                0x0000000000000000        0xe ./src/Date.o
  .text._ZN4Date7SetYearEj
-                0x0000000000000000        0x8 ./src/Date.o
+                0x0000000000000000       0x1e ./src/Date.o
  .text._ZN4Date12GetDayOfWeekEv
-                0x0000000000000000        0x6 ./src/Date.o
- .text._ZN4Date6GetDayEv
-                0x0000000000000000        0x6 ./src/Date.o
- .text._ZN4Date8GetMonthEv
-                0x0000000000000000        0x6 ./src/Date.o
- .text._ZN4Date7GetYearEv
                 0x0000000000000000        0x8 ./src/Date.o
+ .text._ZN4Date6GetDayEv
+                0x0000000000000000        0xc ./src/Date.o
+ .text._ZN4Date8GetMonthEv
+                0x0000000000000000        0x8 ./src/Date.o
+ .text._ZN4Date7GetYearEv
+                0x0000000000000000       0x18 ./src/Date.o
  .text._ZN4Date8IncreaseEv
-                0x0000000000000000       0x7e ./src/Date.o
+                0x0000000000000000       0xe0 ./src/Date.o
  .progmem.gcc_sw_table._ZN4Date8IncreaseEv
                 0x0000000000000000       0x18 ./src/Date.o
  .rodata.str1.1
                 0x0000000000000000       0x23 ./src/Date.o
  .text._ZN4Date13GetDatestringEbPc
-                0x0000000000000000       0x8e ./src/Date.o
+                0x0000000000000000       0xca ./src/Date.o
  .text._ZN4Date10bIsEqualToEPS_b
-                0x0000000000000000       0x40 ./src/Date.o
+                0x0000000000000000       0x76 ./src/Date.o
  .group         0x0000000000000000        0x8 ./src/Time.o
  .text          0x0000000000000000        0x0 ./src/Time.o
  .bss           0x0000000000000000        0x0 ./src/Time.o
- .text._ZN4TimeC2Ehhh
+ .text._ZN4TimeC2E6Time_t
                 0x0000000000000000       0x12 ./src/Time.o
  .text._ZN4Time8IncreaseEv
-                0x0000000000000000       0x2e ./src/Time.o
+                0x0000000000000000       0x8c ./src/Time.o
  .text._ZN4Time19GetDifferenceInSecsEPS_
-                0x0000000000000000       0x70 ./src/Time.o
+                0x0000000000000000       0xce ./src/Time.o
  .text._ZN4Time9SetSecondEh
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000       0x22 ./src/Time.o
  .text._ZN4Time9SetMinuteEh
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000       0x24 ./src/Time.o
  .text._ZN4Time7SetHourEh
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000        0xe ./src/Time.o
  .text._ZN4Time9GetSecondEv
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000       0x18 ./src/Time.o
  .text._ZN4Time9GetMinuteEv
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000       0x18 ./src/Time.o
  .text._ZN4Time7GetHourEv
-                0x0000000000000000        0x6 ./src/Time.o
+                0x0000000000000000        0x8 ./src/Time.o
  .rodata.str1.1
                 0x0000000000000000       0x19 ./src/Time.o
  .text._ZN4Time13GetTimestringEbPc
-                0x0000000000000000       0x64 ./src/Time.o
+                0x0000000000000000       0xb8 ./src/Time.o
  .text._ZN4Time9IsEqualToEPS_
-                0x0000000000000000       0x2a ./src/Time.o
+                0x0000000000000000       0x7a ./src/Time.o
  .text          0x0000000000000000        0x0 ./src/main.o
  .bss           0x0000000000000000        0x0 ./src/main.o
  .text          0x0000000000000000        0x0 ./src/system.o
@@ -109,21 +111,21 @@ Discarded input sections
                 0x0000000000000000        0xe ./src/system.o
  .bss._ZL6oFlags
                 0x0000000000000000        0x1 ./src/system.o
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.div
-                0x0000000000000000       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000       0x26 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .text.libgcc.mul
@@ -199,6 +201,21 @@ Discarded input sections
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
  .text.libgcc.fixed
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.div
+                0x0000000000000000       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
  .text.libgcc.mul
@@ -476,20 +493,20 @@ END GROUP
                 0x0000000000000078        0x2 ./src/Date.o
                 0x0000000000000078                Date::~Date()
  .text._ZN4DateC2Ev
-                0x000000000000007a       0x1c ./src/Date.o
+                0x000000000000007a       0x18 ./src/Date.o
                 0x000000000000007a                Date::Date()
                 0x000000000000007a                Date::Date()
  .text._ZN4TimeD2Ev
-                0x0000000000000096        0x2 ./src/Time.o
-                0x0000000000000096                Time::~Time()
-                0x0000000000000096                Time::~Time()
+                0x0000000000000092        0x2 ./src/Time.o
+                0x0000000000000092                Time::~Time()
+                0x0000000000000092                Time::~Time()
  .text._ZN4TimeD0Ev
-                0x0000000000000098        0x2 ./src/Time.o
-                0x0000000000000098                Time::~Time()
+                0x0000000000000094        0x2 ./src/Time.o
+                0x0000000000000094                Time::~Time()
  .text._ZN4TimeC2Ev
-                0x000000000000009a       0x12 ./src/Time.o
-                0x000000000000009a                Time::Time()
-                0x000000000000009a                Time::Time()
+                0x0000000000000096       0x16 ./src/Time.o
+                0x0000000000000096                Time::Time()
+                0x0000000000000096                Time::Time()
  .text.startup.main
                 0x00000000000000ac        0x4 ./src/main.o
                 0x00000000000000ac                main
@@ -546,12 +563,13 @@ END GROUP
  .data          0x0000000000800060        0x0 ./src/Time.o
  .data          0x0000000000800060        0x0 ./src/main.o
  .data          0x0000000000800060        0x0 ./src/system.o
- .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+ .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_clear_bss.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
+ .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
  .data          0x0000000000800060        0x6 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                 0x0000000000800060                __malloc_heap_end
@@ -579,33 +597,33 @@ END GROUP
                 0x0000000000800076                _edata = .
                 0x0000000000800076                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800076       0x15
+.bss            0x0000000000800076       0x13
                 0x0000000000800076                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.tmCurrentDate
-                0x0000000000800076        0x7 ./src/system.o
+                0x0000000000800076        0x5 ./src/system.o
                 0x0000000000800076                tmCurrentDate
  .bss.tmAlarmTime
-                0x000000000080007d        0x5 ./src/system.o
-                0x000000000080007d                tmAlarmTime
+                0x000000000080007b        0x5 ./src/system.o
+                0x000000000080007b                tmAlarmTime
  .bss.tmCurrentTime
-                0x0000000000800082        0x5 ./src/system.o
-                0x0000000000800082                tmCurrentTime
+                0x0000000000800080        0x5 ./src/system.o
+                0x0000000000800080                tmCurrentTime
  *(COMMON)
- COMMON         0x0000000000800087        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                0x0000000000800087                __brkval
-                0x0000000000800089                __flp
-                0x000000000080008b                PROVIDE (__bss_end, .)
+ COMMON         0x0000000000800085        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                0x0000000000800085                __brkval
+                0x0000000000800087                __flp
+                0x0000000000800089                PROVIDE (__bss_end, .)
                 0x00000000000003ac                __data_load_start = LOADADDR (.data)
                 0x00000000000003c2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080008b        0x0
-                0x000000000080008b                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800089        0x0
+                0x0000000000800089                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x000000000080008b                PROVIDE (__noinit_end, .)
-                0x000000000080008b                _end = .
-                0x000000000080008b                PROVIDE (__heap_start, .)
+                0x0000000000800089                PROVIDE (__noinit_end, .)
+                0x0000000000800089                _end = .
+                0x0000000000800089                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -728,8 +746,8 @@ Symbol                                            File
 Date::Date()                                      ./src/Date.o
                                                   ./src/system.o
 Date::Date()                                      ./src/Date.o
-Date::Date(unsigned char, unsigned char, unsigned char, unsigned int) ./src/Date.o
-Date::Date(unsigned char, unsigned char, unsigned char, unsigned int) ./src/Date.o
+Date::Date(Date_t)                                ./src/Date.o
+Date::Date(Date_t)                                ./src/Date.o
 Date::GetDatestring(bool, char*)                  ./src/Date.o
 Date::GetDay()                                    ./src/Date.o
 Date::GetDayOfWeek()                              ./src/Date.o
@@ -762,8 +780,8 @@ Time::SetSecond(unsigned char)                    ./src/Time.o
 Time::Time()                                      ./src/Time.o
 Time::Time()                                      ./src/Time.o
                                                   ./src/system.o
-Time::Time(unsigned char, unsigned char, unsigned char) ./src/Time.o
-Time::Time(unsigned char, unsigned char, unsigned char) ./src/Time.o
+Time::Time(Time_t)                                ./src/Time.o
+Time::Time(Time_t)                                ./src/Time.o
 Time::~Time()                                     ./src/Time.o
 Time::~Time()                                     ./src/Time.o
                                                   ./src/system.o
@@ -777,6 +795,8 @@ __ctors_start                                     /usr/lib/gcc/avr/4.9.1/avr4/li
 __data_end                                        /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
 __data_load_start                                 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
 __data_start                                      /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
+__divmodhi4                                       /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+                                                  ./src/Date.o
 __do_clear_bss                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_clear_bss.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                                                   ./src/system.o
@@ -810,7 +830,7 @@ __tablejump__                                     /usr/lib/gcc/avr/4.9.1/avr4/li
                                                   /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
                                                   /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o)
 __udivmodhi4                                      /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
-                                                  ./src/Date.o
+                                                  /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
 __ultoa_invert                                    /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 __vector_1                                        /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
@@ -833,6 +853,7 @@ __vector_8                                        /usr/lib/gcc/avr/4.9.1/../../.
 __vector_9                                        /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 __vector_default                                  /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 __vectors                                         /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
+_div                                              /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
 _exit                                             /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
 exit                                              /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o

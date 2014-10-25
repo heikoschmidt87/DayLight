@@ -7,7 +7,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .data         00000016  00800060  000003ac  00000440  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000015  00800076  00800076  00000456  2**0
+  2 .bss          00000013  00800076  00800076  00000456  2**0
                   ALLOC
   3 .comment      00000011  00000000  00000000  00000456  2**0
                   CONTENTS, READONLY
@@ -80,7 +80,7 @@ Disassembly of section .text:
   54:	1d 92       	st	X+, r1
 
 00000056 <.do_clear_bss_start>:
-  56:	ab 38       	cpi	r26, 0x8B	; 139
+  56:	a9 38       	cpi	r26, 0x89	; 137
   58:	b1 07       	cpc	r27, r17
   5a:	e1 f7       	brne	.-8      	; 0x54 <.do_clear_bss_loop>
 
@@ -113,31 +113,31 @@ Disassembly of section .text:
   7e:	90 e0       	ldi	r25, 0x00	; 0
   80:	91 83       	std	Z+1, r25	; 0x01
   82:	80 83       	st	Z, r24
-  84:	81 e0       	ldi	r24, 0x01	; 1
+  84:	89 e0       	ldi	r24, 0x09	; 9
   86:	82 83       	std	Z+2, r24	; 0x02
-  88:	83 83       	std	Z+3, r24	; 0x03
-  8a:	84 83       	std	Z+4, r24	; 0x04
-  8c:	8b eb       	ldi	r24, 0xBB	; 187
-  8e:	97 e0       	ldi	r25, 0x07	; 7
-  90:	96 83       	std	Z+6, r25	; 0x06
-  92:	85 83       	std	Z+5, r24	; 0x05
-  94:	08 95       	ret
+  88:	81 eb       	ldi	r24, 0xB1	; 177
+  8a:	83 83       	std	Z+3, r24	; 0x03
+  8c:	8b e7       	ldi	r24, 0x7B	; 123
+  8e:	84 83       	std	Z+4, r24	; 0x04
+  90:	08 95       	ret
 
-00000096 <_ZN4TimeD1Ev>:
-  96:	08 95       	ret
+00000092 <_ZN4TimeD1Ev>:
+  92:	08 95       	ret
 
-00000098 <_ZN4TimeD0Ev>:
-  98:	0b c0       	rjmp	.+22     	; 0xb0 <_ZdlPv>
+00000094 <_ZN4TimeD0Ev>:
+  94:	0d c0       	rjmp	.+26     	; 0xb0 <_ZdlPv>
 
-0000009a <_ZN4TimeC1Ev>:
-  9a:	fc 01       	movw	r30, r24
-  9c:	82 e7       	ldi	r24, 0x72	; 114
-  9e:	90 e0       	ldi	r25, 0x00	; 0
-  a0:	91 83       	std	Z+1, r25	; 0x01
-  a2:	80 83       	st	Z, r24
-  a4:	12 82       	std	Z+2, r1	; 0x02
-  a6:	13 82       	std	Z+3, r1	; 0x03
-  a8:	14 82       	std	Z+4, r1	; 0x04
+00000096 <_ZN4TimeC1Ev>:
+  96:	fc 01       	movw	r30, r24
+  98:	82 e7       	ldi	r24, 0x72	; 114
+  9a:	90 e0       	ldi	r25, 0x00	; 0
+  9c:	91 83       	std	Z+1, r25	; 0x01
+  9e:	80 83       	st	Z, r24
+  a0:	12 82       	std	Z+2, r1	; 0x02
+  a2:	13 82       	std	Z+3, r1	; 0x03
+  a4:	84 81       	ldd	r24, Z+4	; 0x04
+  a6:	8e 7f       	andi	r24, 0xFE	; 254
+  a8:	84 83       	std	Z+4, r24	; 0x04
   aa:	08 95       	ret
 
 000000ac <main>:
@@ -194,12 +194,12 @@ Disassembly of section .text:
  108:	08 95       	ret
 
 0000010a <_GLOBAL__sub_I_tmCurrentTime>:
- 10a:	82 e8       	ldi	r24, 0x82	; 130
+ 10a:	80 e8       	ldi	r24, 0x80	; 128
  10c:	90 e0       	ldi	r25, 0x00	; 0
- 10e:	c5 df       	rcall	.-118    	; 0x9a <_ZN4TimeC1Ev>
- 110:	8d e7       	ldi	r24, 0x7D	; 125
+ 10e:	c3 df       	rcall	.-122    	; 0x96 <_ZN4TimeC1Ev>
+ 110:	8b e7       	ldi	r24, 0x7B	; 123
  112:	90 e0       	ldi	r25, 0x00	; 0
- 114:	c2 df       	rcall	.-124    	; 0x9a <_ZN4TimeC1Ev>
+ 114:	c0 df       	rcall	.-128    	; 0x96 <_ZN4TimeC1Ev>
  116:	86 e7       	ldi	r24, 0x76	; 118
  118:	90 e0       	ldi	r25, 0x00	; 0
  11a:	af cf       	rjmp	.-162    	; 0x7a <_ZN4DateC1Ev>
@@ -208,12 +208,12 @@ Disassembly of section .text:
  11c:	86 e7       	ldi	r24, 0x76	; 118
  11e:	90 e0       	ldi	r25, 0x00	; 0
  120:	aa df       	rcall	.-172    	; 0x76 <_ZN4DateD1Ev>
- 122:	8d e7       	ldi	r24, 0x7D	; 125
+ 122:	8b e7       	ldi	r24, 0x7B	; 123
  124:	90 e0       	ldi	r25, 0x00	; 0
- 126:	b7 df       	rcall	.-146    	; 0x96 <_ZN4TimeD1Ev>
- 128:	82 e8       	ldi	r24, 0x82	; 130
+ 126:	b5 df       	rcall	.-150    	; 0x92 <_ZN4TimeD1Ev>
+ 128:	80 e8       	ldi	r24, 0x80	; 128
  12a:	90 e0       	ldi	r25, 0x00	; 0
- 12c:	b4 cf       	rjmp	.-152    	; 0x96 <_ZN4TimeD1Ev>
+ 12c:	b2 cf       	rjmp	.-156    	; 0x92 <_ZN4TimeD1Ev>
 
 0000012e <__tablejump2__>:
  12e:	ee 0f       	add	r30, r30
@@ -233,8 +233,8 @@ Disassembly of section .text:
  142:	10 f4       	brcc	.+4      	; 0x148 <malloc+0xe>
  144:	82 e0       	ldi	r24, 0x02	; 2
  146:	90 e0       	ldi	r25, 0x00	; 0
- 148:	e0 91 89 00 	lds	r30, 0x0089
- 14c:	f0 91 8a 00 	lds	r31, 0x008A
+ 148:	e0 91 87 00 	lds	r30, 0x0087
+ 14c:	f0 91 88 00 	lds	r31, 0x0088
  150:	20 e0       	ldi	r18, 0x00	; 0
  152:	30 e0       	ldi	r19, 0x00	; 0
  154:	c0 e0       	ldi	r28, 0x00	; 0
@@ -256,8 +256,8 @@ Disassembly of section .text:
  174:	9b 83       	std	Y+3, r25	; 0x03
  176:	8a 83       	std	Y+2, r24	; 0x02
  178:	2b c0       	rjmp	.+86     	; 0x1d0 <malloc+0x96>
- 17a:	90 93 8a 00 	sts	0x008A, r25
- 17e:	80 93 89 00 	sts	0x0089, r24
+ 17a:	90 93 88 00 	sts	0x0088, r25
+ 17e:	80 93 87 00 	sts	0x0087, r24
  182:	26 c0       	rjmp	.+76     	; 0x1d0 <malloc+0x96>
  184:	21 15       	cp	r18, r1
  186:	31 05       	cpc	r19, r1
@@ -292,8 +292,8 @@ Disassembly of section .text:
  1c0:	93 83       	std	Z+3, r25	; 0x03
  1c2:	82 83       	std	Z+2, r24	; 0x02
  1c4:	04 c0       	rjmp	.+8      	; 0x1ce <malloc+0x94>
- 1c6:	90 93 8a 00 	sts	0x008A, r25
- 1ca:	80 93 89 00 	sts	0x0089, r24
+ 1c6:	90 93 88 00 	sts	0x0088, r25
+ 1ca:	80 93 87 00 	sts	0x0087, r24
  1ce:	fd 01       	movw	r30, r26
  1d0:	32 96       	adiw	r30, 0x02	; 2
  1d2:	44 c0       	rjmp	.+136    	; 0x25c <malloc+0x122>
@@ -307,14 +307,14 @@ Disassembly of section .text:
  1e2:	2d 93       	st	X+, r18
  1e4:	3c 93       	st	X, r19
  1e6:	3a c0       	rjmp	.+116    	; 0x25c <malloc+0x122>
- 1e8:	20 91 87 00 	lds	r18, 0x0087
- 1ec:	30 91 88 00 	lds	r19, 0x0088
+ 1e8:	20 91 85 00 	lds	r18, 0x0085
+ 1ec:	30 91 86 00 	lds	r19, 0x0086
  1f0:	23 2b       	or	r18, r19
  1f2:	41 f4       	brne	.+16     	; 0x204 <malloc+0xca>
  1f4:	20 91 62 00 	lds	r18, 0x0062
  1f8:	30 91 63 00 	lds	r19, 0x0063
- 1fc:	30 93 88 00 	sts	0x0088, r19
- 200:	20 93 87 00 	sts	0x0087, r18
+ 1fc:	30 93 86 00 	sts	0x0086, r19
+ 200:	20 93 85 00 	sts	0x0085, r18
  204:	20 91 60 00 	lds	r18, 0x0060
  208:	30 91 61 00 	lds	r19, 0x0061
  20c:	21 15       	cp	r18, r1
@@ -326,8 +326,8 @@ Disassembly of section .text:
  21a:	50 91 65 00 	lds	r21, 0x0065
  21e:	24 1b       	sub	r18, r20
  220:	35 0b       	sbc	r19, r21
- 222:	e0 91 87 00 	lds	r30, 0x0087
- 226:	f0 91 88 00 	lds	r31, 0x0088
+ 222:	e0 91 85 00 	lds	r30, 0x0085
+ 226:	f0 91 86 00 	lds	r31, 0x0086
  22a:	e2 17       	cp	r30, r18
  22c:	f3 07       	cpc	r31, r19
  22e:	a0 f4       	brcc	.+40     	; 0x258 <malloc+0x11e>
@@ -344,8 +344,8 @@ Disassembly of section .text:
  244:	48 f0       	brcs	.+18     	; 0x258 <malloc+0x11e>
  246:	4e 0f       	add	r20, r30
  248:	5f 1f       	adc	r21, r31
- 24a:	50 93 88 00 	sts	0x0088, r21
- 24e:	40 93 87 00 	sts	0x0087, r20
+ 24a:	50 93 86 00 	sts	0x0086, r21
+ 24e:	40 93 85 00 	sts	0x0085, r20
  252:	81 93       	st	Z+, r24
  254:	91 93       	st	Z+, r25
  256:	02 c0       	rjmp	.+4      	; 0x25c <malloc+0x122>
@@ -368,8 +368,8 @@ Disassembly of section .text:
  274:	32 97       	sbiw	r30, 0x02	; 2
  276:	13 82       	std	Z+3, r1	; 0x03
  278:	12 82       	std	Z+2, r1	; 0x02
- 27a:	00 91 89 00 	lds	r16, 0x0089
- 27e:	10 91 8a 00 	lds	r17, 0x008A
+ 27a:	00 91 87 00 	lds	r16, 0x0087
+ 27e:	10 91 88 00 	lds	r17, 0x0088
  282:	01 15       	cp	r16, r1
  284:	11 05       	cpc	r17, r1
  286:	81 f4       	brne	.+32     	; 0x2a8 <free+0x44>
@@ -377,13 +377,13 @@ Disassembly of section .text:
  28a:	31 81       	ldd	r19, Z+1	; 0x01
  28c:	82 0f       	add	r24, r18
  28e:	93 1f       	adc	r25, r19
- 290:	20 91 87 00 	lds	r18, 0x0087
- 294:	30 91 88 00 	lds	r19, 0x0088
+ 290:	20 91 85 00 	lds	r18, 0x0085
+ 294:	30 91 86 00 	lds	r19, 0x0086
  298:	28 17       	cp	r18, r24
  29a:	39 07       	cpc	r19, r25
  29c:	79 f5       	brne	.+94     	; 0x2fc <free+0x98>
- 29e:	f0 93 88 00 	sts	0x0088, r31
- 2a2:	e0 93 87 00 	sts	0x0087, r30
+ 29e:	f0 93 86 00 	sts	0x0086, r31
+ 2a2:	e0 93 85 00 	sts	0x0085, r30
  2a6:	71 c0       	rjmp	.+226    	; 0x38a <free+0x126>
  2a8:	d8 01       	movw	r26, r16
  2aa:	40 e0       	ldi	r20, 0x00	; 0
@@ -427,8 +427,8 @@ Disassembly of section .text:
  2f6:	82 83       	std	Z+2, r24	; 0x02
  2f8:	45 2b       	or	r20, r21
  2fa:	29 f4       	brne	.+10     	; 0x306 <free+0xa2>
- 2fc:	f0 93 8a 00 	sts	0x008A, r31
- 300:	e0 93 89 00 	sts	0x0089, r30
+ 2fc:	f0 93 88 00 	sts	0x0088, r31
+ 300:	e0 93 87 00 	sts	0x0087, r30
  304:	42 c0       	rjmp	.+132    	; 0x38a <free+0x126>
  306:	13 96       	adiw	r26, 0x03	; 3
  308:	fc 93       	st	X, r31
@@ -476,20 +476,20 @@ Disassembly of section .text:
  35c:	3f 4f       	sbci	r19, 0xFF	; 255
  35e:	82 0f       	add	r24, r18
  360:	93 1f       	adc	r25, r19
- 362:	20 91 87 00 	lds	r18, 0x0087
- 366:	30 91 88 00 	lds	r19, 0x0088
+ 362:	20 91 85 00 	lds	r18, 0x0085
+ 366:	30 91 86 00 	lds	r19, 0x0086
  36a:	28 17       	cp	r18, r24
  36c:	39 07       	cpc	r19, r25
  36e:	69 f4       	brne	.+26     	; 0x38a <free+0x126>
  370:	30 97       	sbiw	r30, 0x00	; 0
  372:	29 f4       	brne	.+10     	; 0x37e <free+0x11a>
- 374:	10 92 8a 00 	sts	0x008A, r1
- 378:	10 92 89 00 	sts	0x0089, r1
+ 374:	10 92 88 00 	sts	0x0088, r1
+ 378:	10 92 87 00 	sts	0x0087, r1
  37c:	02 c0       	rjmp	.+4      	; 0x382 <free+0x11e>
  37e:	13 82       	std	Z+3, r1	; 0x03
  380:	12 82       	std	Z+2, r1	; 0x02
- 382:	10 93 88 00 	sts	0x0088, r17
- 386:	00 93 87 00 	sts	0x0087, r16
+ 382:	10 93 86 00 	sts	0x0086, r17
+ 386:	00 93 85 00 	sts	0x0085, r16
  38a:	df 91       	pop	r29
  38c:	cf 91       	pop	r28
  38e:	1f 91       	pop	r17
