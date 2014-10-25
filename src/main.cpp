@@ -7,11 +7,15 @@
 
 #include <avr/io.h>
 
+#include "system.h"
+
 /**
  *
  * @return
  */
 int main() {
+
+	InitDayLightAlarm();
 
 	while(1) {
 

@@ -33,6 +33,9 @@ typedef uint8_t Ret_Err_Def;
 void * operator new(size_t size);
 void operator delete(void * ptr);
 
+void InitFlags();
+void InitDayLightAlarm();
+
 ////////////////////////////////////
 // STRUCTS
 ////////////////////////////////////
@@ -42,6 +45,32 @@ static struct {
 	uint8_t bDoAlarm : 1;
 	uint8_t bSnooze : 1;
 } oFlags;
+
+////////////////////////////////////
+// DEFINES
+////////////////////////////////////
+#define BUTTON_SNOOZE	PD5
+#define BUTTON_MENU		PD6
+#define BUTTON_ADJUST	PD7
+#define BUTTON_LIGHT	PB0
+#define DAY_LIGHT		PB1
+#define SPEAKER			PB2
+#define DISPLAY_LIGHT	PD0
+
+#define PORT_BTN1		PORTD
+#define PORT_BTN2		PORTB
+#define PORT_DAY_LIGHT	PORTB
+#define PORT_SPEAKER	PORTB
+#define PORT_DISPLIGHT	PORTD
+
+#define PIN_BTN1		PIND
+#define PIN_BTN2		PINB
+
+#define DDR_BTN1		DDRD
+#define DDR_BTN2		DDRB
+#define DDR_DAY_LIGHT	DDRB
+#define DDR_SPEAKER		DDRB
+#define DDR_DISPLIGHT	DDRD
 
 
 #endif /* SYSTEM_H_ */

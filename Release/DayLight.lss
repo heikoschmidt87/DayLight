@@ -3,19 +3,19 @@ DayLight.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000064  00000000  00000000  00000074  2**1
+  0 .text         000000b0  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000006  00800060  00000064  000000d8  2**0
+  1 .data         00000006  00800060  000000b0  00000124  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000011  00000000  00000000  000000de  2**0
+  2 .comment      00000011  00000000  00000000  0000012a  2**0
                   CONTENTS, READONLY
-  3 .debug_info   0000048c  00000000  00000000  000000ef  2**0
+  3 .debug_info   0000048c  00000000  00000000  0000013b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_abbrev 0000044e  00000000  00000000  0000057b  2**0
+  4 .debug_abbrev 0000044e  00000000  00000000  000005c7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_line   0000001d  00000000  00000000  000009c9  2**0
+  5 .debug_line   0000001d  00000000  00000000  00000a15  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_str    0000017a  00000000  00000000  000009e6  2**0
+  6 .debug_str    0000017a  00000000  00000000  00000a32  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -53,7 +53,7 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	e4 e6       	ldi	r30, 0x64	; 100
+  38:	e0 eb       	ldi	r30, 0xB0	; 176
   3a:	f0 e0       	ldi	r31, 0x00	; 0
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
@@ -76,16 +76,56 @@ Disassembly of section .text:
   54:	b1 07       	cpc	r27, r17
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
   58:	02 d0       	rcall	.+4      	; 0x5e <main>
-  5a:	02 c0       	rjmp	.+4      	; 0x60 <_exit>
+  5a:	28 c0       	rjmp	.+80     	; 0xac <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
 
 0000005e <main>:
-  5e:	ff cf       	rjmp	.-2      	; 0x5e <main>
+  5e:	0b d0       	rcall	.+22     	; 0x76 <_Z17InitDayLightAlarmv>
+  60:	c1 9a       	sbi	0x18, 1	; 24
+  62:	2c ec       	ldi	r18, 0xCC	; 204
+  64:	8c ec       	ldi	r24, 0xCC	; 204
+  66:	9c e0       	ldi	r25, 0x0C	; 12
+  68:	21 50       	subi	r18, 0x01	; 1
+  6a:	80 40       	sbci	r24, 0x00	; 0
+  6c:	90 40       	sbci	r25, 0x00	; 0
+  6e:	e1 f7       	brne	.-8      	; 0x68 <main+0xa>
+  70:	00 c0       	rjmp	.+0      	; 0x72 <main+0x14>
+  72:	c1 98       	cbi	0x18, 1	; 24
+  74:	ff cf       	rjmp	.-2      	; 0x74 <main+0x16>
 
-00000060 <_exit>:
-  60:	f8 94       	cli
+00000076 <_Z17InitDayLightAlarmv>:
+  76:	81 b3       	in	r24, 0x11	; 17
+  78:	8f 71       	andi	r24, 0x1F	; 31
+  7a:	81 bb       	out	0x11, r24	; 17
+  7c:	b8 98       	cbi	0x17, 0	; 23
+  7e:	82 b3       	in	r24, 0x12	; 18
+  80:	80 6e       	ori	r24, 0xE0	; 224
+  82:	82 bb       	out	0x12, r24	; 18
+  84:	c0 9a       	sbi	0x18, 0	; 24
+  86:	b9 9a       	sbi	0x17, 1	; 23
+  88:	c1 98       	cbi	0x18, 1	; 24
+  8a:	c1 9a       	sbi	0x18, 1	; 24
+  8c:	2c ec       	ldi	r18, 0xCC	; 204
+  8e:	8c ec       	ldi	r24, 0xCC	; 204
+  90:	9c e0       	ldi	r25, 0x0C	; 12
+  92:	21 50       	subi	r18, 0x01	; 1
+  94:	80 40       	sbci	r24, 0x00	; 0
+  96:	90 40       	sbci	r25, 0x00	; 0
+  98:	e1 f7       	brne	.-8      	; 0x92 <_Z17InitDayLightAlarmv+0x1c>
+  9a:	00 c0       	rjmp	.+0      	; 0x9c <_Z17InitDayLightAlarmv+0x26>
+  9c:	c1 98       	cbi	0x18, 1	; 24
+  9e:	ba 9a       	sbi	0x17, 2	; 23
+  a0:	88 b3       	in	r24, 0x18	; 24
+  a2:	84 70       	andi	r24, 0x04	; 4
+  a4:	88 bb       	out	0x18, r24	; 24
+  a6:	88 9a       	sbi	0x11, 0	; 17
+  a8:	90 98       	cbi	0x12, 0	; 18
+  aa:	08 95       	ret
 
-00000062 <__stop_program>:
-  62:	ff cf       	rjmp	.-2      	; 0x62 <__stop_program>
+000000ac <_exit>:
+  ac:	f8 94       	cli
+
+000000ae <__stop_program>:
+  ae:	ff cf       	rjmp	.-2      	; 0xae <__stop_program>
