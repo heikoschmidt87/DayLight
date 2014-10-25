@@ -17,6 +17,7 @@ int main() {
 
 	InitDayLightAlarm();
 
+
 	while(1) {
 
 	}

@@ -7,6 +7,17 @@
 
 #include "system.h"
 
+
+////////////////////////////////////
+// GLOBALS
+////////////////////////////////////
+Time tmCurrentTime;
+Time tmAlarmTime;
+Date tmCurrentDate;
+
+////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////
 void * operator new (size_t size) {
 	return malloc(size);
 }
@@ -42,12 +53,6 @@ void InitDayLightAlarm() {
 	DDR_DAY_LIGHT |= (1 << DAY_LIGHT);
 	PORT_DAY_LIGHT &= ~(1 << DAY_LIGHT);
 
-	/* test daylight */
-	PORT_DAY_LIGHT |= (1 << DAY_LIGHT);
-	_delay_ms(1000);
-	PORT_DAY_LIGHT &= ~(1 << DAY_LIGHT);
-
-
 	/*
 	 * init speaker
 	 */
@@ -64,8 +69,23 @@ void InitDayLightAlarm() {
 
 	/* play test tone */
 	/*
-	 * TODO: PWM Timer for light and speaker
+	 * PWM Timer for light and speaker
+	 * PWM mode, no Prescaler, OC1/OC2 on
 	 */
+	TCCR1A = (1<<WGM10) | (1<<COM1A1) | (1<<COM1B1);
+	TCCR1B = (1<<WGM12) | (1 << CS10);
+
+	/* test sound and daylight output */
+	OCR1A = 255;
+	OCR1B = 100;		/* TODO: sound output test */
+
+	_delay_ms(1000);
+
+	OCR1A = 0;
+	OCR1B = 0;
+
+	/* switch off both pwm signals */
+	TCCR1A &= ~((1 << COM1A1) | (1 << COM1B1));
 
 	/*
 	 * TODO: init display
@@ -73,5 +93,9 @@ void InitDayLightAlarm() {
 
 	/*
 	 * TODO: init DCF77?
+	 */
+
+	/*
+	 * init "normal" clock
 	 */
 }

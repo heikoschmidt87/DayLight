@@ -8,11 +8,6 @@
 #ifndef SRC_TIME_H_
 #define SRC_TIME_H_
 
-/*
- * INCLUDES
- */
-#include "system.h"
-
 /**
  * This is a class for representing time and enabling to compare times.
  */

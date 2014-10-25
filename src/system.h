@@ -19,6 +19,11 @@
 #include <util/delay.h>
 #include <string.h>
 
+#include "Date.h"
+#include "Time.h"
+
+
+
 ////////////////////////////////////
 // ERRORS
 ////////////////////////////////////
@@ -72,5 +77,11 @@ static struct {
 #define DDR_SPEAKER		DDRB
 #define DDR_DISPLIGHT	DDRD
 
+////////////////////////////////////
+// GLOBALS
+////////////////////////////////////
+extern Time tmCurrentTime;
+extern Time tmAlarmTime;
+extern Date dtCurrentDate;
 
 #endif /* SYSTEM_H_ */

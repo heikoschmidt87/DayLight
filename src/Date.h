@@ -11,22 +11,17 @@
 /*
  * INCLUDES
  */
-#include "system.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-/*
- * STRUCTS
- */
-const char *sDays[] = {"Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"};
 
 /**
  * This is a class for representing date
  */
 class Date {
 private:
+	static const char *sDays[7];
+
 	uint8_t m_nDayOfWeek;	/**< uint8_t value, representing current day of the week */
 	uint8_t m_nDay;			/**< uint8_t value, representing current day */
 	uint8_t m_nMonth;		/**< uint8_t value, representing current month */
@@ -52,6 +47,7 @@ public:
 	void GetDatestring(bool bWithYear, char* sString);						/**< getter for formatted date */
 
 	bool bIsEqualTo(Date* oDate, bool bWithDayOfWeek);						/**< check method for testing if dates are equal */
+
 };
 
 #endif /* SRC_DATE_H_ */

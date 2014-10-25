@@ -7,6 +7,8 @@
 
 #include "Date.h"
 
+static const char *sDays[] = {"Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"};
+
 Date::Date() {
 	this->m_nDayOfWeek = 1;
 	this->m_nDay = 1;
