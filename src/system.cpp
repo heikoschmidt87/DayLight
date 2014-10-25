@@ -13,7 +13,9 @@
 ////////////////////////////////////
 Time tmCurrentTime;
 Time tmAlarmTime;
-Date tmCurrentDate;
+Date dtCurrentDate;
+
+uint8_t nClockOverflows = 0;
 
 ////////////////////////////////////
 // FUNCTIONS
@@ -88,8 +90,10 @@ void InitDayLightAlarm() {
 	TCCR1A &= ~((1 << COM1A1) | (1 << COM1B1));
 
 	/*
-	 * TODO: init display
+	 * init display
 	 */
+	lcd_init();
+	lcd_clear();
 
 	/*
 	 * TODO: init DCF77?
@@ -98,4 +102,30 @@ void InitDayLightAlarm() {
 	/*
 	 * init "normal" clock
 	 */
+	TCCR0 = (1 << CS02);
+	TIMSK |= (1 << TOIE0);
+}
+
+ISR(TIMER0_OVF_vect) {
+
+	if(++nClockOverflows >= 64) {
+		nClockOverflows = 0;
+
+		/* increase the time and adjust date if needed */
+//		tmCurrentTime.Increase();
+
+//		if(		(tmCurrentTime.GetHour() == 0)
+//			&&	(tmCurrentTime.GetMinute() == 0)
+//			&&	(tmCurrentTime.GetSecond() == 0)) {
+
+//			dtCurrentDate.Increase();
+//		}
+
+//		PORT_DAY_LIGHT ^= (1 << DAY_LIGHT);
+
+//		lcd_home();
+//		lcd_string(tmCurrentTime.GetTimestring(true));
+
+//		oFlags.bRefreshDisplay = 1;
+	}
 }

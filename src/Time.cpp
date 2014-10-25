@@ -78,7 +78,9 @@ uint8_t Time::GetHour() {
 	return this->m_tmTime.nHour;
 }
 
-void Time::GetTimestring(bool bWithSecs, char* sString) {
+char* Time::GetTimestring(bool bWithSecs) {
+
+	static char sString[17];
 
 	if(bWithSecs) {
 			sprintf(sString, "%.2d:%.2d:%.2d", this->m_tmTime.nHour, this->m_tmTime.nMinute, this->m_tmTime.nSecond);
@@ -86,6 +88,8 @@ void Time::GetTimestring(bool bWithSecs, char* sString) {
 	else {
 			sprintf(sString, "%.2d:%.2d", this->m_tmTime.nHour, this->m_tmTime.nMinute);
 	}
+
+	return sString;
 }
 
 bool Time::IsEqualTo(Time* oTime) {

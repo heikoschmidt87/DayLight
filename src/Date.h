@@ -48,7 +48,7 @@ public:
 	uint8_t GetMonth();														/**< getter-method for month */
 	uint16_t GetYear();														/**< getter-method for year */
 
-	void GetDatestring(bool bWithYear, char* sString);						/**< getter for formatted date */
+	char* GetDatestring(bool bWithYear);									/**< getter for formatted date */
 
 	bool bIsEqualTo(Date* oDate, bool bWithDayOfWeek);						/**< check method for testing if dates are equal */
 

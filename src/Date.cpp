@@ -88,14 +88,22 @@ void Date::Increase() {
 				this->m_dtDate.nMonth = 1;
 		}
 	}
+
+	if(++this->m_dtDate.nDayOfWeek > 6) {
+		this->m_dtDate.nDayOfWeek = 0;
+	}
 }
 
-void Date::GetDatestring(bool bWithYear, char* sString) {
+char* Date::GetDatestring(bool bWithYear) {
+	static char sString[17];
+
 	if(bWithYear) {
 		sprintf(sString, "%s - %02d.%02d", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth);
 	} else {
 		sprintf(sString, "%s - %02d.%02d.%04d", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth, this->m_dtDate.nYear);
 	}
+
+	return sString;
 }
 
 bool Date::bIsEqualTo(Date* oDate, bool bWithDayOfWeek) {

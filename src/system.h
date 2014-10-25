@@ -22,6 +22,8 @@
 #include "Date.h"
 #include "Time.h"
 
+#include "lcd-routines.h"		/* TODO: own OO-implementation */
+
 
 
 ////////////////////////////////////
@@ -83,5 +85,7 @@ static struct {
 extern Time tmCurrentTime;
 extern Time tmAlarmTime;
 extern Date dtCurrentDate;
+
+extern uint8_t nClockOverflows;
 
 #endif /* SYSTEM_H_ */
