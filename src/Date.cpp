@@ -24,39 +24,39 @@ Date::~Date() {
 	// TODO Auto-generated destructor stub
 }
 
-void Date::SetDayOfWeek(uint8_t nDayOfWeek) {
+void Date::SetDayOfWeek(uint8_t nDayOfWeek) volatile {
 	this->m_dtDate.nDayOfWeek = nDayOfWeek;
 }
 
-void Date::SetDay(uint8_t nDay) {
+void Date::SetDay(uint8_t nDay) volatile {
 	this->m_dtDate.nDay = nDay;
 }
 
-void Date::SetMonth(uint8_t nMonth) {
+void Date::SetMonth(uint8_t nMonth) volatile {
 	this->m_dtDate.nMonth = nMonth;
 }
 
-void Date::SetYear(uint16_t nYear) {
+void Date::SetYear(uint16_t nYear) volatile {
 	this->m_dtDate.nYear = nYear;
 }
 
-uint8_t Date::GetDayOfWeek() {
+uint8_t Date::GetDayOfWeek() volatile {
 	return this->m_dtDate.nDayOfWeek;
 }
 
-uint8_t Date::GetDay() {
+uint8_t Date::GetDay() volatile {
 	return this->m_dtDate.nDay;
 }
 
-uint8_t Date::GetMonth() {
+uint8_t Date::GetMonth() volatile {
 	return this->m_dtDate.nMonth;
 }
 
-uint16_t Date::GetYear() {
+uint16_t Date::GetYear() volatile {
 	return this->m_dtDate.nYear;
 }
 
-void Date::Increase() {
+void Date::Increase() volatile {
 
 	uint8_t nDayCount = 0;
 
@@ -94,19 +94,19 @@ void Date::Increase() {
 	}
 }
 
-char* Date::GetDatestring(bool bWithYear) {
+char* Date::GetDatestring(bool bWithYear) volatile {
 	static char sString[17];
 
 	if(bWithYear) {
-		sprintf(sString, "%s - %02d.%02d", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth);
+		sprintf(sString, "%s - %02lu.%02lu.%04lu", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth, this->m_dtDate.nYear);
 	} else {
-		sprintf(sString, "%s - %02d.%02d.%04d", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth, this->m_dtDate.nYear);
+		sprintf(sString, "%s - %02lu.%02lu", sDays[this->m_dtDate.nDayOfWeek - 1], this->m_dtDate.nDay, this->m_dtDate.nMonth);
 	}
 
 	return sString;
 }
 
-bool Date::bIsEqualTo(Date* oDate, bool bWithDayOfWeek) {
+bool Date::bIsEqualTo(Date* oDate, bool bWithDayOfWeek) volatile {
 	return 		this->m_dtDate.nDay == oDate->GetDay()
 			&&	this->m_dtDate.nMonth == oDate->GetMonth()
 			&&	this->m_dtDate.nYear == oDate->GetYear()

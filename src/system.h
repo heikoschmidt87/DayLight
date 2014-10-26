@@ -90,7 +90,7 @@ struct {
 ////////////////////////////////////
 extern volatile Time tmCurrentTime;
 extern volatile Time tmAlarmTime;
-extern Date dtCurrentDate;
+extern volatile Date dtCurrentDate;
 
 extern uint8_t nClockOverflows;
 extern volatile uint8_t nFlags;

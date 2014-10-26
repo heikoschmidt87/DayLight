@@ -36,21 +36,21 @@ public:
 	Date(Date_t dtDate);													/**< constructor with variable initialization */
 	virtual ~Date();														/**< default destructor */
 
-	void Increase();														/**< increases date by one day */
+	void Increase() volatile;												/**< increases date by one day */
 
-	void SetDayOfWeek(uint8_t nDayOfWeek);									/**< setter-method for day of week */
-	void SetDay(uint8_t nDay);												/**< setter-method for day */
-	void SetMonth(uint8_t nMonth);											/**< setter-method for month */
-	void SetYear(uint16_t nYear);											/**< setter-method for year */
+	void SetDayOfWeek(uint8_t nDayOfWeek) volatile;							/**< setter-method for day of week */
+	void SetDay(uint8_t nDay) volatile;										/**< setter-method for day */
+	void SetMonth(uint8_t nMonth) volatile;									/**< setter-method for month */
+	void SetYear(uint16_t nYear) volatile;									/**< setter-method for year */
 
-	uint8_t GetDayOfWeek();													/**< getter-method for day of week */
-	uint8_t GetDay();														/**< getter-method for day */
-	uint8_t GetMonth();														/**< getter-method for month */
-	uint16_t GetYear();														/**< getter-method for year */
+	uint8_t GetDayOfWeek() volatile;										/**< getter-method for day of week */
+	uint8_t GetDay() volatile;												/**< getter-method for day */
+	uint8_t GetMonth() volatile;											/**< getter-method for month */
+	uint16_t GetYear() volatile;											/**< getter-method for year */
 
-	char* GetDatestring(bool bWithYear);									/**< getter for formatted date */
+	char* GetDatestring(bool bWithYear) volatile;							/**< getter for formatted date */
 
-	bool bIsEqualTo(Date* oDate, bool bWithDayOfWeek);						/**< check method for testing if dates are equal */
+	bool bIsEqualTo(Date* oDate, bool bWithDayOfWeek) volatile;				/**< check method for testing if dates are equal */
 
 };
 

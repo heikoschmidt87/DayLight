@@ -12,7 +12,7 @@
 ////////////////////////////////////
 volatile Time tmCurrentTime;
 volatile Time tmAlarmTime;
-Date dtCurrentDate;
+volatile Date dtCurrentDate;
 
 uint8_t nClockOverflows = 0;
 volatile uint8_t nFlags = 0;
