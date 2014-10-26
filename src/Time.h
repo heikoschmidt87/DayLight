@@ -17,6 +17,7 @@ typedef struct {
 	uint32_t nSecond : 6;
 } Time_t;
 
+
 class Time {
 private:
 	Time_t m_tmTime;
@@ -26,22 +27,22 @@ public:
 	Time(Time_t tmTime);										/**< constructor with variable initialization */
 	virtual ~Time();											/**< default destructor */
 
-	void Increase();									/**< increases time by one second */
+	void Increase() volatile;									/**< increases time by one second */
 
-	void SetSecond(uint8_t nSecond);					/**< setter-method for second */
-	void SetMinute(uint8_t nMinute);					/**< setter-method for minute */
-	void SetHour(uint8_t nHour);						/**< setter-method for hour */
+	void SetSecond(uint8_t nSecond) volatile;					/**< setter-method for second */
+	void SetMinute(uint8_t nMinute) volatile;					/**< setter-method for minute */
+	void SetHour(uint8_t nHour) volatile;						/**< setter-method for hour */
 
-	uint8_t GetSecond();								/**< getter-method for second */
-	uint8_t GetMinute();								/**< getter-method for minute */
-	uint8_t GetHour();									/**< getter-method for hour */
+	uint8_t GetSecond() volatile;								/**< getter-method for second */
+	uint8_t GetMinute() volatile;								/**< getter-method for minute */
+	uint8_t GetHour() volatile;									/**< getter-method for hour */
 
 
-	char* GetTimestring(bool bWithSecs);				/**< getter for formatted timestring */
+	char* GetTimestring(bool bWithSecs) volatile;				/**< getter for formatted timestring */
 
-	bool IsEqualTo(Time* oTime);						/**< check method for testing if times are equal */
+	bool IsEqualTo(Time* oTime) volatile;						/**< check method for testing if times are equal */
 
-	uint32_t GetDifferenceInSecs(Time *oTime);			/**< calculates the difference between two times in seconds */
+	uint32_t GetDifferenceInSecs(Time *oTime) volatile;			/**< calculates the difference between two times in seconds */
 
 };
 

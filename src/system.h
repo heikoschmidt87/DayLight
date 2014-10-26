@@ -46,12 +46,13 @@ void InitDayLightAlarm();
 ////////////////////////////////////
 // STRUCTS
 ////////////////////////////////////
-static struct {
+struct {
 	uint8_t bRefreshDisplay : 1;
 	uint8_t bDcfFallingEdge : 1;
 	uint8_t bDoAlarm : 1;
 	uint8_t bSnooze : 1;
-} oFlags;
+} volatile oFlags;
+
 
 ////////////////////////////////////
 // DEFINES
@@ -79,13 +80,19 @@ static struct {
 #define DDR_SPEAKER		DDRB
 #define DDR_DISPLIGHT	DDRD
 
+#define FLAG_REFRESH_DISPLAY	0x01
+#define FLAG_DCF_FALLING_EDGE	0x02
+#define FLAG_DO_ALARM			0x04
+#define FLAG_SNOOZE				0x08
+
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
-extern Time tmCurrentTime;
-extern Time tmAlarmTime;
+extern volatile Time tmCurrentTime;
+extern volatile Time tmAlarmTime;
 extern Date dtCurrentDate;
 
 extern uint8_t nClockOverflows;
+extern volatile uint8_t nFlags;
 
 #endif /* SYSTEM_H_ */

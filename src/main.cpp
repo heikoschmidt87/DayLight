@@ -21,23 +21,16 @@ int main() {
 
 	sei();
 
-	Time tmTest;
-
-
 	while(1) {
 
 		/* refresh the display */
-		if(oFlags.bRefreshDisplay) {
-			oFlags.bRefreshDisplay = 0;
+		if(nFlags & FLAG_REFRESH_DISPLAY > 0) {
+
+			nFlags &= ~FLAG_REFRESH_DISPLAY;
+
+			lcd_home();
+			lcd_string(tmCurrentTime.GetTimestring(true));
 		}
-
-
-		//tmCurrentTime.Increase();
-		tmTest.Increase();
-
-		lcd_home();
-		lcd_string(tmTest.GetTimestring(true));
-		_delay_ms(1000);
 	}
 
 

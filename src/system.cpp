@@ -7,15 +7,15 @@
 
 #include "system.h"
 
-
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
-Time tmCurrentTime;
-Time tmAlarmTime;
+volatile Time tmCurrentTime;
+volatile Time tmAlarmTime;
 Date dtCurrentDate;
 
 uint8_t nClockOverflows = 0;
+volatile uint8_t nFlags = 0;
 
 ////////////////////////////////////
 // FUNCTIONS
@@ -29,10 +29,12 @@ void operator delete(void * ptr) {
 }
 
 void InitFlags() {
-	oFlags.bDcfFallingEdge = 0;
+/*	oFlags.bDcfFallingEdge = 0;
 	oFlags.bDoAlarm = 0;
 	oFlags.bRefreshDisplay = 0;
-	oFlags.bSnooze = 0;
+	oFlags.bSnooze = 0;*/
+
+	nFlags = 0;
 }
 
 void InitDayLightAlarm() {
@@ -112,20 +114,18 @@ ISR(TIMER0_OVF_vect) {
 		nClockOverflows = 0;
 
 		/* increase the time and adjust date if needed */
-//		tmCurrentTime.Increase();
+		tmCurrentTime.Increase();
 
-//		if(		(tmCurrentTime.GetHour() == 0)
-//			&&	(tmCurrentTime.GetMinute() == 0)
-//			&&	(tmCurrentTime.GetSecond() == 0)) {
+		if(		(tmCurrentTime.GetHour() == 0)
+			&&	(tmCurrentTime.GetMinute() == 0)
+			&&	(tmCurrentTime.GetSecond() == 0)) {
 
-//			dtCurrentDate.Increase();
-//		}
+			dtCurrentDate.Increase();
+		}
 
-//		PORT_DAY_LIGHT ^= (1 << DAY_LIGHT);
+		/*oFlags.bRefreshDisplay = 1;*/
 
-//		lcd_home();
-//		lcd_string(tmCurrentTime.GetTimestring(true));
+		nFlags |= FLAG_REFRESH_DISPLAY;
 
-//		oFlags.bRefreshDisplay = 1;
 	}
 }
