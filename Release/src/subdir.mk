@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Date.cpp \
+../src/DcfTime.cpp \
 ../src/Time.cpp \
 ../src/lcd-routines.cpp \
 ../src/main.cpp \
@@ -12,6 +13,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./src/Date.o \
+./src/DcfTime.o \
 ./src/Time.o \
 ./src/lcd-routines.o \
 ./src/main.o \
@@ -19,6 +21,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/Date.d \
+./src/DcfTime.d \
 ./src/Time.d \
 ./src/lcd-routines.d \
 ./src/main.d \

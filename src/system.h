@@ -21,6 +21,7 @@
 
 #include "Date.h"
 #include "Time.h"
+#include "DcfTime.h"
 
 #include "lcd-routines.h"		/* TODO: own OO-implementation */
 
@@ -90,6 +91,7 @@ struct {
 ////////////////////////////////////
 extern volatile Time tmCurrentTime;
 extern volatile Time tmAlarmTime;
+extern volatile DcfTime tmDcfTime;
 extern volatile Date dtCurrentDate;
 
 extern uint8_t nClockOverflows;
