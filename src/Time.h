@@ -24,7 +24,7 @@ typedef struct {
 
 
 class Time {
-private:
+protected:
 	Time_t m_tmTime;
 
 public:

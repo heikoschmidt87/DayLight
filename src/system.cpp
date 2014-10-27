@@ -12,7 +12,7 @@
 ////////////////////////////////////
 volatile Time tmCurrentTime;
 volatile Time tmAlarmTime;
-volatile DcfTime tmDcfTime;
+volatile DcfData tmDcfData;
 volatile Date dtCurrentDate;
 
 uint8_t nClockOverflows = 0;

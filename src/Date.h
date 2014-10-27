@@ -27,7 +27,7 @@ typedef struct {
 } Date_t;
 
 class Date {
-private:
+protected:
 	static const char *sDays[7];
 
 	Date_t m_dtDate;

@@ -20,9 +20,8 @@
 #include <string.h>
 
 #include "Date.h"
+#include "DcfData.h"
 #include "Time.h"
-#include "DcfTime.h"
-
 #include "lcd-routines.h"		/* TODO: own OO-implementation */
 
 
@@ -47,13 +46,16 @@ void InitDayLightAlarm();
 ////////////////////////////////////
 // STRUCTS
 ////////////////////////////////////
+/*
+TODO: Reserved for further use
+
 struct {
 	uint8_t bRefreshDisplay : 1;
 	uint8_t bDcfFallingEdge : 1;
 	uint8_t bDoAlarm : 1;
 	uint8_t bSnooze : 1;
-} volatile oFlags;
-
+} oFlags;
+*/
 
 ////////////////////////////////////
 // DEFINES
@@ -91,7 +93,7 @@ struct {
 ////////////////////////////////////
 extern volatile Time tmCurrentTime;
 extern volatile Time tmAlarmTime;
-extern volatile DcfTime tmDcfTime;
+extern volatile DcfData tmDcfData;
 extern volatile Date dtCurrentDate;
 
 extern uint8_t nClockOverflows;

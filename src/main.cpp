@@ -24,7 +24,7 @@ int main() {
 	while(1) {
 
 		/* refresh the display */
-		if(nFlags & FLAG_REFRESH_DISPLAY > 0) {
+		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
 
 			nFlags &= ~FLAG_REFRESH_DISPLAY;
 
