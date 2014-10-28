@@ -15,8 +15,14 @@ volatile Time tmAlarmTime;
 volatile DcfData tmDcfData;
 volatile Date dtCurrentDate;
 
-uint8_t nClockOverflows = 0;
-volatile uint8_t nFlags = 0;
+volatile uint8_t nClockOverflows;
+volatile uint8_t nFlags;
+
+
+volatile uint64_t nBitSequenceTime;
+volatile uint64_t nBitTime;
+volatile uint8_t nLowLevelTicks;
+volatile uint8_t nCurrentBitNumber;
 
 ////////////////////////////////////
 // FUNCTIONS
@@ -39,6 +45,7 @@ void InitFlags() {
 }
 
 void InitDayLightAlarm() {
+
 	/*
 	 * init buttons
 	 */
@@ -99,8 +106,20 @@ void InitDayLightAlarm() {
 	lcd_clear();
 
 	/*
-	 * TODO: init DCF77?
+	 * init DCF77
 	 */
+	/* set input for external Interrupt */
+	DDRD &= ~(1 << PD2);
+
+	/* timer for DCF77 bit decoding */
+	TCCR2 |= (1 << CS22) | (1 << CS21) | (1 << WGM21);		// Prescaler 256 and CTC mode
+	TIMSK |= (1 << OCIE2);									// ISR on compare match
+	TCNT2 = 0;
+	OCR2 = 90;												// TODO: correction value!
+
+	/* INT0 external interrupt for getting bit time -- arm rising edge initially */
+	MCUCR |= (1 << ISC01) | (1 << ISC00);
+	GICR |= (1 << INT0);
 
 	/*
 	 * init "normal" clock
@@ -124,9 +143,93 @@ ISR(TIMER0_OVF_vect) {
 			dtCurrentDate.Increase();
 		}
 
-		/*oFlags.bRefreshDisplay = 1;*/
-
 		nFlags |= FLAG_REFRESH_DISPLAY;
-
 	}
+}
+
+ISR(INT0_vect) {
+
+	/* disable external interrupt while handling */
+	GICR &= ~(1 << INT0);
+
+	if((nFlags & FLAG_DCF_FALLING_EDGE) > 0) {
+
+		/* a new bit starts */
+		nBitSequenceTime = nBitTime;	/* this is the total number of ticks between two bits */
+		nBitTime = 0;					/* this holds the bit time */
+
+		/* arm on the rising edge to determine the bit time */
+		nFlags &= ~FLAG_DCF_FALLING_EDGE;
+		MCUCR |= (1 << ISC01) | (1 << ISC00);
+
+		/* toggle the symbol for DCF77 signal receiving */
+		lcd_setcursor(15, 2);
+
+		if((nFlags & FLAG_DCFSYMBOL_VISIBLE) > 0) {
+			nFlags &= ~FLAG_DCFSYMBOL_VISIBLE;
+			lcd_data(' ');
+		} else {
+			nFlags |= FLAG_DCFSYMBOL_VISIBLE;
+			lcd_data('.');
+		}
+
+		char str[4];
+		sprintf(str, "%02d", nCurrentBitNumber);
+		lcd_setcursor(12, 2);
+		lcd_string(str);
+
+		/* determine if there is a minute change */
+		if(nBitSequenceTime > 250) {
+
+			/* check if all bits have been received -- only then update free running time */
+			/* TODO: check for bit number if(nCurrentBitNumber == 59) */{
+				/* make the DCF data to update the time */
+				nFlags |= FLAG_REFRESH_DCFTIME;
+
+				/* TODO: evaluate time here? */
+				tmDcfData.EvaluateTime(true);
+
+				lcd_setcursor(0, 2);
+				lcd_string(tmDcfData.GetTimestring(true));
+
+				/* reset the free running second timer */
+				nClockOverflows = 0;
+				TCNT0 = 0;
+				tmCurrentTime.SetSecond(0);
+			}
+
+			/* reset the current bit number */
+			nCurrentBitNumber = 0;
+		}
+
+	} else {
+
+		/* save the low level bit time and therefore the bit value
+		 * 200ms --> "1", 100ms --> "0" */
+		nLowLevelTicks = nBitTime;
+
+		/* add the bit to the DCF77 structure */
+		if(nLowLevelTicks > 30) {
+			tmDcfData.AddBit(nCurrentBitNumber, 1);
+		} else {
+			tmDcfData.AddBit(nCurrentBitNumber, 0);
+		}
+
+		/* increase the current bit number */
+		nCurrentBitNumber++;
+
+		/* react in falling edge at INT0 again */
+		nFlags |= FLAG_DCF_FALLING_EDGE;
+
+		MCUCR |= (1 << ISC01);
+		MCUCR &= ~(1 << ISC00);
+	}
+
+
+	GICR |= (1 << INT0);
+}
+
+ISR(TIMER2_COMP_vect) {
+	/* increase the bit time */
+	nBitTime++;
 }

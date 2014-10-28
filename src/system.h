@@ -87,6 +87,8 @@ struct {
 #define FLAG_DCF_FALLING_EDGE	0x02
 #define FLAG_DO_ALARM			0x04
 #define FLAG_SNOOZE				0x08
+#define FLAG_DCFSYMBOL_VISIBLE	0x10
+#define FLAG_REFRESH_DCFTIME	0x20
 
 ////////////////////////////////////
 // GLOBALS
@@ -96,7 +98,12 @@ extern volatile Time tmAlarmTime;
 extern volatile DcfData tmDcfData;
 extern volatile Date dtCurrentDate;
 
-extern uint8_t nClockOverflows;
+extern volatile uint8_t nClockOverflows;
 extern volatile uint8_t nFlags;
+
+extern volatile uint64_t nBitSequenceTime;
+extern volatile uint64_t nBitTime;
+extern volatile uint8_t nLowLevelTicks;
+extern volatile uint8_t nCurrentBitNumber;
 
 #endif /* SYSTEM_H_ */

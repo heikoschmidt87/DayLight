@@ -19,6 +19,8 @@ class DcfData : public Time, public Date {
 private:
 	uint64_t m_nDcfData;
 
+	/* TODO: check better solution with union */
+
 	enum {
 		MINUTE_START_POS = 0,
 		MINUTE_START_MASK = 0x1,
@@ -67,13 +69,13 @@ private:
 	};
 
 public:
-	DcfData();											/**< default constructor */
-	virtual ~DcfData();									/**< default destructor */
+	DcfData();													/**< default constructor */
+	virtual ~DcfData();											/**< default destructor */
 
-	void AddBit(uint8_t nBitNo, uint8_t nBitVal);		/**< method for adding a new DCF77 bit value */
-	void Reset();										/**< method for resetting */
-	bool EvaluateTime(bool bWithReset);					/**< method for evaluating the DCF77 time from DCF77 data */
-	bool CheckParity(uint16_t nData, uint8_t nParity);	/**< method for checking for DCF77 even parity */
+	void AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile;		/**< method for adding a new DCF77 bit value */
+	void Reset() volatile;										/**< method for resetting */
+	bool EvaluateTime(bool bWithReset) volatile;				/**< method for evaluating the DCF77 time from DCF77 data */
+	bool CheckParity(uint16_t nData, uint8_t nParity) volatile;	/**< method for checking for DCF77 even parity */
 };
 
 #endif /* SRC_DcfData_H_ */

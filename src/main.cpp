@@ -24,13 +24,21 @@ int main() {
 	while(1) {
 
 		/* refresh the display */
-		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
+/*		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
 
 			nFlags &= ~FLAG_REFRESH_DISPLAY;
 
 			lcd_home();
 			lcd_string(tmCurrentTime.GetTimestring(true));
 		}
+*/
+/*		if((nFlags & FLAG_REFRESH_DCFTIME) > 0) {
+
+			nFlags &= ~FLAG_REFRESH_DCFTIME;
+
+			lcd_setcursor(0, 2);
+			lcd_string(tmDcfData.GetTimestring(true));
+		}*/
 	}
 
 

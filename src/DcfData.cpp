@@ -18,11 +18,11 @@ DcfData::~DcfData() {
 	// TODO Auto-generated destructor stub
 }
 
-void DcfData::Reset() {
+void DcfData::Reset() volatile {
 	DcfData();
 }
 
-void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) {
+void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile {
 
 	if(nBitVal > 0) {
 		this->m_nDcfData |= (1 << nBitNo);
@@ -31,7 +31,7 @@ void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) {
 	}
 }
 
-bool DcfData::EvaluateTime(bool bWithReset) {
+bool DcfData::EvaluateTime(bool bWithReset) volatile {
 
 	/* TODO: parity checks */
 
@@ -59,7 +59,7 @@ bool DcfData::EvaluateTime(bool bWithReset) {
 	return true /*false*/;
 }
 
-bool DcfData::CheckParity(uint16_t nData, uint8_t nParity) {
+bool DcfData::CheckParity(uint16_t nData, uint8_t nParity) volatile {
 	uint8_t nCounter = 0;
 	uint8_t nMask = 0x01;
 
