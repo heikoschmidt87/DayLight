@@ -11,7 +11,7 @@
 #include <string.h>
 
 DcfData::DcfData() {
-	this->m_nDcfData = 0;
+	this->m_oDcfData.nDcfData = 0;
 }
 
 DcfData::~DcfData() {
@@ -25,9 +25,9 @@ void DcfData::Reset() volatile {
 void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile {
 
 	if(nBitVal > 0) {
-		this->m_nDcfData |= (1 << nBitNo);
+		this->m_oDcfData.nDcfData |= (((uint64_t)1) << nBitNo);
 	} else {
-		this->m_nDcfData &= ~(1 << nBitNo);
+		this->m_oDcfData.nDcfData &= ~(((uint64_t)1) << nBitNo);
 	}
 }
 
@@ -36,25 +36,25 @@ bool DcfData::EvaluateTime(bool bWithReset) volatile {
 	/* TODO: parity checks */
 
 	/* evaluate minute */
-	this->m_tmTime.nMinute = ((this->m_nDcfData >> MINUTE_LOW_POS) & MINUTE_LOW_MASK) + ((this->m_nDcfData >> MINUTE_HIGH_POS) & MINUTE_HIGH_MASK) * 10;
+	this->m_tmTime.nMinute = this->m_oDcfData.oDcfTimeInfo.nMinuteLow + this->m_oDcfData.oDcfTimeInfo.nMinuteHigh * 10;
 
 	/* evaluate hour */
-	this->m_tmTime.nHour = ((this->m_nDcfData >> HOUR_LOW_POS) & HOUR_LOW_MASK) + ((this->m_nDcfData >> HOUR_HIGH_POS) & HOUR_HIGH_MASK) * 10;
+	this->m_tmTime.nHour = this->m_oDcfData.oDcfTimeInfo.nHourLow + this->m_oDcfData.oDcfTimeInfo.nHourHigh * 10;
 
 	/* evaluate day of week */
-	this->m_dtDate.nDayOfWeek = ((this->m_nDcfData >> DAY_OF_WEEK_POS) & DAY_OF_WEEK_MASK);
+	this->m_dtDate.nDayOfWeek = this->m_oDcfData.oDcfTimeInfo.nWeekDay;
 
 	/* evaluate day */
-	this->m_dtDate.nDay = ((this->m_nDcfData >> CALENDAR_DAY_LOW_POS) & CALENDAS_DAY_LOW_MASK) + ((this->m_nDcfData >> CALENDAR_DAY_HIGH_POS) & CALENDAR_DAY_HIGH_MASK) * 10;
+	this->m_dtDate.nDay = this->m_oDcfData.oDcfTimeInfo.nCalDayLow + this->m_oDcfData.oDcfTimeInfo.nCalDayHigh * 10;
 
 	/* evaluate month */
-	this->m_dtDate.nMonth = ((this->m_nDcfData >> MONTH_LOW_POS) & MONTH_LOW_MASK) + ((this->m_nDcfData >> MONTH_HIGH_POS) & MONTH_HIGH_MASK) * 10;
+	this->m_dtDate.nMonth = this->m_oDcfData.oDcfTimeInfo.nMonthLow + this->m_oDcfData.oDcfTimeInfo.nMonthHigh * 10;
 
 	/* evaluate year */
-	this->m_dtDate.nYear = 2000 + ((this->m_nDcfData >> YEAR_LOW_POS) & YEAR_LOW_MASK) + ((this->m_nDcfData >> YEAR_HIGH_POS) & YEAR_HIGH_MASK) * 10;
+	this->m_dtDate.nYear = 2000 + this->m_oDcfData.oDcfTimeInfo.nYearLow + this->m_oDcfData.oDcfTimeInfo.nYearHigh * 10;
 
 	if(bWithReset)
-		this->m_nDcfData = 0;
+		this->m_oDcfData.nDcfData = 0;
 
 	return true /*false*/;
 }

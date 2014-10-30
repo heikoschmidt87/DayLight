@@ -189,9 +189,6 @@ ISR(INT0_vect) {
 				/* TODO: evaluate time here? */
 				tmDcfData.EvaluateTime(true);
 
-				lcd_setcursor(0, 2);
-				lcd_string(tmDcfData.GetTimestring(true));
-
 				/* reset the free running second timer */
 				nClockOverflows = 0;
 				TCNT0 = 0;
