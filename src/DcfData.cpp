@@ -24,10 +24,12 @@ void DcfData::Reset() volatile {
 
 void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile {
 
-	if(nBitVal > 0) {
-		this->m_oDcfData.nDcfData |= (((uint64_t)1) << nBitNo);
-	} else {
-		this->m_oDcfData.nDcfData &= ~(((uint64_t)1) << nBitNo);
+	if (nBitNo <= 63) {
+		if(nBitVal > 0) {
+			this->m_oDcfData.nDcfData |= (((uint64_t)1) << nBitNo);
+		} else {
+			this->m_oDcfData.nDcfData &= ~(((uint64_t)1) << nBitNo);
+		}
 	}
 }
 

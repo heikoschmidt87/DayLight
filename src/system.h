@@ -89,6 +89,7 @@ struct {
 #define FLAG_SNOOZE				0x08
 #define FLAG_DCFSYMBOL_VISIBLE	0x10
 #define FLAG_REFRESH_DCFTIME	0x20
+#define FLAG_UPDATE_DCF_DOT		0x40
 
 ////////////////////////////////////
 // GLOBALS

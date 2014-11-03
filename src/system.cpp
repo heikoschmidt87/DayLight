@@ -36,10 +36,6 @@ void operator delete(void * ptr) {
 }
 
 void InitFlags() {
-/*	oFlags.bDcfFallingEdge = 0;
-	oFlags.bDoAlarm = 0;
-	oFlags.bRefreshDisplay = 0;
-	oFlags.bSnooze = 0;*/
 
 	nFlags = 0;
 }
@@ -163,26 +159,13 @@ ISR(INT0_vect) {
 		MCUCR |= (1 << ISC01) | (1 << ISC00);
 
 		/* toggle the symbol for DCF77 signal receiving */
-		lcd_setcursor(15, 2);
-
-		if((nFlags & FLAG_DCFSYMBOL_VISIBLE) > 0) {
-			nFlags &= ~FLAG_DCFSYMBOL_VISIBLE;
-			lcd_data(' ');
-		} else {
-			nFlags |= FLAG_DCFSYMBOL_VISIBLE;
-			lcd_data('.');
-		}
-
-		char str[4];
-		sprintf(str, "%02d", nCurrentBitNumber);
-		lcd_setcursor(12, 2);
-		lcd_string(str);
+		nFlags |= FLAG_UPDATE_DCF_DOT;
 
 		/* determine if there is a minute change */
 		if(nBitSequenceTime > 250) {
 
 			/* check if all bits have been received -- only then update free running time */
-			/* TODO: check for bit number if(nCurrentBitNumber == 59) */{
+			if(nCurrentBitNumber == 59) {
 				/* make the DCF data to update the time */
 				nFlags |= FLAG_REFRESH_DCFTIME;
 

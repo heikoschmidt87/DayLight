@@ -22,27 +22,53 @@ int main() {
 
 	sei();
 
-
 	while(1) {
-
-		/* refresh the display */
-		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
-
-			nFlags &= ~FLAG_REFRESH_DISPLAY;
-
-			/* TODO: "normal" time visualization */
-/*			lcd_home();
-			lcd_string(tmCurrentTime.GetTimestring(true));*/
-		}
 
 		if((nFlags & FLAG_REFRESH_DCFTIME) > 0) {
 
 			nFlags &= ~FLAG_REFRESH_DCFTIME;
 
-			/* TODO: just for test */
-			lcd_setcursor(0, 2);
-			lcd_string(tmDcfData.GetTimestring(true));
+			/* copy the DCF77 evaluated time to the current time and force display refresh */
+			tmCurrentTime.SetHour(tmDcfData.GetHour());
+			tmCurrentTime.SetMinute(tmDcfData.GetMinute());
+
+		/*	dtCurrentDate.SetDay(tmDcfData.GetDay());
+			dtCurrentDate.SetDayOfWeek(tmDcfData.GetDayOfWeek());
+			dtCurrentDate.SetMonth(tmDcfData.GetMonth());
+			dtCurrentDate.SetYear(tmDcfData.GetYear());
+			*/
+			/* TODO: control second here or in ISR? */
+
+			nFlags |= FLAG_REFRESH_DISPLAY;
+
 		}
+
+		/* refresh the display */
+		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
+
+/*			lcd_setcursor(0, 1);
+			lcd_string(dtCurrentDate.GetDatestring(true));
+	*/		lcd_setcursor(0, 2);
+			lcd_string(tmCurrentTime.GetTimestring(true));
+
+			if((nFlags & FLAG_UPDATE_DCF_DOT) > 0) {
+
+				lcd_setcursor(15, 2);
+
+				if((nFlags & FLAG_DCFSYMBOL_VISIBLE) > 0) {
+					nFlags &= ~FLAG_DCFSYMBOL_VISIBLE;
+					lcd_data(' ');
+				} else {
+					nFlags |= FLAG_DCFSYMBOL_VISIBLE;
+					lcd_data('.');
+				}
+
+				nFlags &= ~FLAG_UPDATE_DCF_DOT;
+			}
+
+			nFlags &= ~FLAG_REFRESH_DISPLAY;
+		}
+
 	}
 
 
