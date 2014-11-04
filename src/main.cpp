@@ -29,14 +29,14 @@ int main() {
 			nFlags &= ~FLAG_REFRESH_DCFTIME;
 
 			/* copy the DCF77 evaluated time to the current time and force display refresh */
-			tmCurrentTime.SetHour(tmDcfData.GetHour());
-			tmCurrentTime.SetMinute(tmDcfData.GetMinute());
+			dtCurrentDateTime.SetHour(dtDcfData.GetHour());
+			dtCurrentDateTime.SetMinute(dtDcfData.GetMinute());
 
-		/*	dtCurrentDate.SetDay(tmDcfData.GetDay());
-			dtCurrentDate.SetDayOfWeek(tmDcfData.GetDayOfWeek());
-			dtCurrentDate.SetMonth(tmDcfData.GetMonth());
-			dtCurrentDate.SetYear(tmDcfData.GetYear());
-			*/
+			dtCurrentDateTime.SetDay(dtDcfData.GetDay());
+			dtCurrentDateTime.SetDayOfWeek(dtDcfData.GetDayOfWeek());
+			dtCurrentDateTime.SetMonth(dtDcfData.GetMonth());
+			dtCurrentDateTime.SetYear(dtDcfData.GetYear());
+
 			/* TODO: control second here or in ISR? */
 
 			nFlags |= FLAG_REFRESH_DISPLAY;
@@ -46,10 +46,10 @@ int main() {
 		/* refresh the display */
 		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
 
-/*			lcd_setcursor(0, 1);
-			lcd_string(dtCurrentDate.GetDatestring(true));
-	*/		lcd_setcursor(0, 2);
-			lcd_string(tmCurrentTime.GetTimestring(true));
+			lcd_setcursor(0, 1);
+			lcd_string(dtCurrentDateTime.GetDatestring(true));
+			lcd_setcursor(0, 2);
+			lcd_string(dtCurrentDateTime.GetTimestring(true));
 
 			if((nFlags & FLAG_UPDATE_DCF_DOT) > 0) {
 

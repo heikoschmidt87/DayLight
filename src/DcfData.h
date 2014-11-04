@@ -9,14 +9,13 @@
 #define SRC_DcfData_H_
 
 #include <inttypes.h>
-#include "Time.h"
-#include "Date.h"
+#include "DateTime.h"
 
 
 /**
  * This is a class for representing and decoding DCF77 time data
  */
-class DcfData : public Time, public Date {
+class DcfData : public DateTime {
 private:
 	union DCF77Data_t {
 		uint64_t nDcfData;
@@ -54,7 +53,7 @@ public:
 
 	void AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile;		/**< method for adding a new DCF77 bit value */
 	void Reset() volatile;										/**< method for resetting */
-	bool EvaluateTime(bool bWithReset) volatile;				/**< method for evaluating the DCF77 time from DCF77 data */
+	bool EvaluateDateTime(bool bWithReset) volatile;			/**< method for evaluating the DCF77 time from DCF77 data */
 	bool CheckParity(uint16_t nData, uint8_t nParity) volatile;	/**< method for checking for DCF77 even parity */
 };
 

@@ -1,13 +1,13 @@
 Archive member included because of file (symbol)
 
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
-                              ./src/Date.o (__divmodhi4)
+                              ./src/DateTime.o (__divmodhi4)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o (exit)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
-                              ./src/Date.o (__do_copy_data)
+                              ./src/DateTime.o (__do_copy_data)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_clear_bss.o)
-                              ./src/Date.o (__do_clear_bss)
+                              ./src/DateTime.o (__do_clear_bss)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o)
                               ./src/system.o (__do_global_ctors)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
@@ -23,7 +23,7 @@ Archive member included because of file (symbol)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                               ./src/system.o (malloc)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-                              ./src/Date.o (sprintf)
+                              ./src/DateTime.o (sprintf)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o) (vfprintf)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
@@ -48,35 +48,17 @@ __flp               0x2               /usr/lib/gcc/avr/4.9.1/../../../../avr/lib
 Discarded input sections
 
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
- .group         0x0000000000000000        0x8 ./src/Date.o
- .text          0x0000000000000000        0x0 ./src/Date.o
- .bss           0x0000000000000000        0x0 ./src/Date.o
- .text._ZN4DateC2E6Date_t
-                0x0000000000000000       0x12 ./src/Date.o
- .text._ZNV4Date12SetDayOfWeekEh
-                0x0000000000000000        0xe ./src/Date.o
- .text._ZNV4Date6SetDayEh
-                0x0000000000000000       0x12 ./src/Date.o
- .text._ZNV4Date8SetMonthEh
-                0x0000000000000000        0xe ./src/Date.o
- .text._ZNV4Date7SetYearEj
-                0x0000000000000000       0x30 ./src/Date.o
- .text._ZNV4Date12GetDayOfWeekEv
-                0x0000000000000000        0x8 ./src/Date.o
- .text._ZNV4Date6GetDayEv
-                0x0000000000000000        0xc ./src/Date.o
- .text._ZNV4Date8GetMonthEv
-                0x0000000000000000        0x8 ./src/Date.o
- .text._ZNV4Date7GetYearEv
-                0x0000000000000000       0x1a ./src/Date.o
- .rodata.str1.1
-                0x0000000000000000       0x28 ./src/Date.o
- .text._ZNV4Date13GetDatestringEb
-                0x0000000000000000       0xd6 ./src/Date.o
- .text._ZNV4Date10bIsEqualToEPS_b
-                0x0000000000000000       0x84 ./src/Date.o
- .bss._ZZNV4Date13GetDatestringEbE7sString
-                0x0000000000000000       0x11 ./src/Date.o
+ .group         0x0000000000000000        0x8 ./src/DateTime.o
+ .text          0x0000000000000000        0x0 ./src/DateTime.o
+ .bss           0x0000000000000000        0x0 ./src/DateTime.o
+ .text._ZN8DateTimeC2E6Time_t6Date_t
+                0x0000000000000000       0x20 ./src/DateTime.o
+ .text._ZNV8DateTime23GetTimeDifferenceInSecsEPS_
+                0x0000000000000000       0xfa ./src/DateTime.o
+ .text._ZNV8DateTime13IsTimeEqualToEPS_
+                0x0000000000000000       0x86 ./src/DateTime.o
+ .text._ZNV8DateTime13IsDateEqualToEPS_b
+                0x0000000000000000       0x84 ./src/DateTime.o
  .group         0x0000000000000000        0x8 ./src/DcfData.o
  .text          0x0000000000000000        0x0 ./src/DcfData.o
  .bss           0x0000000000000000        0x0 ./src/DcfData.o
@@ -84,15 +66,6 @@ Discarded input sections
                 0x0000000000000000       0x32 ./src/DcfData.o
  .text._ZNV7DcfData11CheckParityEjh
                 0x0000000000000000       0x3e ./src/DcfData.o
- .group         0x0000000000000000        0x8 ./src/Time.o
- .text          0x0000000000000000        0x0 ./src/Time.o
- .bss           0x0000000000000000        0x0 ./src/Time.o
- .text._ZN4TimeC2E6Time_t
-                0x0000000000000000       0x12 ./src/Time.o
- .text._ZNV4Time19GetDifferenceInSecsEPS_
-                0x0000000000000000       0xfa ./src/Time.o
- .text._ZNV4Time9IsEqualToEPS_
-                0x0000000000000000       0x86 ./src/Time.o
  .text          0x0000000000000000        0x0 ./src/lcd-routines.o
  .bss           0x0000000000000000        0x0 ./src/lcd-routines.o
  .text._Z8lcd_homev
@@ -303,9 +276,8 @@ signature        0x0000000000840000 0x0000000000000400 rw !x
 Linker script and memory map
 
 LOAD /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
-LOAD ./src/Date.o
+LOAD ./src/DateTime.o
 LOAD ./src/DcfData.o
-LOAD ./src/Time.o
 LOAD ./src/lcd-routines.o
 LOAD ./src/main.o
 LOAD ./src/system.o
@@ -407,15 +379,15 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x13f4
+.text           0x0000000000000000     0x15b6
  *(.vectors)
  .vectors       0x0000000000000000       0x26 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
                 0x0000000000000000                __vectors
                 0x0000000000000000                __vector_default
  *(.vectors)
  *(.progmem.gcc*)
- .progmem.gcc_sw_table._ZNV4Date8IncreaseEv
-                0x0000000000000026       0x18 ./src/Date.o
+ .progmem.gcc_sw_table._ZNV8DateTime8IncreaseEv
+                0x0000000000000026       0x18 ./src/DateTime.o
                 0x000000000000003e                . = ALIGN (0x2)
                 0x000000000000003e                __trampolines_start = .
  *(.trampolines)
@@ -488,177 +460,184 @@ END GROUP
                 0x000000000000008c                __vector_18
                 0x000000000000008e                . = ALIGN (0x2)
  *(.text.*)
- .text._ZN4DateD2Ev
-                0x000000000000008e        0x2 ./src/Date.o
-                0x000000000000008e                Date::~Date()
-                0x000000000000008e                Date::~Date()
- .text._ZN4DateD0Ev
-                0x0000000000000090        0x2 ./src/Date.o
-                0x0000000000000090                Date::~Date()
- .text._ZN4DateC2Ev
-                0x0000000000000092       0x18 ./src/Date.o
-                0x0000000000000092                Date::Date()
-                0x0000000000000092                Date::Date()
- .text._ZNV4Date8IncreaseEv
-                0x00000000000000aa      0x134 ./src/Date.o
-                0x00000000000000aa                Date::Increase() volatile
+ .text._ZN8DateTimeD2Ev
+                0x000000000000008e        0x2 ./src/DateTime.o
+                0x000000000000008e                DateTime::~DateTime()
+                0x000000000000008e                DateTime::~DateTime()
+ .text._ZN8DateTimeD0Ev
+                0x0000000000000090        0x2 ./src/DateTime.o
+                0x0000000000000090                DateTime::~DateTime()
+ .text._ZN8DateTimeC2Ev
+                0x0000000000000092       0x22 ./src/DateTime.o
+                0x0000000000000092                DateTime::DateTime()
+                0x0000000000000092                DateTime::DateTime()
+ .text._ZNV8DateTime8IncreaseEv
+                0x00000000000000b4      0x220 ./src/DateTime.o
+                0x00000000000000b4                DateTime::Increase() volatile
+ .text._ZNV8DateTime9SetSecondEh
+                0x00000000000002d4       0x22 ./src/DateTime.o
+                0x00000000000002d4                DateTime::SetSecond(unsigned char) volatile
+ .text._ZNV8DateTime9SetMinuteEh
+                0x00000000000002f6       0x26 ./src/DateTime.o
+                0x00000000000002f6                DateTime::SetMinute(unsigned char) volatile
+ .text._ZNV8DateTime7SetHourEh
+                0x000000000000031c        0xe ./src/DateTime.o
+                0x000000000000031c                DateTime::SetHour(unsigned char) volatile
+ .text._ZNV8DateTime9GetSecondEv
+                0x000000000000032a       0x18 ./src/DateTime.o
+                0x000000000000032a                DateTime::GetSecond() volatile
+ .text._ZNV8DateTime9GetMinuteEv
+                0x0000000000000342       0x18 ./src/DateTime.o
+                0x0000000000000342                DateTime::GetMinute() volatile
+ .text._ZNV8DateTime7GetHourEv
+                0x000000000000035a        0x8 ./src/DateTime.o
+                0x000000000000035a                DateTime::GetHour() volatile
+ .text._ZNV8DateTime13GetTimestringEb
+                0x0000000000000362       0xc4 ./src/DateTime.o
+                0x0000000000000362                DateTime::GetTimestring(bool) volatile
+ .text._ZNV8DateTime12SetDayOfWeekEh
+                0x0000000000000426        0xe ./src/DateTime.o
+                0x0000000000000426                DateTime::SetDayOfWeek(unsigned char) volatile
+ .text._ZNV8DateTime6SetDayEh
+                0x0000000000000434       0x12 ./src/DateTime.o
+                0x0000000000000434                DateTime::SetDay(unsigned char) volatile
+ .text._ZNV8DateTime8SetMonthEh
+                0x0000000000000446        0xe ./src/DateTime.o
+                0x0000000000000446                DateTime::SetMonth(unsigned char) volatile
+ .text._ZNV8DateTime7SetYearEj
+                0x0000000000000454       0x30 ./src/DateTime.o
+                0x0000000000000454                DateTime::SetYear(unsigned int) volatile
+ .text._ZNV8DateTime12GetDayOfWeekEv
+                0x0000000000000484        0x8 ./src/DateTime.o
+                0x0000000000000484                DateTime::GetDayOfWeek() volatile
+ .text._ZNV8DateTime6GetDayEv
+                0x000000000000048c        0xc ./src/DateTime.o
+                0x000000000000048c                DateTime::GetDay() volatile
+ .text._ZNV8DateTime8GetMonthEv
+                0x0000000000000498        0x8 ./src/DateTime.o
+                0x0000000000000498                DateTime::GetMonth() volatile
+ .text._ZNV8DateTime7GetYearEv
+                0x00000000000004a0       0x1a ./src/DateTime.o
+                0x00000000000004a0                DateTime::GetYear() volatile
+ .text._ZNV8DateTime13GetDatestringEb
+                0x00000000000004ba      0x102 ./src/DateTime.o
+                0x00000000000004ba                DateTime::GetDatestring(bool) volatile
  .text._ZN7DcfDataD2Ev
-                0x00000000000001de       0x24 ./src/DcfData.o
-                0x00000000000001de                DcfData::~DcfData()
-                0x00000000000001de                DcfData::~DcfData()
- .text._ZThn5_N7DcfDataD1Ev
-                0x0000000000000202        0x4 ./src/DcfData.o
-                0x0000000000000202                non-virtual thunk to DcfData::~DcfData()
+                0x00000000000005bc        0xc ./src/DcfData.o
+                0x00000000000005bc                DcfData::~DcfData()
+                0x00000000000005bc                DcfData::~DcfData()
  .text._ZN7DcfDataD0Ev
-                0x0000000000000206       0x10 ./src/DcfData.o
-                0x0000000000000206                DcfData::~DcfData()
- .text._ZThn5_N7DcfDataD0Ev
-                0x0000000000000216        0x4 ./src/DcfData.o
-                0x0000000000000216                non-virtual thunk to DcfData::~DcfData()
+                0x00000000000005c8       0x10 ./src/DcfData.o
+                0x00000000000005c8                DcfData::~DcfData()
  .text._ZN7DcfDataC2Ev
-                0x000000000000021a       0x34 ./src/DcfData.o
-                0x000000000000021a                DcfData::DcfData()
-                0x000000000000021a                DcfData::DcfData()
+                0x00000000000005d8       0x26 ./src/DcfData.o
+                0x00000000000005d8                DcfData::DcfData()
+                0x00000000000005d8                DcfData::DcfData()
  .text._ZNV7DcfData6AddBitEhh
-                0x000000000000024e       0xae ./src/DcfData.o
-                0x000000000000024e                DcfData::AddBit(unsigned char, unsigned char) volatile
- .text._ZNV7DcfData12EvaluateTimeEb
-                0x00000000000002fc      0x14e ./src/DcfData.o
-                0x00000000000002fc                DcfData::EvaluateTime(bool) volatile
- .text._ZN4TimeD2Ev
-                0x000000000000044a        0x2 ./src/Time.o
-                0x000000000000044a                Time::~Time()
-                0x000000000000044a                Time::~Time()
- .text._ZN4TimeD0Ev
-                0x000000000000044c        0x2 ./src/Time.o
-                0x000000000000044c                Time::~Time()
- .text._ZN4TimeC2Ev
-                0x000000000000044e       0x16 ./src/Time.o
-                0x000000000000044e                Time::Time()
-                0x000000000000044e                Time::Time()
- .text._ZNV4Time8IncreaseEv
-                0x0000000000000464       0xb0 ./src/Time.o
-                0x0000000000000464                Time::Increase() volatile
- .text._ZNV4Time9SetSecondEh
-                0x0000000000000514       0x22 ./src/Time.o
-                0x0000000000000514                Time::SetSecond(unsigned char) volatile
- .text._ZNV4Time9SetMinuteEh
-                0x0000000000000536       0x26 ./src/Time.o
-                0x0000000000000536                Time::SetMinute(unsigned char) volatile
- .text._ZNV4Time7SetHourEh
-                0x000000000000055c        0xe ./src/Time.o
-                0x000000000000055c                Time::SetHour(unsigned char) volatile
- .text._ZNV4Time9GetSecondEv
-                0x000000000000056a       0x18 ./src/Time.o
-                0x000000000000056a                Time::GetSecond() volatile
- .text._ZNV4Time9GetMinuteEv
-                0x0000000000000582       0x18 ./src/Time.o
-                0x0000000000000582                Time::GetMinute() volatile
- .text._ZNV4Time7GetHourEv
-                0x000000000000059a        0x8 ./src/Time.o
-                0x000000000000059a                Time::GetHour() volatile
- .text._ZNV4Time13GetTimestringEb
-                0x00000000000005a2       0xc4 ./src/Time.o
-                0x00000000000005a2                Time::GetTimestring(bool) volatile
+                0x00000000000005fe       0xae ./src/DcfData.o
+                0x00000000000005fe                DcfData::AddBit(unsigned char, unsigned char) volatile
+ .text._ZNV7DcfData16EvaluateDateTimeEb
+                0x00000000000006ac      0x14e ./src/DcfData.o
+                0x00000000000006ac                DcfData::EvaluateDateTime(bool) volatile
  .text._ZL10lcd_enablev
-                0x0000000000000666        0xc ./src/lcd-routines.o
+                0x00000000000007fa        0xc ./src/lcd-routines.o
  .text._ZL7lcd_outh
-                0x0000000000000672       0x12 ./src/lcd-routines.o
+                0x0000000000000806       0x12 ./src/lcd-routines.o
  .text._Z8lcd_datah
-                0x0000000000000684       0x1c ./src/lcd-routines.o
-                0x0000000000000684                lcd_data(unsigned char)
+                0x0000000000000818       0x1c ./src/lcd-routines.o
+                0x0000000000000818                lcd_data(unsigned char)
  .text._Z11lcd_commandh
-                0x00000000000006a0       0x1a ./src/lcd-routines.o
-                0x00000000000006a0                lcd_command(unsigned char)
+                0x0000000000000834       0x1a ./src/lcd-routines.o
+                0x0000000000000834                lcd_command(unsigned char)
  .text._Z9lcd_clearv
-                0x00000000000006ba        0xe ./src/lcd-routines.o
-                0x00000000000006ba                lcd_clear()
+                0x000000000000084e        0xe ./src/lcd-routines.o
+                0x000000000000084e                lcd_clear()
  .text._Z8lcd_initv
-                0x00000000000006c8       0x5c ./src/lcd-routines.o
-                0x00000000000006c8                lcd_init()
+                0x000000000000085c       0x5c ./src/lcd-routines.o
+                0x000000000000085c                lcd_init()
  .text._Z13lcd_setcursorhh
-                0x0000000000000724       0x26 ./src/lcd-routines.o
-                0x0000000000000724                lcd_setcursor(unsigned char, unsigned char)
+                0x00000000000008b8       0x26 ./src/lcd-routines.o
+                0x00000000000008b8                lcd_setcursor(unsigned char, unsigned char)
  .text._Z10lcd_stringPKc
-                0x000000000000074a       0x16 ./src/lcd-routines.o
-                0x000000000000074a                lcd_string(char const*)
+                0x00000000000008de       0x16 ./src/lcd-routines.o
+                0x00000000000008de                lcd_string(char const*)
  .text.startup.main
-                0x0000000000000760       0x9e ./src/main.o
-                0x0000000000000760                main
- .text._ZdlPv   0x00000000000007fe        0x2 ./src/system.o
-                0x00000000000007fe                operator delete(void*)
+                0x00000000000008f4       0xe6 ./src/main.o
+                0x00000000000008f4                main
+ .text._ZdlPv   0x00000000000009da        0x2 ./src/system.o
+                0x00000000000009da                operator delete(void*)
  .text._Z17InitDayLightAlarmv
-                0x0000000000000800       0x86 ./src/system.o
-                0x0000000000000800                InitDayLightAlarm()
+                0x00000000000009dc       0x86 ./src/system.o
+                0x00000000000009dc                InitDayLightAlarm()
  .text.__vector_9
-                0x0000000000000886       0x8e ./src/system.o
-                0x0000000000000886                __vector_9
+                0x0000000000000a62       0x80 ./src/system.o
+                0x0000000000000a62                __vector_9
  .text.__vector_1
-                0x0000000000000914      0x192 ./src/system.o
-                0x0000000000000914                __vector_1
+                0x0000000000000ae2      0x192 ./src/system.o
+                0x0000000000000ae2                __vector_1
  .text.__vector_3
-                0x0000000000000aa6       0x7c ./src/system.o
-                0x0000000000000aa6                __vector_3
- .text.startup._GLOBAL__sub_I_tmCurrentTime
-                0x0000000000000b22       0x18 ./src/system.o
- .text.exit._GLOBAL__sub_D_tmCurrentTime
-                0x0000000000000b3a       0x18 ./src/system.o
+                0x0000000000000c74       0x7c ./src/system.o
+                0x0000000000000c74                __vector_3
+ .text.startup._GLOBAL__sub_I_dtCurrentDateTime
+                0x0000000000000cf0       0x12 ./src/system.o
+ .text.exit._GLOBAL__sub_D_dtCurrentDateTime
+                0x0000000000000d02       0x12 ./src/system.o
  .text.libgcc.div
-                0x0000000000000b52       0x26 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
-                0x0000000000000b52                __divmodhi4
-                0x0000000000000b52                _div
+                0x0000000000000d14       0x26 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+                0x0000000000000d14                __divmodhi4
+                0x0000000000000d14                _div
  .text.libgcc.builtins
-                0x0000000000000b78       0x32 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
-                0x0000000000000b78                __ashldi3
- .text.libgcc   0x0000000000000baa       0x18 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
-                0x0000000000000baa                __adddi3_s8
+                0x0000000000000d3a       0x32 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
+                0x0000000000000d3a                __ashldi3
+ .text.libgcc   0x0000000000000d6c       0x18 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
+                0x0000000000000d6c                __adddi3_s8
  .text.libgcc.div
-                0x0000000000000bc2       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
-                0x0000000000000bc2                __udivmodhi4
- .text.libgcc   0x0000000000000bea        0xc /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
-                0x0000000000000bea                __tablejump2__
-                0x0000000000000bee                __tablejump__
+                0x0000000000000d84       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000d84                __udivmodhi4
+ .text.libgcc   0x0000000000000dac        0xc /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
+                0x0000000000000dac                __tablejump2__
+                0x0000000000000db0                __tablejump__
  .text.avr-libc
-                0x0000000000000bf6      0x25a /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                0x0000000000000bf6                malloc
-                0x0000000000000d20                free
+                0x0000000000000db8      0x25a /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                0x0000000000000db8                malloc
+                0x0000000000000ee2                free
  .text.avr-libc
-                0x0000000000000e50       0x40 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-                0x0000000000000e50                sprintf
+                0x0000000000001012       0x40 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                0x0000000000001012                sprintf
  .text.avr-libc
-                0x0000000000000e90      0x386 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
-                0x0000000000000e90                vfprintf
+                0x0000000000001052      0x386 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                0x0000000000001052                vfprintf
  .text.avr-libc
-                0x0000000000001216       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
-                0x0000000000001216                strnlen_P
+                0x00000000000013d8       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                0x00000000000013d8                strnlen_P
  .text.avr-libc
-                0x000000000000122c       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
-                0x000000000000122c                strnlen
+                0x00000000000013ee       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                0x00000000000013ee                strnlen
  .text.avr-libc
-                0x0000000000001242       0x70 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
-                0x0000000000001242                fputc
+                0x0000000000001404       0x70 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
+                0x0000000000001404                fputc
  .text.avr-libc
-                0x00000000000012b2       0xbc /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
-                0x00000000000012b2                __ultoa_invert
+                0x0000000000001474       0xbc /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                0x0000000000001474                __ultoa_invert
  .text.libgcc.prologue
-                0x000000000000136e       0x38 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_prologue.o)
-                0x000000000000136e                __prologue_saves__
+                0x0000000000001530       0x38 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_prologue.o)
+                0x0000000000001530                __prologue_saves__
  .text.libgcc.prologue
-                0x00000000000013a6       0x36 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
-                0x00000000000013a6                __epilogue_restores__
-                0x00000000000013dc                . = ALIGN (0x2)
+                0x0000000000001568       0x36 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
+                0x0000000000001568                __epilogue_restores__
+                0x000000000000159e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000013dc        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
-                0x00000000000013dc                exit
-                0x00000000000013dc                _exit
+ .fini9         0x000000000000159e        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
+                0x000000000000159e                exit
+                0x000000000000159e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
  *(.fini7)
  *(.fini7)
  *(.fini6)
- .fini6         0x00000000000013dc       0x14 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
-                0x00000000000013dc                __do_global_dtors
+ .fini6         0x000000000000159e       0x14 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
+                0x000000000000159e                __do_global_dtors
  *(.fini6)
  *(.fini5)
  *(.fini5)
@@ -671,17 +650,16 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000013f0        0x4 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
+ .fini0         0x00000000000015b2        0x4 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000013f4                _etext = .
+                0x00000000000015b6                _etext = .
 
-.data           0x0000000000800060       0x38 load address 0x00000000000013f4
+.data           0x0000000000800060       0x74 load address 0x00000000000015b6
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
- .data          0x0000000000800060        0x0 ./src/Date.o
+ .data          0x0000000000800060        0x0 ./src/DateTime.o
  .data          0x0000000000800060        0x0 ./src/DcfData.o
- .data          0x0000000000800060        0x0 ./src/Time.o
  .data          0x0000000000800060        0x0 ./src/lcd-routines.o
  .data          0x0000000000800060        0x0 ./src/main.o
  .data          0x0000000000800060        0x0 ./src/system.o
@@ -709,72 +687,70 @@ END GROUP
  .data          0x0000000000800066        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
  *(.data*)
  *(.rodata)
+ .rodata        0x0000000000800066        0xe ./src/DateTime.o
  *(.rodata*)
- .rodata._ZTV4Date
-                0x0000000000800066        0x8 ./src/Date.o
-                0x0000000000800066                vtable for Date
- .rodata._ZTV7DcfData
-                0x000000000080006e       0x10 ./src/DcfData.o
-                0x000000000080006e                vtable for DcfData
  .rodata.str1.1
-                0x000000000080007e       0x12 ./src/Time.o
-                                         0x1e (size before relaxing)
- .rodata._ZTV4Time
-                0x0000000000800090        0x8 ./src/Time.o
-                0x0000000000800090                vtable for Time
+                0x0000000000800074       0x4f ./src/DateTime.o
+                                         0x5b (size before relaxing)
+ .rodata._ZTV8DateTime
+                0x00000000008000c3        0x8 ./src/DateTime.o
+                0x00000000008000c3                vtable for DateTime
+ .rodata._ZTV7DcfData
+                0x00000000008000cb        0x8 ./src/DcfData.o
+                0x00000000008000cb                vtable for DcfData
  *(.gnu.linkonce.d*)
-                0x0000000000800098                . = ALIGN (0x2)
-                0x0000000000800098                _edata = .
-                0x0000000000800098                PROVIDE (__data_end, .)
+                0x00000000008000d4                . = ALIGN (0x2)
+ *fill*         0x00000000008000d3        0x1 
+                0x00000000008000d4                _edata = .
+                0x00000000008000d4                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800098       0x4a
-                0x0000000000800098                PROVIDE (__bss_start, .)
+.bss            0x00000000008000d4       0x5a
+                0x00000000008000d4                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss._ZZNV4Time13GetTimestringEbE7sString
-                0x0000000000800098       0x11 ./src/Time.o
+ .bss._ZZNV8DateTime13GetDatestringEbE7sString
+                0x00000000008000d4       0x11 ./src/DateTime.o
+ .bss._ZZNV8DateTime13GetTimestringEbE7sString
+                0x00000000008000e5       0x11 ./src/DateTime.o
  .bss.nCurrentBitNumber
-                0x00000000008000a9        0x1 ./src/system.o
-                0x00000000008000a9                nCurrentBitNumber
+                0x00000000008000f6        0x1 ./src/system.o
+                0x00000000008000f6                nCurrentBitNumber
  .bss.nLowLevelTicks
-                0x00000000008000aa        0x1 ./src/system.o
-                0x00000000008000aa                nLowLevelTicks
- .bss.nBitTime  0x00000000008000ab        0x8 ./src/system.o
-                0x00000000008000ab                nBitTime
+                0x00000000008000f7        0x1 ./src/system.o
+                0x00000000008000f7                nLowLevelTicks
+ .bss.nBitTime  0x00000000008000f8        0x8 ./src/system.o
+                0x00000000008000f8                nBitTime
  .bss.nBitSequenceTime
-                0x00000000008000b3        0x8 ./src/system.o
-                0x00000000008000b3                nBitSequenceTime
- .bss.nFlags    0x00000000008000bb        0x1 ./src/system.o
-                0x00000000008000bb                nFlags
+                0x0000000000800100        0x8 ./src/system.o
+                0x0000000000800100                nBitSequenceTime
+ .bss.nFlags    0x0000000000800108        0x1 ./src/system.o
+                0x0000000000800108                nFlags
  .bss.nClockOverflows
-                0x00000000008000bc        0x1 ./src/system.o
-                0x00000000008000bc                nClockOverflows
- .bss.dtCurrentDate
-                0x00000000008000bd        0x5 ./src/system.o
-                0x00000000008000bd                dtCurrentDate
- .bss.tmDcfData
-                0x00000000008000c2       0x12 ./src/system.o
-                0x00000000008000c2                tmDcfData
+                0x0000000000800109        0x1 ./src/system.o
+                0x0000000000800109                nClockOverflows
+ .bss.dtDcfData
+                0x000000000080010a       0x10 ./src/system.o
+                0x000000000080010a                dtDcfData
  .bss.tmAlarmTime
-                0x00000000008000d4        0x5 ./src/system.o
-                0x00000000008000d4                tmAlarmTime
- .bss.tmCurrentTime
-                0x00000000008000d9        0x5 ./src/system.o
-                0x00000000008000d9                tmCurrentTime
+                0x000000000080011a        0x8 ./src/system.o
+                0x000000000080011a                tmAlarmTime
+ .bss.dtCurrentDateTime
+                0x0000000000800122        0x8 ./src/system.o
+                0x0000000000800122                dtCurrentDateTime
  *(COMMON)
- COMMON         0x00000000008000de        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                0x00000000008000de                __brkval
-                0x00000000008000e0                __flp
-                0x00000000008000e2                PROVIDE (__bss_end, .)
-                0x00000000000013f4                __data_load_start = LOADADDR (.data)
-                0x000000000000142c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x000000000080012a        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                0x000000000080012a                __brkval
+                0x000000000080012c                __flp
+                0x000000000080012e                PROVIDE (__bss_end, .)
+                0x00000000000015b6                __data_load_start = LOADADDR (.data)
+                0x000000000000162a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008000e2        0x0
-                0x00000000008000e2                PROVIDE (__noinit_start, .)
+.noinit         0x000000000080012e        0x0
+                0x000000000080012e                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00000000008000e2                PROVIDE (__noinit_end, .)
-                0x00000000008000e2                _end = .
-                0x00000000008000e2                PROVIDE (__heap_start, .)
+                0x000000000080012e                PROVIDE (__noinit_end, .)
+                0x000000000080012e                _end = .
+                0x000000000080012e                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -812,10 +788,9 @@ END GROUP
 
 .comment        0x0000000000000000       0x11
  *(.comment)
- .comment       0x0000000000000000       0x11 ./src/Date.o
+ .comment       0x0000000000000000       0x11 ./src/DateTime.o
                                          0x12 (size before relaxing)
  .comment       0x0000000000000000       0x12 ./src/DcfData.o
- .comment       0x0000000000000000       0x12 ./src/Time.o
  .comment       0x0000000000000000       0x12 ./src/lcd-routines.o
  .comment       0x0000000000000000       0x12 ./src/main.o
  .comment       0x0000000000000000       0x12 ./src/system.o
@@ -896,37 +871,63 @@ LOAD linker stubs
 Cross Reference Table
 
 Symbol                                            File
-Date::Date()                                      ./src/Date.o
-                                                  ./src/system.o
-Date::Date()                                      ./src/Date.o
+DateTime::DateTime()                              ./src/DateTime.o
                                                   ./src/DcfData.o
-Date::Date(Date_t)                                ./src/Date.o
-Date::Date(Date_t)                                ./src/Date.o
-Date::GetDatestring(bool) volatile                ./src/Date.o
-Date::GetDay() volatile                           ./src/Date.o
-Date::GetDayOfWeek() volatile                     ./src/Date.o
-Date::GetMonth() volatile                         ./src/Date.o
-Date::GetYear() volatile                          ./src/Date.o
-Date::Increase() volatile                         ./src/Date.o
+DateTime::DateTime()                              ./src/DateTime.o
                                                   ./src/system.o
-Date::SetDay(unsigned char) volatile              ./src/Date.o
-Date::SetDayOfWeek(unsigned char) volatile        ./src/Date.o
-Date::SetMonth(unsigned char) volatile            ./src/Date.o
-Date::SetYear(unsigned int) volatile              ./src/Date.o
-Date::bIsEqualTo(Date*, bool) volatile            ./src/Date.o
-Date::sDays                                       ./src/Date.o
-Date::~Date()                                     ./src/Date.o
+DateTime::DateTime(Time_t, Date_t)                ./src/DateTime.o
+DateTime::DateTime(Time_t, Date_t)                ./src/DateTime.o
+DateTime::GetDatestring(bool) volatile            ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::GetDay() volatile                       ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::GetDayOfWeek() volatile                 ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::GetHour() volatile                      ./src/DateTime.o
+                                                  ./src/system.o
+                                                  ./src/main.o
+DateTime::GetMinute() volatile                    ./src/DateTime.o
+                                                  ./src/system.o
+                                                  ./src/main.o
+DateTime::GetMonth() volatile                     ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::GetSecond() volatile                    ./src/DateTime.o
+                                                  ./src/system.o
+DateTime::GetTimeDifferenceInSecs(DateTime*) volatile ./src/DateTime.o
+DateTime::GetTimestring(bool) volatile            ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::GetYear() volatile                      ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::Increase() volatile                     ./src/DateTime.o
+                                                  ./src/system.o
+DateTime::IsDateEqualTo(DateTime*, bool) volatile ./src/DateTime.o
+DateTime::IsTimeEqualTo(DateTime*) volatile       ./src/DateTime.o
+DateTime::SetDay(unsigned char) volatile          ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::SetDayOfWeek(unsigned char) volatile    ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::SetHour(unsigned char) volatile         ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::SetMinute(unsigned char) volatile       ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::SetMonth(unsigned char) volatile        ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::SetSecond(unsigned char) volatile       ./src/DateTime.o
+                                                  ./src/system.o
+DateTime::SetYear(unsigned int) volatile          ./src/DateTime.o
+                                                  ./src/main.o
+DateTime::~DateTime()                             ./src/DateTime.o
                                                   ./src/DcfData.o
-Date::~Date()                                     ./src/Date.o
-Date::~Date()                                     ./src/Date.o
+DateTime::~DateTime()                             ./src/DateTime.o
                                                   ./src/system.o
+DateTime::~DateTime()                             ./src/DateTime.o
 DcfData::AddBit(unsigned char, unsigned char) volatile ./src/DcfData.o
                                                   ./src/system.o
 DcfData::CheckParity(unsigned int, unsigned char) volatile ./src/DcfData.o
 DcfData::DcfData()                                ./src/DcfData.o
 DcfData::DcfData()                                ./src/DcfData.o
                                                   ./src/system.o
-DcfData::EvaluateTime(bool) volatile              ./src/DcfData.o
+DcfData::EvaluateDateTime(bool) volatile          ./src/DcfData.o
                                                   ./src/system.o
 DcfData::Reset() volatile                         ./src/DcfData.o
 DcfData::~DcfData()                               ./src/DcfData.o
@@ -936,37 +937,6 @@ DcfData::~DcfData()                               ./src/DcfData.o
 InitDayLightAlarm()                               ./src/system.o
                                                   ./src/main.o
 InitFlags()                                       ./src/system.o
-Time::GetDifferenceInSecs(Time*) volatile         ./src/Time.o
-Time::GetHour() volatile                          ./src/Time.o
-                                                  ./src/system.o
-                                                  ./src/main.o
-Time::GetMinute() volatile                        ./src/Time.o
-                                                  ./src/system.o
-                                                  ./src/main.o
-Time::GetSecond() volatile                        ./src/Time.o
-                                                  ./src/system.o
-Time::GetTimestring(bool) volatile                ./src/Time.o
-                                                  ./src/main.o
-Time::Increase() volatile                         ./src/Time.o
-                                                  ./src/system.o
-Time::IsEqualTo(Time*) volatile                   ./src/Time.o
-Time::SetHour(unsigned char) volatile             ./src/Time.o
-                                                  ./src/main.o
-Time::SetMinute(unsigned char) volatile           ./src/Time.o
-                                                  ./src/main.o
-Time::SetSecond(unsigned char) volatile           ./src/Time.o
-                                                  ./src/system.o
-Time::Time()                                      ./src/Time.o
-                                                  ./src/DcfData.o
-Time::Time()                                      ./src/Time.o
-                                                  ./src/system.o
-Time::Time(Time_t)                                ./src/Time.o
-Time::Time(Time_t)                                ./src/Time.o
-Time::~Time()                                     ./src/Time.o
-                                                  ./src/DcfData.o
-Time::~Time()                                     ./src/Time.o
-                                                  ./src/system.o
-Time::~Time()                                     ./src/Time.o
 __adddi3_s8                                       /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
                                                   ./src/system.o
 __ashldi3                                         /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
@@ -981,17 +951,15 @@ __data_end                                        /usr/lib/gcc/avr/4.9.1/avr4/li
 __data_load_start                                 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
 __data_start                                      /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
 __divmodhi4                                       /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
-                                                  ./src/Date.o
+                                                  ./src/DateTime.o
 __do_clear_bss                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_clear_bss.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
                                                   ./src/system.o
-                                                  ./src/Time.o
-                                                  ./src/Date.o
+                                                  ./src/DateTime.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                                                  ./src/Time.o
                                                   ./src/DcfData.o
-                                                  ./src/Date.o
+                                                  ./src/DateTime.o
 __do_global_ctors                                 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o)
                                                   ./src/system.o
 __do_global_dtors                                 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
@@ -1046,7 +1014,10 @@ __vector_default                                  /usr/lib/gcc/avr/4.9.1/../../.
 __vectors                                         /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 _div                                              /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
 _exit                                             /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
-dtCurrentDate                                     ./src/system.o
+dtCurrentDateTime                                 ./src/system.o
+                                                  ./src/main.o
+dtDcfData                                         ./src/system.o
+                                                  ./src/main.o
 exit                                              /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 fputc                                             /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
@@ -1077,27 +1048,18 @@ nCurrentBitNumber                                 ./src/system.o
 nFlags                                            ./src/system.o
                                                   ./src/main.o
 nLowLevelTicks                                    ./src/system.o
-non-virtual thunk to DcfData::~DcfData()          ./src/DcfData.o
-non-virtual thunk to DcfData::~DcfData()          ./src/DcfData.o
 operator delete(void*)                            ./src/system.o
-                                                  ./src/Time.o
                                                   ./src/DcfData.o
-                                                  ./src/Date.o
+                                                  ./src/DateTime.o
 operator new(unsigned int)                        ./src/system.o
 sprintf                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-                                                  ./src/Time.o
-                                                  ./src/Date.o
+                                                  ./src/DateTime.o
 strnlen                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 strnlen_P                                         /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 tmAlarmTime                                       ./src/system.o
-tmCurrentTime                                     ./src/system.o
-                                                  ./src/main.o
-tmDcfData                                         ./src/system.o
-                                                  ./src/main.o
 vfprintf                                          /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-vtable for Date                                   ./src/Date.o
+vtable for DateTime                               ./src/DateTime.o
 vtable for DcfData                                ./src/DcfData.o
-vtable for Time                                   ./src/Time.o

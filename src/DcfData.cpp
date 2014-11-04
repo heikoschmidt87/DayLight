@@ -33,7 +33,7 @@ void DcfData::AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile {
 	}
 }
 
-bool DcfData::EvaluateTime(bool bWithReset) volatile {
+bool DcfData::EvaluateDateTime(bool bWithReset) volatile {
 
 	/* TODO: parity checks */
 
@@ -77,3 +77,4 @@ bool DcfData::CheckParity(uint16_t nData, uint8_t nParity) volatile {
 		return nParity > 0;
 	}
 }
+

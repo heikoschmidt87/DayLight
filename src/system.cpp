@@ -10,10 +10,9 @@
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
-volatile Time tmCurrentTime;
-volatile Time tmAlarmTime;
-volatile DcfData tmDcfData;
-volatile Date dtCurrentDate;
+volatile DateTime dtCurrentDateTime;
+volatile DateTime tmAlarmTime;
+volatile DcfData dtDcfData;
 
 volatile uint8_t nClockOverflows;
 volatile uint8_t nFlags;
@@ -130,13 +129,11 @@ ISR(TIMER0_OVF_vect) {
 		nClockOverflows = 0;
 
 		/* increase the time and adjust date if needed */
-		tmCurrentTime.Increase();
+		dtCurrentDateTime.Increase();
 
-		if(		(tmCurrentTime.GetHour() == 0)
-			&&	(tmCurrentTime.GetMinute() == 0)
-			&&	(tmCurrentTime.GetSecond() == 0)) {
-
-			dtCurrentDate.Increase();
+		if(		(dtCurrentDateTime.GetHour() == 0)
+			&&	(dtCurrentDateTime.GetMinute() == 0)
+			&&	(dtCurrentDateTime.GetSecond() == 0)) {
 		}
 
 		nFlags |= FLAG_REFRESH_DISPLAY;
@@ -170,12 +167,12 @@ ISR(INT0_vect) {
 				nFlags |= FLAG_REFRESH_DCFTIME;
 
 				/* TODO: evaluate time here? */
-				tmDcfData.EvaluateTime(true);
+				dtDcfData.EvaluateDateTime(true);
 
 				/* reset the free running second timer */
 				nClockOverflows = 0;
 				TCNT0 = 0;
-				tmCurrentTime.SetSecond(0);
+				dtCurrentDateTime.SetSecond(0);
 			}
 
 			/* reset the current bit number */
@@ -190,9 +187,9 @@ ISR(INT0_vect) {
 
 		/* add the bit to the DCF77 structure */
 		if(nLowLevelTicks > 30) {
-			tmDcfData.AddBit(nCurrentBitNumber, 1);
+			dtDcfData.AddBit(nCurrentBitNumber, 1);
 		} else {
-			tmDcfData.AddBit(nCurrentBitNumber, 0);
+			dtDcfData.AddBit(nCurrentBitNumber, 0);
 		}
 
 		/* increase the current bit number */

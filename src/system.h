@@ -19,9 +19,8 @@
 #include <util/delay.h>
 #include <string.h>
 
-#include "Date.h"
+#include "DateTime.h"
 #include "DcfData.h"
-#include "Time.h"
 #include "lcd-routines.h"		/* TODO: own OO-implementation */
 
 
@@ -94,10 +93,9 @@ struct {
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
-extern volatile Time tmCurrentTime;
-extern volatile Time tmAlarmTime;
-extern volatile DcfData tmDcfData;
-extern volatile Date dtCurrentDate;
+extern volatile DateTime dtCurrentDateTime;
+extern volatile DateTime tmAlarmTime;
+extern volatile DcfData dtDcfData;
 
 extern volatile uint8_t nClockOverflows;
 extern volatile uint8_t nFlags;
