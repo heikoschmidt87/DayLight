@@ -13,10 +13,10 @@
 volatile DateTime dtCurrentDateTime;
 volatile DateTime tmAlarmTime;
 volatile DcfData dtDcfData;
+volatile LCDisplay *lcDisplay;
 
 volatile uint8_t nClockOverflows;
 volatile uint8_t nFlags;
-
 
 volatile uint64_t nBitSequenceTime;
 volatile uint64_t nBitTime;
@@ -57,6 +57,7 @@ void InitDayLightAlarm() {
 	/*
 	 * init DayLight
 	 */
+
 	DDR_DAY_LIGHT |= (1 << DAY_LIGHT);
 	PORT_DAY_LIGHT &= ~(1 << DAY_LIGHT);
 
@@ -67,12 +68,6 @@ void InitDayLightAlarm() {
 	PORT_SPEAKER &= (1 << SPEAKER);
 
 	/* TODO: test speaker */
-
-	/*
-	 * init display light
-	 */
-	DDR_DISPLIGHT |= (1 << DISPLAY_LIGHT);
-	PORT_DISPLIGHT &= ~(1 << DISPLAY_LIGHT);
 
 	/* play test tone */
 	/*
@@ -97,8 +92,23 @@ void InitDayLightAlarm() {
 	/*
 	 * init display
 	 */
-	lcd_init();
-	lcd_clear();
+	LcdHwConfig_t oHwConfig;
+
+	oHwConfig.nLcdPort = &PORT_LCD;
+	oHwConfig.nLcdDdr = &DDR_LCD;
+	oHwConfig.nLcdStartPin = LCD_DB;
+	oHwConfig.nLcdRS = LCD_RS;
+	oHwConfig.nLcdEn = LCD_EN;
+
+	oHwConfig.nDispLightPort = &PORT_DISPLIGHT;
+	oHwConfig.nDispLightDdr = &DDR_DISPLIGHT;
+	oHwConfig.nDispLightPin = DISPLAY_LIGHT;
+
+	lcDisplay = new LCDisplay(oHwConfig);
+
+	lcDisplay->InitLCDisplay();
+	lcDisplay->ClearLCDisplay();
+
 
 	/*
 	 * init DCF77

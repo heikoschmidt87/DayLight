@@ -18,7 +18,7 @@ int main() {
 
 	InitDayLightAlarm();
 
-	PORT_DISPLIGHT |= (1 << DISPLAY_LIGHT);
+	lcDisplay->SetDisplayLight(true);
 
 	sei();
 
@@ -46,21 +46,21 @@ int main() {
 		/* refresh the display */
 		if((nFlags & FLAG_REFRESH_DISPLAY) > 0) {
 
-			lcd_setcursor(0, 1);
-			lcd_string(dtCurrentDateTime.GetDatestring(true));
-			lcd_setcursor(0, 2);
-			lcd_string(dtCurrentDateTime.GetTimestring(true));
+			lcDisplay->CurserPos(0, 1);
+			lcDisplay->WriteString(dtCurrentDateTime.GetDatestring(true));
+			lcDisplay->CurserPos(0, 2);
+			lcDisplay->WriteString(dtCurrentDateTime.GetTimestring(true));
 
 			if((nFlags & FLAG_UPDATE_DCF_DOT) > 0) {
 
-				lcd_setcursor(15, 2);
+				lcDisplay->CurserPos(15, 2);
 
 				if((nFlags & FLAG_DCFSYMBOL_VISIBLE) > 0) {
 					nFlags &= ~FLAG_DCFSYMBOL_VISIBLE;
-					lcd_data(' ');
+					lcDisplay->WriteData(' ');
 				} else {
 					nFlags |= FLAG_DCFSYMBOL_VISIBLE;
-					lcd_data('.');
+					lcDisplay->WriteData('.');
 				}
 
 				nFlags &= ~FLAG_UPDATE_DCF_DOT;

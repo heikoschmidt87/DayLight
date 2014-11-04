@@ -32,10 +32,11 @@ typedef struct {
 
 class DateTime {
 protected:
-	Time_t m_tmTime;
-	Date_t m_dtDate;
+	Time_t tmTime_;
+	Date_t dtDate_;
 
 public:
+	/* TODO: use init list instead to increase performance */
 	DateTime();													/**< default constructor */
 	DateTime(Time_t tmTime, Date_t dtDate);						/**< constructor with variable initialization */
 	virtual ~DateTime();										/**< default destructor */

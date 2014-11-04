@@ -21,8 +21,7 @@
 
 #include "DateTime.h"
 #include "DcfData.h"
-#include "lcd-routines.h"		/* TODO: own OO-implementation */
-
+#include "LCDisplay.h"
 
 
 ////////////////////////////////////
@@ -72,6 +71,7 @@ struct {
 #define PORT_DAY_LIGHT	PORTB
 #define PORT_SPEAKER	PORTB
 #define PORT_DISPLIGHT	PORTD
+#define PORT_LCD		PORTC
 
 #define PIN_BTN1		PIND
 #define PIN_BTN2		PINB
@@ -81,6 +81,11 @@ struct {
 #define DDR_DAY_LIGHT	DDRB
 #define DDR_SPEAKER		DDRB
 #define DDR_DISPLIGHT	DDRD
+#define DDR_LCD			DDRC
+
+#define LCD_DB        	PC0
+#define LCD_RS        	PC5
+#define LCD_EN        	PC4
 
 #define FLAG_REFRESH_DISPLAY	0x01
 #define FLAG_DCF_FALLING_EDGE	0x02
@@ -96,6 +101,8 @@ struct {
 extern volatile DateTime dtCurrentDateTime;
 extern volatile DateTime tmAlarmTime;
 extern volatile DcfData dtDcfData;
+
+extern volatile LCDisplay *lcDisplay;
 
 extern volatile uint8_t nClockOverflows;
 extern volatile uint8_t nFlags;

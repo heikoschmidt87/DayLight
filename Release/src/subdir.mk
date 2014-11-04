@@ -6,21 +6,21 @@
 CPP_SRCS += \
 ../src/DateTime.cpp \
 ../src/DcfData.cpp \
-../src/lcd-routines.cpp \
+../src/LCDisplay.cpp \
 ../src/main.cpp \
 ../src/system.cpp 
 
 OBJS += \
 ./src/DateTime.o \
 ./src/DcfData.o \
-./src/lcd-routines.o \
+./src/LCDisplay.o \
 ./src/main.o \
 ./src/system.o 
 
 CPP_DEPS += \
 ./src/DateTime.d \
 ./src/DcfData.d \
-./src/lcd-routines.d \
+./src/LCDisplay.d \
 ./src/main.d \
 ./src/system.d 
 

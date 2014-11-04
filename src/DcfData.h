@@ -45,7 +45,7 @@ private:
 			uint8_t nDateParity : 1;
 			uint8_t nPadding : 5;
 		} oDcfTimeInfo;
-	} m_oDcfData;
+	} oDcfData_;
 
 public:
 	DcfData();													/**< default constructor */
