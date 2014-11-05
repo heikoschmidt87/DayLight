@@ -71,6 +71,52 @@ Discarded input sections
                 0x0000000000000000        0xe ./src/LCDisplay.o
  .text._ZNV9LCDisplay12GenerateCharEhPKh
                 0x0000000000000000       0x60 ./src/LCDisplay.o
+ .group         0x0000000000000000        0x8 ./src/LcdMenu.o
+ .text          0x0000000000000000        0x0 ./src/LcdMenu.o
+ .bss           0x0000000000000000        0x0 ./src/LcdMenu.o
+ .text._ZN7LcdMenuD2Ev
+                0x0000000000000000        0x2 ./src/LcdMenu.o
+ .text._ZN7LcdMenuD0Ev
+                0x0000000000000000        0x2 ./src/LcdMenu.o
+ .text._ZN7LcdMenuC2E14ButtonConfig_tP9LCDisplay
+                0x0000000000000000       0x58 ./src/LcdMenu.o
+ .text._ZN7LcdMenu12SetLCDisplayEP9LCDisplay
+                0x0000000000000000        0x8 ./src/LcdMenu.o
+ .text._ZN7LcdMenu12GetLCDisplayEv
+                0x0000000000000000        0x8 ./src/LcdMenu.o
+ .text._ZN7LcdMenu7RunMenuEv
+                0x0000000000000000        0x2 ./src/LcdMenu.o
+ .text._ZN7LcdMenu12SetMenuEntryEP9MenuEntry
+                0x0000000000000000        0x8 ./src/LcdMenu.o
+ .text._ZN7LcdMenu12GetMenuEntryEv
+                0x0000000000000000        0x8 ./src/LcdMenu.o
+ .text._ZN7LcdMenu15SetButtonConfigE14ButtonConfig_t
+                0x0000000000000000       0x3e ./src/LcdMenu.o
+ .rodata._ZTV7LcdMenu
+                0x0000000000000000        0x8 ./src/LcdMenu.o
+ .group         0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text          0x0000000000000000        0x0 ./src/MenuEntry.o
+ .bss           0x0000000000000000        0x0 ./src/MenuEntry.o
+ .text._ZN9MenuEntryD2Ev
+                0x0000000000000000        0x2 ./src/MenuEntry.o
+ .text._ZN9MenuEntryD0Ev
+                0x0000000000000000        0x2 ./src/MenuEntry.o
+ .text._ZN9MenuEntryC2EPcPFvvE
+                0x0000000000000000       0x18 ./src/MenuEntry.o
+ .text._ZN9MenuEntry12GetMenuTitleEv
+                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text._ZN9MenuEntry12SetMenuTitleEPc
+                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text._ZN9MenuEntry11SetFunctionEPFvvE
+                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text._ZN9MenuEntry3RunEv
+                0x0000000000000000        0xc ./src/MenuEntry.o
+ .text._ZN9MenuEntry7SetNextEPS_
+                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text._ZN9MenuEntry7GetNextEv
+                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .rodata._ZTV9MenuEntry
+                0x0000000000000000        0x8 ./src/MenuEntry.o
  .text          0x0000000000000000        0x0 ./src/main.o
  .bss           0x0000000000000000        0x0 ./src/main.o
  .text          0x0000000000000000        0x0 ./src/system.o
@@ -278,6 +324,8 @@ LOAD /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 LOAD ./src/DateTime.o
 LOAD ./src/DcfData.o
 LOAD ./src/LCDisplay.o
+LOAD ./src/LcdMenu.o
+LOAD ./src/MenuEntry.o
 LOAD ./src/main.o
 LOAD ./src/system.o
 LOAD /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a
@@ -679,6 +727,8 @@ END GROUP
  .data          0x0000000000800060        0x0 ./src/DateTime.o
  .data          0x0000000000800060        0x0 ./src/DcfData.o
  .data          0x0000000000800060        0x0 ./src/LCDisplay.o
+ .data          0x0000000000800060        0x0 ./src/LcdMenu.o
+ .data          0x0000000000800060        0x0 ./src/MenuEntry.o
  .data          0x0000000000800060        0x0 ./src/main.o
  .data          0x0000000000800060        0x0 ./src/system.o
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
@@ -816,6 +866,8 @@ END GROUP
                                          0x12 (size before relaxing)
  .comment       0x0000000000000000       0x12 ./src/DcfData.o
  .comment       0x0000000000000000       0x12 ./src/LCDisplay.o
+ .comment       0x0000000000000000       0x12 ./src/LcdMenu.o
+ .comment       0x0000000000000000       0x12 ./src/MenuEntry.o
  .comment       0x0000000000000000       0x12 ./src/main.o
  .comment       0x0000000000000000       0x12 ./src/system.o
  .comment       0x0000000000000000       0x12 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
@@ -984,6 +1036,28 @@ LCDisplay::WriteString(char const*) volatile      ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
+LcdMenu::GetLCDisplay()                           ./src/LcdMenu.o
+LcdMenu::GetMenuEntry()                           ./src/LcdMenu.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*)      ./src/LcdMenu.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*)      ./src/LcdMenu.o
+LcdMenu::RunMenu()                                ./src/LcdMenu.o
+LcdMenu::SetButtonConfig(ButtonConfig_t)          ./src/LcdMenu.o
+LcdMenu::SetLCDisplay(LCDisplay*)                 ./src/LcdMenu.o
+LcdMenu::SetMenuEntry(MenuEntry*)                 ./src/LcdMenu.o
+LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
+LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
+LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
+MenuEntry::GetMenuTitle()                         ./src/MenuEntry.o
+MenuEntry::GetNext()                              ./src/MenuEntry.o
+MenuEntry::MenuEntry(char*, void (*)())           ./src/MenuEntry.o
+MenuEntry::MenuEntry(char*, void (*)())           ./src/MenuEntry.o
+MenuEntry::Run()                                  ./src/MenuEntry.o
+MenuEntry::SetFunction(void (*)())                ./src/MenuEntry.o
+MenuEntry::SetMenuTitle(char*)                    ./src/MenuEntry.o
+MenuEntry::SetNext(MenuEntry*)                    ./src/MenuEntry.o
+MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
+MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
+MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
 __adddi3_s8                                       /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
                                                   ./src/system.o
 __ashldi3                                         /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
@@ -1005,6 +1079,8 @@ __do_clear_bss                                    /usr/lib/gcc/avr/4.9.1/avr4/li
                                                   ./src/DateTime.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                                                  ./src/MenuEntry.o
+                                                  ./src/LcdMenu.o
                                                   ./src/LCDisplay.o
                                                   ./src/DcfData.o
                                                   ./src/DateTime.o
@@ -1086,6 +1162,8 @@ nFlags                                            ./src/system.o
                                                   ./src/main.o
 nLowLevelTicks                                    ./src/system.o
 operator delete(void*)                            ./src/system.o
+                                                  ./src/MenuEntry.o
+                                                  ./src/LcdMenu.o
                                                   ./src/LCDisplay.o
                                                   ./src/DcfData.o
                                                   ./src/DateTime.o
@@ -1102,3 +1180,5 @@ vfprintf                                          /usr/lib/gcc/avr/4.9.1/../../.
 vtable for DateTime                               ./src/DateTime.o
 vtable for DcfData                                ./src/DcfData.o
 vtable for LCDisplay                              ./src/LCDisplay.o
+vtable for LcdMenu                                ./src/LcdMenu.o
+vtable for MenuEntry                              ./src/MenuEntry.o

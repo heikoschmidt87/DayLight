@@ -7,6 +7,8 @@ CPP_SRCS += \
 ../src/DateTime.cpp \
 ../src/DcfData.cpp \
 ../src/LCDisplay.cpp \
+../src/LcdMenu.cpp \
+../src/MenuEntry.cpp \
 ../src/main.cpp \
 ../src/system.cpp 
 
@@ -14,6 +16,8 @@ OBJS += \
 ./src/DateTime.o \
 ./src/DcfData.o \
 ./src/LCDisplay.o \
+./src/LcdMenu.o \
+./src/MenuEntry.o \
 ./src/main.o \
 ./src/system.o 
 
@@ -21,6 +25,8 @@ CPP_DEPS += \
 ./src/DateTime.d \
 ./src/DcfData.d \
 ./src/LCDisplay.d \
+./src/LcdMenu.d \
+./src/MenuEntry.d \
 ./src/main.d \
 ./src/system.d 
 
