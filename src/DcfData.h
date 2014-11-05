@@ -48,13 +48,13 @@ private:
 	} oDcfData_;
 
 public:
-	DcfData();													/**< default constructor */
-	virtual ~DcfData();											/**< default destructor */
+	DcfData();																/**< default constructor */
+	virtual ~DcfData();														/**< default destructor */
 
-	void AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile;		/**< method for adding a new DCF77 bit value */
-	void Reset() volatile;										/**< method for resetting */
-	bool EvaluateDateTime(bool bWithReset) volatile;			/**< method for evaluating the DCF77 time from DCF77 data */
-	bool CheckParity(uint16_t nData, uint8_t nParity) volatile;	/**< method for checking for DCF77 even parity */
+	void AddBit(uint8_t nBitNo, uint8_t nBitVal) volatile;					/**< method for adding a new DCF77 bit value */
+	void Reset() volatile;													/**< method for resetting */
+	bool EvaluateDateTime(bool bWithReset) volatile;						/**< method for evaluating the DCF77 time from DCF77 data */
+	bool CheckParity(uint32_t nData, uint8_t nParity, bool bEven) volatile;	/**< method for checking for DCF77 even parity */
 };
 
 #endif /* SRC_DcfData_H_ */
