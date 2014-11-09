@@ -18,23 +18,24 @@
 ////////////////////////////////////
 class MenuEntry {
 private:
-	char *sMenuTitle_;
+	const char *sMenuTitle_;
 	void (*function_)();
 
 	MenuEntry *next_;
 
 public:
-	MenuEntry(char *sTitle, void (*function)());
+	MenuEntry();
+	MenuEntry(const char *sTitle, void (*function)(), MenuEntry *next);
 	virtual ~MenuEntry();
 
-	char* GetMenuTitle();
-	void SetMenuTitle(char *sTitle);
+	const char* GetMenuTitle() volatile;
+	void SetMenuTitle(const char *sTitle) volatile;
 
-	void SetFunction(void (*function)());
-	void Run();
+	void SetFunction(void (*function)()) volatile;
+	void Run() volatile;
 
-	void SetNext(MenuEntry *next);
-	MenuEntry* GetNext();
+	void SetNext(MenuEntry *next) volatile;
+	MenuEntry* GetNext() volatile;
 };
 
 #endif /* SRC_MENUENTRY_H_ */

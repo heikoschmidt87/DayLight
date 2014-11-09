@@ -22,6 +22,9 @@ int main() {
 
 	sei();
 
+	lmLCDMenu->RunMenu();
+
+
 	while(1) {
 
 		if((nFlags & FLAG_REFRESH_DCFTIME) > 0) {

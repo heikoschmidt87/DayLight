@@ -18,8 +18,7 @@
 // CLASS
 ////////////////////////////////////
 typedef struct {
-	uint8_t *btnPort_;
-	uint8_t *btnDdr_;
+	volatile uint8_t *btnPin_;
 	uint8_t btnNext_;
 	uint8_t btnEnter_;
 
@@ -28,16 +27,19 @@ typedef struct {
 class LcdMenu {
 private:
 	MenuEntry *currentMenuEntry_;
-	LCDisplay *lcDisplay_;
+	volatile LCDisplay *lcDisplay_;
+
+	volatile uint8_t *nMenuSecondCounter_;
 
 	ButtonConfig_t btnConfig_;
 
 public:
-	LcdMenu(ButtonConfig_t btnConfig, LCDisplay *lcDisplay, MenuEntry *currentMenuEntry_);
+	LcdMenu();
+	LcdMenu(ButtonConfig_t btnConfig, volatile LCDisplay *lcDisplay, MenuEntry *currentMenuEntry_, volatile uint8_t *menuSecondCounter);
 	virtual ~LcdMenu();
 
 	void SetLCDisplay(LCDisplay *lcDisplay);
-	LCDisplay *GetLCDisplay();
+	volatile LCDisplay *GetLCDisplay();
 
 	void SetMenuEntry(MenuEntry *menuEntry);
 	MenuEntry *GetMenuEntry();

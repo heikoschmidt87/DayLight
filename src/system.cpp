@@ -15,6 +15,8 @@ volatile DateTime tmAlarmTime;
 volatile DcfData dtDcfData;
 volatile LCDisplay *lcDisplay;
 
+volatile uint8_t nMenuSecondCounter;
+
 volatile uint8_t nClockOverflows;
 volatile uint8_t nFlags;
 
@@ -23,20 +25,39 @@ volatile uint64_t nBitTime;
 volatile uint8_t nLowLevelTicks;
 volatile uint8_t nCurrentBitNumber;
 
+MenuEntry *meMenuEntries[NO_OF_MENU_ENTRIES];
+LcdMenu *lmLCDMenu;
+
 ////////////////////////////////////
 // FUNCTIONS
 ////////////////////////////////////
-void * operator new (size_t size) {
-	return malloc(size);
-}
-
-void operator delete(void * ptr) {
-	free(ptr);
-}
-
 void InitFlags() {
 
 	nFlags = 0;
+}
+
+void Menu_SetTime() {
+
+}
+
+void Menu_SetDate() {
+
+}
+
+void Menu_SetAlarm() {
+
+}
+
+void Menu_SwitchAlarm() {
+
+}
+
+void Menu_SetSnoozeTime() {
+
+}
+
+void Menu_SwitchDCF() {
+
 }
 
 void InitDayLightAlarm() {
@@ -52,7 +73,6 @@ void InitDayLightAlarm() {
 	/* activate internal pullups */
 	PORT_BTN1 |= (1 << BUTTON_SNOOZE) | (1 << BUTTON_MENU) | (1 << BUTTON_ADJUST);
 	PORT_BTN2 |= (1 << BUTTON_LIGHT);
-
 
 	/*
 	 * init DayLight
@@ -131,12 +151,32 @@ void InitDayLightAlarm() {
 	 */
 	TCCR0 = (1 << CS02);
 	TIMSK |= (1 << TOIE0);
+
+	/*
+	 * init menu
+	 */
+	meMenuEntries[5] = new MenuEntry("** DCF an/aus **", Menu_SwitchDCF, 0);
+	meMenuEntries[4] = new MenuEntry("** Snooze Zeit *", Menu_SetSnoozeTime, meMenuEntries[5]);
+	meMenuEntries[3] = new MenuEntry("* Alarm an/aus *", Menu_SwitchAlarm, meMenuEntries[4]);
+	meMenuEntries[2] = new MenuEntry("*** Weckzeit ***", Menu_SetAlarm, meMenuEntries[3]);
+	meMenuEntries[1] = new MenuEntry("***** Datum ****", Menu_SetDate, meMenuEntries[2]);
+	meMenuEntries[0] = new MenuEntry("***** Zeit *****", Menu_SetTime, meMenuEntries[1]);
+	meMenuEntries[5]->SetNext(meMenuEntries[0]);
+
+	ButtonConfig_t btnConfig;
+	btnConfig.btnPin_ = &PIN_BTN1;
+	btnConfig.btnNext_ = BUTTON_ADJUST;
+	btnConfig.btnEnter_ = BUTTON_MENU;
+
+	lmLCDMenu = new LcdMenu(btnConfig, lcDisplay, meMenuEntries[0], &nMenuSecondCounter);
 }
 
 ISR(TIMER0_OVF_vect) {
 
 	if(++nClockOverflows >= 64) {
 		nClockOverflows = 0;
+
+		nMenuSecondCounter++;
 
 		/* increase the time and adjust date if needed */
 		dtCurrentDateTime.Increase();

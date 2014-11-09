@@ -21,7 +21,7 @@ Archive member included because of file (symbol)
 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
                               /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ctors.o) (__tablejump__)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                              ./src/system.o (malloc)
+                              ./src/helpers.o (malloc)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
                               ./src/DateTime.o (sprintf)
 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
@@ -67,61 +67,40 @@ Discarded input sections
  .group         0x0000000000000000        0x8 ./src/LCDisplay.o
  .text          0x0000000000000000        0x0 ./src/LCDisplay.o
  .bss           0x0000000000000000        0x0 ./src/LCDisplay.o
- .text._ZNV9LCDisplay10CursorHomeEv
-                0x0000000000000000        0xe ./src/LCDisplay.o
  .text._ZNV9LCDisplay12GenerateCharEhPKh
                 0x0000000000000000       0x60 ./src/LCDisplay.o
  .group         0x0000000000000000        0x8 ./src/LcdMenu.o
  .text          0x0000000000000000        0x0 ./src/LcdMenu.o
  .bss           0x0000000000000000        0x0 ./src/LcdMenu.o
- .text._ZN7LcdMenuD2Ev
-                0x0000000000000000        0x2 ./src/LcdMenu.o
- .text._ZN7LcdMenuD0Ev
-                0x0000000000000000        0x2 ./src/LcdMenu.o
- .text._ZN7LcdMenuC2E14ButtonConfig_tP9LCDisplayP9MenuEntry
-                0x0000000000000000       0x62 ./src/LcdMenu.o
+ .text._ZN7LcdMenuC2Ev
+                0x0000000000000000       0x14 ./src/LcdMenu.o
  .text._ZN7LcdMenu12SetLCDisplayEP9LCDisplay
                 0x0000000000000000        0x8 ./src/LcdMenu.o
  .text._ZN7LcdMenu12GetLCDisplayEv
                 0x0000000000000000        0x8 ./src/LcdMenu.o
- .text._ZN7LcdMenu7RunMenuEv
-                0x0000000000000000        0x2 ./src/LcdMenu.o
  .text._ZN7LcdMenu12SetMenuEntryEP9MenuEntry
                 0x0000000000000000        0x8 ./src/LcdMenu.o
  .text._ZN7LcdMenu12GetMenuEntryEv
                 0x0000000000000000        0x8 ./src/LcdMenu.o
  .text._ZN7LcdMenu15SetButtonConfigE14ButtonConfig_t
-                0x0000000000000000       0x3e ./src/LcdMenu.o
- .rodata._ZTV7LcdMenu
-                0x0000000000000000        0x8 ./src/LcdMenu.o
+                0x0000000000000000        0xc ./src/LcdMenu.o
  .group         0x0000000000000000        0x8 ./src/MenuEntry.o
  .text          0x0000000000000000        0x0 ./src/MenuEntry.o
  .bss           0x0000000000000000        0x0 ./src/MenuEntry.o
- .text._ZN9MenuEntryD2Ev
-                0x0000000000000000        0x2 ./src/MenuEntry.o
- .text._ZN9MenuEntryD0Ev
-                0x0000000000000000        0x2 ./src/MenuEntry.o
- .text._ZN9MenuEntryC2EPcPFvvE
+ .text._ZN9MenuEntryC2Ev
                 0x0000000000000000       0x18 ./src/MenuEntry.o
- .text._ZN9MenuEntry12GetMenuTitleEv
+ .text._ZNV9MenuEntry12SetMenuTitleEPKc
                 0x0000000000000000        0x8 ./src/MenuEntry.o
- .text._ZN9MenuEntry12SetMenuTitleEPc
+ .text._ZNV9MenuEntry11SetFunctionEPFvvE
                 0x0000000000000000        0x8 ./src/MenuEntry.o
- .text._ZN9MenuEntry11SetFunctionEPFvvE
-                0x0000000000000000        0x8 ./src/MenuEntry.o
- .text._ZN9MenuEntry3RunEv
+ .text._ZNV9MenuEntry3RunEv
                 0x0000000000000000        0xc ./src/MenuEntry.o
- .text._ZN9MenuEntry7SetNextEPS_
-                0x0000000000000000        0x8 ./src/MenuEntry.o
- .text._ZN9MenuEntry7GetNextEv
-                0x0000000000000000        0x8 ./src/MenuEntry.o
- .rodata._ZTV9MenuEntry
-                0x0000000000000000        0x8 ./src/MenuEntry.o
+ .text          0x0000000000000000        0x0 ./src/helpers.o
+ .bss           0x0000000000000000        0x0 ./src/helpers.o
  .text          0x0000000000000000        0x0 ./src/main.o
  .bss           0x0000000000000000        0x0 ./src/main.o
  .text          0x0000000000000000        0x0 ./src/system.o
  .bss           0x0000000000000000        0x0 ./src/system.o
- .text._Znwj    0x0000000000000000        0x2 ./src/system.o
  .text._Z9InitFlagsv
                 0x0000000000000000        0x6 ./src/system.o
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
@@ -326,6 +305,7 @@ LOAD ./src/DcfData.o
 LOAD ./src/LCDisplay.o
 LOAD ./src/LcdMenu.o
 LOAD ./src/MenuEntry.o
+LOAD ./src/helpers.o
 LOAD ./src/main.o
 LOAD ./src/system.o
 LOAD /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a
@@ -426,7 +406,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x195a
+.text           0x0000000000000000     0x1c68
  *(.vectors)
  .vectors       0x0000000000000000       0x26 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
                 0x0000000000000000                __vectors
@@ -624,86 +604,146 @@ END GROUP
  .text._ZNV9LCDisplay13InitLCDisplayEv
                 0x0000000000000ae6       0xac ./src/LCDisplay.o
                 0x0000000000000ae6                LCDisplay::InitLCDisplay() volatile
+ .text._ZNV9LCDisplay10CursorHomeEv
+                0x0000000000000b92        0xe ./src/LCDisplay.o
+                0x0000000000000b92                LCDisplay::CursorHome() volatile
  .text._ZNV9LCDisplay9CurserPosEhh
-                0x0000000000000b92       0x26 ./src/LCDisplay.o
-                0x0000000000000b92                LCDisplay::CurserPos(unsigned char, unsigned char) volatile
+                0x0000000000000ba0       0x26 ./src/LCDisplay.o
+                0x0000000000000ba0                LCDisplay::CurserPos(unsigned char, unsigned char) volatile
+ .text._ZN7LcdMenuD2Ev
+                0x0000000000000bc6        0x2 ./src/LcdMenu.o
+                0x0000000000000bc6                LcdMenu::~LcdMenu()
+                0x0000000000000bc6                LcdMenu::~LcdMenu()
+ .text._ZN7LcdMenuD0Ev
+                0x0000000000000bc8        0x2 ./src/LcdMenu.o
+                0x0000000000000bc8                LcdMenu::~LcdMenu()
+ .text._ZN7LcdMenuC2E14ButtonConfig_tPV9LCDisplayP9MenuEntryPVh
+                0x0000000000000bca       0x30 ./src/LcdMenu.o
+                0x0000000000000bca                LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay volatile*, MenuEntry*, unsigned char volatile*)
+                0x0000000000000bca                LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay volatile*, MenuEntry*, unsigned char volatile*)
+ .text._ZN7LcdMenu7RunMenuEv
+                0x0000000000000bfa      0x146 ./src/LcdMenu.o
+                0x0000000000000bfa                LcdMenu::RunMenu()
+ .text._ZN9MenuEntryD2Ev
+                0x0000000000000d40        0x2 ./src/MenuEntry.o
+                0x0000000000000d40                MenuEntry::~MenuEntry()
+                0x0000000000000d40                MenuEntry::~MenuEntry()
+ .text._ZN9MenuEntryD0Ev
+                0x0000000000000d42        0x2 ./src/MenuEntry.o
+                0x0000000000000d42                MenuEntry::~MenuEntry()
+ .text._ZN9MenuEntryC2EPKcPFvvEPS_
+                0x0000000000000d44       0x18 ./src/MenuEntry.o
+                0x0000000000000d44                MenuEntry::MenuEntry(char const*, void (*)(), MenuEntry*)
+                0x0000000000000d44                MenuEntry::MenuEntry(char const*, void (*)(), MenuEntry*)
+ .text._ZNV9MenuEntry12GetMenuTitleEv
+                0x0000000000000d5c        0x8 ./src/MenuEntry.o
+                0x0000000000000d5c                MenuEntry::GetMenuTitle() volatile
+ .text._ZNV9MenuEntry7SetNextEPS_
+                0x0000000000000d64        0x8 ./src/MenuEntry.o
+                0x0000000000000d64                MenuEntry::SetNext(MenuEntry*) volatile
+ .text._ZNV9MenuEntry7GetNextEv
+                0x0000000000000d6c        0x8 ./src/MenuEntry.o
+                0x0000000000000d6c                MenuEntry::GetNext() volatile
+ .text._Znwj    0x0000000000000d74        0x2 ./src/helpers.o
+                0x0000000000000d74                operator new(unsigned int)
+ .text._ZdlPv   0x0000000000000d76        0x2 ./src/helpers.o
+                0x0000000000000d76                operator delete(void*)
+ .text._Z13ButtonPressedPVhh
+                0x0000000000000d78       0x40 ./src/helpers.o
+                0x0000000000000d78                ButtonPressed(unsigned char volatile*, unsigned char)
  .text.startup.main
-                0x0000000000000bb8      0x122 ./src/main.o
-                0x0000000000000bb8                main
- .text._ZdlPv   0x0000000000000cda        0x2 ./src/system.o
-                0x0000000000000cda                operator delete(void*)
+                0x0000000000000db8      0x12c ./src/main.o
+                0x0000000000000db8                main
+ .text._Z12Menu_SetTimev
+                0x0000000000000ee4        0x2 ./src/system.o
+                0x0000000000000ee4                Menu_SetTime()
+ .text._Z12Menu_SetDatev
+                0x0000000000000ee6        0x2 ./src/system.o
+                0x0000000000000ee6                Menu_SetDate()
+ .text._Z13Menu_SetAlarmv
+                0x0000000000000ee8        0x2 ./src/system.o
+                0x0000000000000ee8                Menu_SetAlarm()
+ .text._Z16Menu_SwitchAlarmv
+                0x0000000000000eea        0x2 ./src/system.o
+                0x0000000000000eea                Menu_SwitchAlarm()
+ .text._Z18Menu_SetSnoozeTimev
+                0x0000000000000eec        0x2 ./src/system.o
+                0x0000000000000eec                Menu_SetSnoozeTime()
+ .text._Z14Menu_SwitchDCFv
+                0x0000000000000eee        0x2 ./src/system.o
+                0x0000000000000eee                Menu_SwitchDCF()
  .text._Z17InitDayLightAlarmv
-                0x0000000000000cdc      0x12a ./src/system.o
-                0x0000000000000cdc                InitDayLightAlarm()
+                0x0000000000000ef0      0x21a ./src/system.o
+                0x0000000000000ef0                InitDayLightAlarm()
  .text.__vector_9
-                0x0000000000000e06       0x80 ./src/system.o
-                0x0000000000000e06                __vector_9
+                0x000000000000110a       0x8a ./src/system.o
+                0x000000000000110a                __vector_9
  .text.__vector_1
-                0x0000000000000e86      0x192 ./src/system.o
-                0x0000000000000e86                __vector_1
+                0x0000000000001194      0x192 ./src/system.o
+                0x0000000000001194                __vector_1
  .text.__vector_3
-                0x0000000000001018       0x7c ./src/system.o
-                0x0000000000001018                __vector_3
+                0x0000000000001326       0x7c ./src/system.o
+                0x0000000000001326                __vector_3
  .text.startup._GLOBAL__sub_I_dtCurrentDateTime
-                0x0000000000001094       0x12 ./src/system.o
+                0x00000000000013a2       0x12 ./src/system.o
  .text.exit._GLOBAL__sub_D_dtCurrentDateTime
-                0x00000000000010a6       0x12 ./src/system.o
+                0x00000000000013b4       0x12 ./src/system.o
  .text.libgcc.div
-                0x00000000000010b8       0x26 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
-                0x00000000000010b8                __divmodhi4
-                0x00000000000010b8                _div
+                0x00000000000013c6       0x26 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
+                0x00000000000013c6                __divmodhi4
+                0x00000000000013c6                _div
  .text.libgcc.builtins
-                0x00000000000010de       0x32 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
-                0x00000000000010de                __ashldi3
- .text.libgcc   0x0000000000001110       0x18 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
-                0x0000000000001110                __adddi3_s8
+                0x00000000000013ec       0x32 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
+                0x00000000000013ec                __ashldi3
+ .text.libgcc   0x000000000000141e       0x18 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
+                0x000000000000141e                __adddi3_s8
  .text.libgcc.div
-                0x0000000000001128       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
-                0x0000000000001128                __udivmodhi4
- .text.libgcc   0x0000000000001150        0xc /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
-                0x0000000000001150                __tablejump2__
-                0x0000000000001154                __tablejump__
+                0x0000000000001436       0x28 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000001436                __udivmodhi4
+ .text.libgcc   0x000000000000145e        0xc /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_tablejump.o)
+                0x000000000000145e                __tablejump2__
+                0x0000000000001462                __tablejump__
  .text.avr-libc
-                0x000000000000115c      0x25a /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                0x000000000000115c                malloc
-                0x0000000000001286                free
+                0x000000000000146a      0x25a /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                0x000000000000146a                malloc
+                0x0000000000001594                free
  .text.avr-libc
-                0x00000000000013b6       0x40 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
-                0x00000000000013b6                sprintf
+                0x00000000000016c4       0x40 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                0x00000000000016c4                sprintf
  .text.avr-libc
-                0x00000000000013f6      0x386 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
-                0x00000000000013f6                vfprintf
+                0x0000000000001704      0x386 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                0x0000000000001704                vfprintf
  .text.avr-libc
-                0x000000000000177c       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
-                0x000000000000177c                strnlen_P
+                0x0000000000001a8a       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                0x0000000000001a8a                strnlen_P
  .text.avr-libc
-                0x0000000000001792       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
-                0x0000000000001792                strnlen
+                0x0000000000001aa0       0x16 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                0x0000000000001aa0                strnlen
  .text.avr-libc
-                0x00000000000017a8       0x70 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
-                0x00000000000017a8                fputc
+                0x0000000000001ab6       0x70 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
+                0x0000000000001ab6                fputc
  .text.avr-libc
-                0x0000000000001818       0xbc /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
-                0x0000000000001818                __ultoa_invert
+                0x0000000000001b26       0xbc /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                0x0000000000001b26                __ultoa_invert
  .text.libgcc.prologue
-                0x00000000000018d4       0x38 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_prologue.o)
-                0x00000000000018d4                __prologue_saves__
+                0x0000000000001be2       0x38 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_prologue.o)
+                0x0000000000001be2                __prologue_saves__
  .text.libgcc.prologue
-                0x000000000000190c       0x36 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
-                0x000000000000190c                __epilogue_restores__
-                0x0000000000001942                . = ALIGN (0x2)
+                0x0000000000001c1a       0x36 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_epilogue.o)
+                0x0000000000001c1a                __epilogue_restores__
+                0x0000000000001c50                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000001942        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
-                0x0000000000001942                exit
-                0x0000000000001942                _exit
+ .fini9         0x0000000000001c50        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
+                0x0000000000001c50                exit
+                0x0000000000001c50                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
  *(.fini7)
  *(.fini7)
  *(.fini6)
- .fini6         0x0000000000001942       0x14 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
-                0x0000000000001942                __do_global_dtors
+ .fini6         0x0000000000001c50       0x14 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_dtors.o)
+                0x0000000000001c50                __do_global_dtors
  *(.fini6)
  *(.fini5)
  *(.fini5)
@@ -716,11 +756,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000001956        0x4 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
+ .fini0         0x0000000000001c64        0x4 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000000000195a                _etext = .
+                0x0000000000001c68                _etext = .
 
-.data           0x0000000000800060       0x7c load address 0x000000000000195a
+.data           0x0000000000800060       0xfa load address 0x0000000000001c68
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
@@ -729,6 +769,7 @@ END GROUP
  .data          0x0000000000800060        0x0 ./src/LCDisplay.o
  .data          0x0000000000800060        0x0 ./src/LcdMenu.o
  .data          0x0000000000800060        0x0 ./src/MenuEntry.o
+ .data          0x0000000000800060        0x0 ./src/helpers.o
  .data          0x0000000000800060        0x0 ./src/main.o
  .data          0x0000000000800060        0x0 ./src/system.o
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_divmodhi4.o)
@@ -769,62 +810,80 @@ END GROUP
  .rodata._ZTV9LCDisplay
                 0x00000000008000d3        0x8 ./src/LCDisplay.o
                 0x00000000008000d3                vtable for LCDisplay
+ .rodata.str1.1
+                0x00000000008000db        0x9 ./src/LcdMenu.o
+ .rodata._ZTV7LcdMenu
+                0x00000000008000e4        0x8 ./src/LcdMenu.o
+                0x00000000008000e4                vtable for LcdMenu
+ .rodata._ZTV9MenuEntry
+                0x00000000008000ec        0x8 ./src/MenuEntry.o
+                0x00000000008000ec                vtable for MenuEntry
+ .rodata.str1.1
+                0x00000000008000f4       0x66 ./src/system.o
  *(.gnu.linkonce.d*)
-                0x00000000008000dc                . = ALIGN (0x2)
- *fill*         0x00000000008000db        0x1 
-                0x00000000008000dc                _edata = .
-                0x00000000008000dc                PROVIDE (__data_end, .)
+                0x000000000080015a                . = ALIGN (0x2)
+                0x000000000080015a                _edata = .
+                0x000000000080015a                PROVIDE (__data_end, .)
 
-.bss            0x00000000008000dc       0x5c
-                0x00000000008000dc                PROVIDE (__bss_start, .)
+.bss            0x000000000080015a       0x6b
+                0x000000000080015a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss._ZZNV8DateTime13GetDatestringEbE7sString
-                0x00000000008000dc       0x11 ./src/DateTime.o
+                0x000000000080015a       0x11 ./src/DateTime.o
  .bss._ZZNV8DateTime13GetTimestringEbE7sString
-                0x00000000008000ed       0x11 ./src/DateTime.o
+                0x000000000080016b       0x11 ./src/DateTime.o
+ .bss.lmLCDMenu
+                0x000000000080017c        0x2 ./src/system.o
+                0x000000000080017c                lmLCDMenu
+ .bss.meMenuEntries
+                0x000000000080017e        0xc ./src/system.o
+                0x000000000080017e                meMenuEntries
  .bss.nCurrentBitNumber
-                0x00000000008000fe        0x1 ./src/system.o
-                0x00000000008000fe                nCurrentBitNumber
+                0x000000000080018a        0x1 ./src/system.o
+                0x000000000080018a                nCurrentBitNumber
  .bss.nLowLevelTicks
-                0x00000000008000ff        0x1 ./src/system.o
-                0x00000000008000ff                nLowLevelTicks
- .bss.nBitTime  0x0000000000800100        0x8 ./src/system.o
-                0x0000000000800100                nBitTime
+                0x000000000080018b        0x1 ./src/system.o
+                0x000000000080018b                nLowLevelTicks
+ .bss.nBitTime  0x000000000080018c        0x8 ./src/system.o
+                0x000000000080018c                nBitTime
  .bss.nBitSequenceTime
-                0x0000000000800108        0x8 ./src/system.o
-                0x0000000000800108                nBitSequenceTime
- .bss.nFlags    0x0000000000800110        0x1 ./src/system.o
-                0x0000000000800110                nFlags
+                0x0000000000800194        0x8 ./src/system.o
+                0x0000000000800194                nBitSequenceTime
+ .bss.nFlags    0x000000000080019c        0x1 ./src/system.o
+                0x000000000080019c                nFlags
  .bss.nClockOverflows
-                0x0000000000800111        0x1 ./src/system.o
-                0x0000000000800111                nClockOverflows
+                0x000000000080019d        0x1 ./src/system.o
+                0x000000000080019d                nClockOverflows
+ .bss.nMenuSecondCounter
+                0x000000000080019e        0x1 ./src/system.o
+                0x000000000080019e                nMenuSecondCounter
  .bss.lcDisplay
-                0x0000000000800112        0x2 ./src/system.o
-                0x0000000000800112                lcDisplay
+                0x000000000080019f        0x2 ./src/system.o
+                0x000000000080019f                lcDisplay
  .bss.dtDcfData
-                0x0000000000800114       0x10 ./src/system.o
-                0x0000000000800114                dtDcfData
+                0x00000000008001a1       0x10 ./src/system.o
+                0x00000000008001a1                dtDcfData
  .bss.tmAlarmTime
-                0x0000000000800124        0x8 ./src/system.o
-                0x0000000000800124                tmAlarmTime
+                0x00000000008001b1        0x8 ./src/system.o
+                0x00000000008001b1                tmAlarmTime
  .bss.dtCurrentDateTime
-                0x000000000080012c        0x8 ./src/system.o
-                0x000000000080012c                dtCurrentDateTime
+                0x00000000008001b9        0x8 ./src/system.o
+                0x00000000008001b9                dtCurrentDateTime
  *(COMMON)
- COMMON         0x0000000000800134        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                0x0000000000800134                __brkval
-                0x0000000000800136                __flp
-                0x0000000000800138                PROVIDE (__bss_end, .)
-                0x000000000000195a                __data_load_start = LOADADDR (.data)
-                0x00000000000019d6                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00000000008001c1        0x4 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                0x00000000008001c1                __brkval
+                0x00000000008001c3                __flp
+                0x00000000008001c5                PROVIDE (__bss_end, .)
+                0x0000000000001c68                __data_load_start = LOADADDR (.data)
+                0x0000000000001d62                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800138        0x0
-                0x0000000000800138                PROVIDE (__noinit_start, .)
+.noinit         0x00000000008001c5        0x0
+                0x00000000008001c5                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000800138                PROVIDE (__noinit_end, .)
-                0x0000000000800138                _end = .
-                0x0000000000800138                PROVIDE (__heap_start, .)
+                0x00000000008001c5                PROVIDE (__noinit_end, .)
+                0x00000000008001c5                _end = .
+                0x00000000008001c5                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -868,6 +927,7 @@ END GROUP
  .comment       0x0000000000000000       0x12 ./src/LCDisplay.o
  .comment       0x0000000000000000       0x12 ./src/LcdMenu.o
  .comment       0x0000000000000000       0x12 ./src/MenuEntry.o
+ .comment       0x0000000000000000       0x12 ./src/helpers.o
  .comment       0x0000000000000000       0x12 ./src/main.o
  .comment       0x0000000000000000       0x12 ./src/system.o
  .comment       0x0000000000000000       0x12 /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
@@ -947,6 +1007,8 @@ LOAD linker stubs
 Cross Reference Table
 
 Symbol                                            File
+ButtonPressed(unsigned char volatile*, unsigned char) ./src/helpers.o
+                                                  ./src/LcdMenu.o
 DateTime::DateTime()                              ./src/DateTime.o
                                                   ./src/DcfData.o
 DateTime::DateTime()                              ./src/DateTime.o
@@ -1015,9 +1077,12 @@ InitDayLightAlarm()                               ./src/system.o
 InitFlags()                                       ./src/system.o
 LCDisplay::ClearLCDisplay() volatile              ./src/LCDisplay.o
                                                   ./src/system.o
+                                                  ./src/LcdMenu.o
 LCDisplay::CurserPos(unsigned char, unsigned char) volatile ./src/LCDisplay.o
                                                   ./src/main.o
+                                                  ./src/LcdMenu.o
 LCDisplay::CursorHome() volatile                  ./src/LCDisplay.o
+                                                  ./src/LcdMenu.o
 LCDisplay::GenerateChar(unsigned char, unsigned char const*) volatile ./src/LCDisplay.o
 LCDisplay::InitLCDisplay() volatile               ./src/LCDisplay.o
                                                   ./src/system.o
@@ -1028,36 +1093,54 @@ LCDisplay::LcdEnable() volatile                   ./src/LCDisplay.o
 LCDisplay::LcdOut(unsigned char) volatile         ./src/LCDisplay.o
 LCDisplay::SetDisplayLight(bool) volatile         ./src/LCDisplay.o
                                                   ./src/main.o
+                                                  ./src/LcdMenu.o
 LCDisplay::WriteCommand(unsigned char) volatile   ./src/LCDisplay.o
 LCDisplay::WriteData(unsigned char) volatile      ./src/LCDisplay.o
                                                   ./src/main.o
 LCDisplay::WriteString(char const*) volatile      ./src/LCDisplay.o
                                                   ./src/main.o
+                                                  ./src/LcdMenu.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LcdMenu::GetLCDisplay()                           ./src/LcdMenu.o
 LcdMenu::GetMenuEntry()                           ./src/LcdMenu.o
-LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*, MenuEntry*) ./src/LcdMenu.o
-LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*, MenuEntry*) ./src/LcdMenu.o
+LcdMenu::LcdMenu()                                ./src/LcdMenu.o
+LcdMenu::LcdMenu()                                ./src/LcdMenu.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay volatile*, MenuEntry*, unsigned char volatile*) ./src/LcdMenu.o
+                                                  ./src/system.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay volatile*, MenuEntry*, unsigned char volatile*) ./src/LcdMenu.o
 LcdMenu::RunMenu()                                ./src/LcdMenu.o
+                                                  ./src/main.o
 LcdMenu::SetButtonConfig(ButtonConfig_t)          ./src/LcdMenu.o
 LcdMenu::SetLCDisplay(LCDisplay*)                 ./src/LcdMenu.o
 LcdMenu::SetMenuEntry(MenuEntry*)                 ./src/LcdMenu.o
 LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
 LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
 LcdMenu::~LcdMenu()                               ./src/LcdMenu.o
-MenuEntry::GetMenuTitle()                         ./src/MenuEntry.o
-MenuEntry::GetNext()                              ./src/MenuEntry.o
-MenuEntry::MenuEntry(char*, void (*)())           ./src/MenuEntry.o
-MenuEntry::MenuEntry(char*, void (*)())           ./src/MenuEntry.o
-MenuEntry::Run()                                  ./src/MenuEntry.o
-MenuEntry::SetFunction(void (*)())                ./src/MenuEntry.o
-MenuEntry::SetMenuTitle(char*)                    ./src/MenuEntry.o
-MenuEntry::SetNext(MenuEntry*)                    ./src/MenuEntry.o
+MenuEntry::GetMenuTitle() volatile                ./src/MenuEntry.o
+                                                  ./src/LcdMenu.o
+MenuEntry::GetNext() volatile                     ./src/MenuEntry.o
+                                                  ./src/LcdMenu.o
+MenuEntry::MenuEntry()                            ./src/MenuEntry.o
+MenuEntry::MenuEntry()                            ./src/MenuEntry.o
+MenuEntry::MenuEntry(char const*, void (*)(), MenuEntry*) ./src/MenuEntry.o
+MenuEntry::MenuEntry(char const*, void (*)(), MenuEntry*) ./src/MenuEntry.o
+                                                  ./src/system.o
+MenuEntry::Run() volatile                         ./src/MenuEntry.o
+MenuEntry::SetFunction(void (*)()) volatile       ./src/MenuEntry.o
+MenuEntry::SetMenuTitle(char const*) volatile     ./src/MenuEntry.o
+MenuEntry::SetNext(MenuEntry*) volatile           ./src/MenuEntry.o
+                                                  ./src/system.o
 MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
 MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
 MenuEntry::~MenuEntry()                           ./src/MenuEntry.o
+Menu_SetAlarm()                                   ./src/system.o
+Menu_SetDate()                                    ./src/system.o
+Menu_SetSnoozeTime()                              ./src/system.o
+Menu_SetTime()                                    ./src/system.o
+Menu_SwitchAlarm()                                ./src/system.o
+Menu_SwitchDCF()                                  ./src/system.o
 __adddi3_s8                                       /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_adddi3_s8.o)
                                                   ./src/system.o
 __ashldi3                                         /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_ashldi3.o)
@@ -1079,6 +1162,7 @@ __do_clear_bss                                    /usr/lib/gcc/avr/4.9.1/avr4/li
                                                   ./src/DateTime.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.1/avr4/libgcc.a(_copy_data.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
+                                                  ./src/system.o
                                                   ./src/MenuEntry.o
                                                   ./src/LcdMenu.o
                                                   ./src/LCDisplay.o
@@ -1147,13 +1231,16 @@ exit                                              /usr/lib/gcc/avr/4.9.1/avr4/li
 fputc                                             /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(fputc.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
 free                                              /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                                                  ./src/system.o
+                                                  ./src/helpers.o
 lcDisplay                                         ./src/system.o
+                                                  ./src/main.o
+lmLCDMenu                                         ./src/system.o
                                                   ./src/main.o
 main                                              ./src/main.o
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/crtm8.o
 malloc                                            /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(malloc.o)
-                                                  ./src/system.o
+                                                  ./src/helpers.o
+meMenuEntries                                     ./src/system.o
 nBitSequenceTime                                  ./src/system.o
 nBitTime                                          ./src/system.o
 nClockOverflows                                   ./src/system.o
@@ -1161,14 +1248,17 @@ nCurrentBitNumber                                 ./src/system.o
 nFlags                                            ./src/system.o
                                                   ./src/main.o
 nLowLevelTicks                                    ./src/system.o
-operator delete(void*)                            ./src/system.o
+nMenuSecondCounter                                ./src/system.o
+operator delete(void*)                            ./src/helpers.o
                                                   ./src/MenuEntry.o
                                                   ./src/LcdMenu.o
                                                   ./src/LCDisplay.o
                                                   ./src/DcfData.o
                                                   ./src/DateTime.o
-operator new(unsigned int)                        ./src/system.o
+operator new(unsigned int)                        ./src/helpers.o
+                                                  ./src/system.o
 sprintf                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                                                  ./src/LcdMenu.o
                                                   ./src/DateTime.o
 strnlen                                           /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(strnlen.o)
                                                   /usr/lib/gcc/avr/4.9.1/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
