@@ -78,8 +78,8 @@ Discarded input sections
                 0x0000000000000000        0x2 ./src/LcdMenu.o
  .text._ZN7LcdMenuD0Ev
                 0x0000000000000000        0x2 ./src/LcdMenu.o
- .text._ZN7LcdMenuC2E14ButtonConfig_tP9LCDisplay
-                0x0000000000000000       0x58 ./src/LcdMenu.o
+ .text._ZN7LcdMenuC2E14ButtonConfig_tP9LCDisplayP9MenuEntry
+                0x0000000000000000       0x62 ./src/LcdMenu.o
  .text._ZN7LcdMenu12SetLCDisplayEP9LCDisplay
                 0x0000000000000000        0x8 ./src/LcdMenu.o
  .text._ZN7LcdMenu12GetLCDisplayEv
@@ -1038,8 +1038,8 @@ LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LCDisplay::~LCDisplay()                           ./src/LCDisplay.o
 LcdMenu::GetLCDisplay()                           ./src/LcdMenu.o
 LcdMenu::GetMenuEntry()                           ./src/LcdMenu.o
-LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*)      ./src/LcdMenu.o
-LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*)      ./src/LcdMenu.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*, MenuEntry*) ./src/LcdMenu.o
+LcdMenu::LcdMenu(ButtonConfig_t, LCDisplay*, MenuEntry*) ./src/LcdMenu.o
 LcdMenu::RunMenu()                                ./src/LcdMenu.o
 LcdMenu::SetButtonConfig(ButtonConfig_t)          ./src/LcdMenu.o
 LcdMenu::SetLCDisplay(LCDisplay*)                 ./src/LcdMenu.o

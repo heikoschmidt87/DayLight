@@ -7,10 +7,11 @@
 
 #include "LcdMenu.h"
 
-LcdMenu::LcdMenu(ButtonConfig_t btnConfig, LCDisplay *lcDisplay) {
+LcdMenu::LcdMenu(ButtonConfig_t btnConfig, LCDisplay *lcDisplay, MenuEntry *currentMenueEntry) {
 
 	this->lcDisplay_ = lcDisplay;
 	this->btnConfig_ = btnConfig;
+	this->currentMenuEntry_ = currentMenueEntry;
 }
 
 LcdMenu::~LcdMenu() {
@@ -29,11 +30,11 @@ void LcdMenu::RunMenu() {
 }
 
 void LcdMenu::SetMenuEntry(MenuEntry *menuEntry) {
-	this->menuEntry_ = menuEntry;
+	this->currentMenuEntry_ = menuEntry;
 }
 
 MenuEntry* LcdMenu::GetMenuEntry() {
-	return this->menuEntry_;
+	return this->currentMenuEntry_;
 }
 
 void LcdMenu::SetButtonConfig(ButtonConfig_t btnConfig) {

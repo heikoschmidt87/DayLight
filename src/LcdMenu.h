@@ -27,13 +27,13 @@ typedef struct {
 
 class LcdMenu {
 private:
-	MenuEntry *menuEntry_;
+	MenuEntry *currentMenuEntry_;
 	LCDisplay *lcDisplay_;
 
 	ButtonConfig_t btnConfig_;
 
 public:
-	LcdMenu(ButtonConfig_t btnConfig, LCDisplay *lcDisplay);
+	LcdMenu(ButtonConfig_t btnConfig, LCDisplay *lcDisplay, MenuEntry *currentMenuEntry_);
 	virtual ~LcdMenu();
 
 	void SetLCDisplay(LCDisplay *lcDisplay);
