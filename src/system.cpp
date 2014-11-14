@@ -18,7 +18,7 @@ volatile LCDisplay *lcDisplay;
 volatile uint8_t nMenuSecondCounter;
 
 volatile uint8_t nClockOverflows;
-volatile uint8_t nFlags;
+volatile uint16_t nFlags;
 
 volatile uint64_t nBitSequenceTime;
 volatile uint64_t nBitTime;
@@ -55,9 +55,35 @@ void Menu_SetAlarm() {
 }
 
 void Menu_SwitchAlarm() {
-	lcDisplay->WriteString("Switch Alarm");
 
-	_delay_ms(2000);
+	bool bFunctionActive = true;
+
+	do {
+		/* print current setting */
+		lcDisplay->CurserPos(6, 2);
+
+		if((nFlags & FLAG_DO_ALARM) > 0) {
+			lcDisplay->WriteString("On ");
+		} else {
+			lcDisplay->WriteString("Off");
+		}
+
+		/* wait for next button press */
+		while(1) {
+
+			/* check for adjust button */
+			if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+				nFlags ^= FLAG_DO_ALARM;
+				break;
+			}
+
+			if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+				bFunctionActive = false;
+				break;
+			}
+		}
+
+	} while(bFunctionActive);
 }
 
 void Menu_SetSnoozeTime() {
@@ -68,13 +94,44 @@ void Menu_SetSnoozeTime() {
 }
 
 void Menu_SwitchDCF() {
-	lcDisplay->WriteString("Switch DCF");
+	bool bFunctionActive = true;
 
-	_delay_ms(2000);
+	do {
+		/* print current setting */
+		lcDisplay->CurserPos(6, 2);
+
+		if((nFlags & FLAG_DO_DCF_RECV) > 0) {
+			lcDisplay->WriteString("On ");
+		} else {
+			lcDisplay->WriteString("Off");
+		}
+
+		/* wait for next button press */
+		while(1) {
+
+			/* check for adjust button */
+			if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+				nFlags ^= FLAG_DO_DCF_RECV;
+				break;
+			}
+
+			if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+				bFunctionActive = false;
+				break;
+			}
+		}
+
+	} while(bFunctionActive);
 
 }
 
 void InitDayLightAlarm() {
+
+	/*
+	 * init flags
+	 */
+	/* TODO: read from EEPROM */
+	nFlags |= FLAG_DO_DCF_RECV;
 
 	/*
 	 * init buttons

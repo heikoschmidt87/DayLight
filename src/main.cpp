@@ -27,7 +27,8 @@ int main() {
 	while(1) {
 
 		/* check for refreshing DCF77 info */
-		if((nFlags & FLAG_REFRESH_DCFTIME) > 0) {
+		if(		((nFlags & FLAG_REFRESH_DCFTIME) > 0)
+			&&	((nFlags & FLAG_DO_DCF_RECV) > 0)) {
 
 			nFlags &= ~FLAG_REFRESH_DCFTIME;
 

@@ -100,6 +100,7 @@ struct {
 #define FLAG_DCFSYMBOL_VISIBLE	0x10
 #define FLAG_REFRESH_DCFTIME	0x20
 #define FLAG_UPDATE_DCF_DOT		0x40
+#define FLAG_DO_DCF_RECV		0x80
 
 #define NO_OF_MENU_ENTRIES		6
 
@@ -115,7 +116,7 @@ extern volatile uint8_t nMenuSecondCounter;
 extern volatile LCDisplay *lcDisplay;
 
 extern volatile uint8_t nClockOverflows;
-extern volatile uint8_t nFlags;
+extern volatile uint16_t nFlags;
 
 extern volatile uint64_t nBitSequenceTime;
 extern volatile uint64_t nBitTime;
