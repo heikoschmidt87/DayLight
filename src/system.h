@@ -19,10 +19,12 @@
 #include <util/delay.h>
 #include <string.h>
 
+#include "helpers.h"
 #include "DateTime.h"
 #include "DcfData.h"
 #include "LCDisplay.h"
-
+#include "LcdMenu.h"
+#include "MenuEntry.h"
 
 ////////////////////////////////////
 // ERRORS
@@ -33,13 +35,17 @@ typedef uint8_t Ret_Err_Def;
 #define	RET_NOK		0x80
 
 ////////////////////////////////////
-// HELPERS
+// Global Functions
 ////////////////////////////////////
-void * operator new(size_t size);
-void operator delete(void * ptr);
+extern void InitFlags();
+extern void InitDayLightAlarm();
 
-void InitFlags();
-void InitDayLightAlarm();
+extern void Menu_SetTime();
+extern void Menu_SetDate();
+extern void Menu_SetAlarm();
+extern void Menu_SwitchAlarm();
+extern void Menu_SetSnoozeTime();
+extern void Menu_SwitchDCF();
 
 ////////////////////////////////////
 // STRUCTS
@@ -95,12 +101,16 @@ struct {
 #define FLAG_REFRESH_DCFTIME	0x20
 #define FLAG_UPDATE_DCF_DOT		0x40
 
+#define NO_OF_MENU_ENTRIES		6
+
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
 extern volatile DateTime dtCurrentDateTime;
 extern volatile DateTime tmAlarmTime;
 extern volatile DcfData dtDcfData;
+
+extern volatile uint8_t nMenuSecondCounter;
 
 extern volatile LCDisplay *lcDisplay;
 
@@ -111,5 +121,17 @@ extern volatile uint64_t nBitSequenceTime;
 extern volatile uint64_t nBitTime;
 extern volatile uint8_t nLowLevelTicks;
 extern volatile uint8_t nCurrentBitNumber;
+
+/* menu structure
+ * 1 - Uhr stellen
+ * 2 - Datum stellen
+ * 3 - Alarmzeit stellen
+ * 4 - Alarm an-/ausschalten
+ * 5 - Schlummerzeit
+ * 6 - DCF an/aus
+ * */
+extern MenuEntry *meMenuEntries[NO_OF_MENU_ENTRIES];
+extern LcdMenu *lmLCDMenu;
+
 
 #endif /* SYSTEM_H_ */
