@@ -16,17 +16,17 @@
  */
 int main() {
 
+	bool bMenuStartAllowed = true;
+
 	InitDayLightAlarm();
 
 	lcDisplay->SetDisplayLight(true);
 
 	sei();
 
-	lmLCDMenu->RunMenu();
-
-
 	while(1) {
 
+		/* check for refreshing DCF77 info */
 		if((nFlags & FLAG_REFRESH_DCFTIME) > 0) {
 
 			nFlags &= ~FLAG_REFRESH_DCFTIME;
@@ -70,6 +70,24 @@ int main() {
 			}
 
 			nFlags &= ~FLAG_REFRESH_DISPLAY;
+		}
+
+		/* check for menu */
+		if(ButtonPressed(&PIN_BTN1, BUTTON_MENU) && bMenuStartAllowed) {
+			bMenuStartAllowed = false;
+
+			lmLCDMenu->RunMenu();
+
+			lcDisplay->ClearLCDisplay();
+			lcDisplay->CursorHome();
+
+			nFlags |= FLAG_REFRESH_DISPLAY;
+		}
+
+		/* check if button has been released */
+		if(!bMenuStartAllowed) {
+			if(!ButtonPressed(&PIN_BTN1, BUTTON_MENU))
+				bMenuStartAllowed = true;
 		}
 
 	}

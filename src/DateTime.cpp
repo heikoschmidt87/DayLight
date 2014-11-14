@@ -19,7 +19,7 @@ DateTime::DateTime() {
 	this->dtDate_.nDayOfWeek = 1;
 	this->dtDate_.nDay = 1;
 	this->dtDate_.nMonth = 1;
-	this->dtDate_.nYear = 1979;
+	this->dtDate_.nYear = 1970;
 }
 
 DateTime::DateTime(Time_t tmTime, Date_t dtDate) {

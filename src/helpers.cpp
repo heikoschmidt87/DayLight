@@ -17,11 +17,12 @@ void operator delete(void * ptr) {
 
 bool ButtonPressed(volatile uint8_t *port, uint8_t pin) {
 
+
 	if(!(*port & (1 << pin))) {
 
 		_delay_ms(100);
 
-		if(*port & (1 << pin)) {
+		if(!(*port & (1 << pin))) {
 			return true;
 		}
 	}

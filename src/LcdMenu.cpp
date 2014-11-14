@@ -41,6 +41,8 @@ void LcdMenu::RunMenu() {
 
 	bool bMenuActive = true;
 
+	/* TODO: avoid menu function start on accidentially long press of menu button */
+
 	do {
 		/* clear the display */
 		this->lcDisplay_->ClearLCDisplay();
@@ -56,20 +58,12 @@ void LcdMenu::RunMenu() {
 
 				this->currentMenuEntry_ = this->currentMenuEntry_->GetNext();
 
-				/* check if button is pressed longer than one second */
-				if(ButtonPressed(this->btnConfig_.btnPin_, this->btnConfig_.btnNext_)) {
-					bMenuActive = false;
-				}
-
 				/* wait till button is released */
 				while(ButtonPressed(this->btnConfig_.btnPin_, this->btnConfig_.btnNext_)) {
 				}
 
 				break;
 			}
-
-			this->lcDisplay_->CurserPos(0, 2);
-			char bla[16];
 
 			/* check for "enter" button to be pressed */
 			if(ButtonPressed(this->btnConfig_.btnPin_, this->btnConfig_.btnEnter_)) {
@@ -79,37 +73,23 @@ void LcdMenu::RunMenu() {
 				/* reset the button pressed timer */
 				*this->nMenuSecondCounter_ = 0;
 
-
-				_delay_ms(2000);
-
-				int n = *this->nMenuSecondCounter_;
-				sprintf(bla, "%d", n);
-				this->lcDisplay_->WriteString(bla);
-
-				while(true) {
-
-				}
-
 				/* wait for the button to be released */
 				while(ButtonPressed(this->btnConfig_.btnPin_, this->btnConfig_.btnEnter_)) {
-				}
-
-				n = *this->nMenuSecondCounter_;
-				sprintf(bla, "%d", n);
-				this->lcDisplay_->WriteString(bla);
-
-				while(1) {
-
+					if(*this->nMenuSecondCounter_ >= 2) {
+						bMenuActive = false;
+						break;
+					}
 				}
 
 				/* check if the menu should be closed */
-				if(*this->nMenuSecondCounter_ >= 10) {
-					bMenuActive = false;
-					break;
+				if(bMenuActive){
+					/* set cursor to correct position, call the menu entry function */
+					lcDisplay_->CurserPos(0, 2);
+					this->currentMenuEntry_->Run();
 
-				} else {
-					/* call the menu entry function */
 				}
+
+				break;
 			}
 		}
 

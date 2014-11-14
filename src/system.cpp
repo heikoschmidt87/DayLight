@@ -37,26 +37,40 @@ void InitFlags() {
 }
 
 void Menu_SetTime() {
+	lcDisplay->WriteString("Set Time");
 
+	_delay_ms(2000);
 }
 
 void Menu_SetDate() {
+	lcDisplay->WriteString("Set Date");
 
+	_delay_ms(2000);
 }
 
 void Menu_SetAlarm() {
+	lcDisplay->WriteString("Set Alarm");
 
+	_delay_ms(2000);
 }
 
 void Menu_SwitchAlarm() {
+	lcDisplay->WriteString("Switch Alarm");
 
+	_delay_ms(2000);
 }
 
 void Menu_SetSnoozeTime() {
+	lcDisplay->WriteString("Set Snooze Time");
+
+	_delay_ms(2000);
 
 }
 
 void Menu_SwitchDCF() {
+	lcDisplay->WriteString("Switch DCF");
+
+	_delay_ms(2000);
 
 }
 
