@@ -65,7 +65,7 @@ all: DayLight.elf secondary-outputs
 DayLight.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,DayLight.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega8 -o "DayLight.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,DayLight.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega32 -o "DayLight.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -89,7 +89,7 @@ DayLight.eep: DayLight.elf
 
 sizedummy: DayLight.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega8 DayLight.elf
+	-avr-size --format=avr --mcu=atmega32 DayLight.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

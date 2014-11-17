@@ -64,34 +64,34 @@ struct {
 ////////////////////////////////////
 // DEFINES
 ////////////////////////////////////
-#define BUTTON_SNOOZE	PD5
-#define BUTTON_MENU		PD6
-#define BUTTON_ADJUST	PD7
-#define BUTTON_LIGHT	PB0
-#define DAY_LIGHT		PB1
-#define SPEAKER			PB2
-#define DISPLAY_LIGHT	PD0
+#define BUTTON_SNOOZE	PC4
+#define BUTTON_MENU		PC5
+#define BUTTON_ADJUST	PC6
+#define BUTTON_LIGHT	PC7
+#define DAY_LIGHT		PD5
+#define SPEAKER			PD4
+#define DISPLAY_LIGHT	PB0
 
-#define PORT_BTN1		PORTD
-#define PORT_BTN2		PORTB
-#define PORT_DAY_LIGHT	PORTB
-#define PORT_SPEAKER	PORTB
-#define PORT_DISPLIGHT	PORTD
-#define PORT_LCD		PORTC
+#define PORT_BTN1		PORTC
+#define PORT_BTN2		PORTC
+#define PORT_DAY_LIGHT	PORTD
+#define PORT_SPEAKER	PORTD
+#define PORT_DISPLIGHT	PORTB
+#define PORT_LCD		PORTA
 
-#define PIN_BTN1		PIND
-#define PIN_BTN2		PINB
+#define PIN_BTN1		PINC
+#define PIN_BTN2		PINC
 
-#define DDR_BTN1		DDRD
-#define DDR_BTN2		DDRB
-#define DDR_DAY_LIGHT	DDRB
-#define DDR_SPEAKER		DDRB
-#define DDR_DISPLIGHT	DDRD
-#define DDR_LCD			DDRC
+#define DDR_BTN1		DDRC
+#define DDR_BTN2		DDRC
+#define DDR_DAY_LIGHT	DDRD
+#define DDR_SPEAKER		DDRD
+#define DDR_DISPLIGHT	DDRB
+#define DDR_LCD			DDRA
 
-#define LCD_DB        	PC0
-#define LCD_RS        	PC5
-#define LCD_EN        	PC4
+#define LCD_DB        	PA0
+#define LCD_RS        	PA5
+#define LCD_EN        	PA4
 
 #define FLAG_REFRESH_DISPLAY	0x01
 #define FLAG_DCF_FALLING_EDGE	0x02

@@ -118,6 +118,10 @@ class LCDisplay {
 private:
 	LcdHwConfig_t oLcdHwConfig_;
 
+	uint8_t uCurrentSetFunction;
+	uint8_t uCurrentSetDisplay;
+	uint8_t uCurrentSetEntry;
+
 	void LcdEnable() volatile;
 	void LcdOut(uint8_t nData) volatile;
 
@@ -135,6 +139,9 @@ public:
 	void WriteString(const char *nString) volatile;
 	void GenerateChar(uint8_t nCode, const uint8_t *nData) volatile;
 	void WriteCommand(uint8_t nCommand) volatile;
+
+	void ShowCursor(bool bShow) volatile;
+	void CursorBlink(bool bBlink) volatile;
 };
 
 #endif /* SRC_LCDISPLAY_H_ */

@@ -7,6 +7,11 @@
 
 #include "system.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <avr/eeprom.h>
+
 ////////////////////////////////////
 // GLOBALS
 ////////////////////////////////////
@@ -37,9 +42,115 @@ void InitFlags() {
 }
 
 void Menu_SetTime() {
-	lcDisplay->WriteString("Set Time");
 
-	_delay_ms(2000);
+	DateTime dtCurrentSetting;
+
+	dtCurrentSetting.SetHour(dtCurrentDateTime.GetHour());
+	dtCurrentSetting.SetMinute(dtCurrentDateTime.GetMinute());
+	dtCurrentSetting.SetSecond(dtCurrentDateTime.GetSecond());
+
+	bool bFunctionActive = true;
+	uint8_t nCurrentVal = 0;
+
+	char tmpPrint[3];
+
+	lcDisplay->ShowCursor(true);
+	lcDisplay->CursorBlink(true);
+
+	do {
+		/* print current setting */
+		lcDisplay->CurserPos(4, 2);
+		lcDisplay->WriteString(dtCurrentSetting.GetTimestring(true));
+		lcDisplay->CurserPos(4, 2);
+
+		/* set hour */
+		do {
+
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetHour());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(4, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetHour() == 23)
+						dtCurrentSetting.SetHour(0);
+					else
+						dtCurrentSetting.SetHour(dtCurrentSetting.GetHour() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 1;
+					break;
+				}
+			}
+
+		}while(nCurrentVal == 0);
+
+		/* set minute */
+		do {
+
+			lcDisplay->CurserPos(7, 2);
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetMinute());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(7, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetMinute() == 59)
+						dtCurrentSetting.SetMinute(0);
+					else
+						dtCurrentSetting.SetMinute(dtCurrentSetting.GetMinute() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 2;
+					break;
+				}
+			}
+		}while(nCurrentVal == 1);
+
+		/* set second */
+		do {
+
+			lcDisplay->CurserPos(10, 2);
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetSecond());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(10, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetSecond() == 59)
+						dtCurrentSetting.SetSecond(0);
+					else
+						dtCurrentSetting.SetSecond(dtCurrentSetting.GetSecond() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 3;
+					bFunctionActive = false;
+					break;
+				}
+			}
+
+		}while(nCurrentVal == 2);
+
+	}while(bFunctionActive);
+
+	dtCurrentDateTime.SetHour(dtCurrentSetting.GetHour());
+	dtCurrentDateTime.SetMinute(dtCurrentSetting.GetMinute());
+	dtCurrentDateTime.SetSecond(dtCurrentSetting.GetSecond());
+
+	lcDisplay->ShowCursor(false);
+	lcDisplay->CursorBlink(false);
 }
 
 void Menu_SetDate() {
@@ -49,14 +160,123 @@ void Menu_SetDate() {
 }
 
 void Menu_SetAlarm() {
-	lcDisplay->WriteString("Set Alarm");
 
-	_delay_ms(2000);
+	DateTime dtCurrentSetting;
+
+	dtCurrentSetting.SetHour(tmAlarmTime.GetHour());
+	dtCurrentSetting.SetMinute(tmAlarmTime.GetMinute());
+	dtCurrentSetting.SetSecond(tmAlarmTime.GetSecond());
+
+	bool bFunctionActive = true;
+	uint8_t nCurrentVal = 0;
+
+	char tmpPrint[3];
+
+	lcDisplay->ShowCursor(true);
+	lcDisplay->CursorBlink(true);
+
+	do {
+		/* print current setting */
+		lcDisplay->CurserPos(4, 2);
+		lcDisplay->WriteString(dtCurrentSetting.GetTimestring(true));
+		lcDisplay->CurserPos(4, 2);
+
+		/* set hour */
+		do {
+
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetHour());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(4, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetHour() == 23)
+						dtCurrentSetting.SetHour(0);
+					else
+						dtCurrentSetting.SetHour(dtCurrentSetting.GetHour() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 1;
+					break;
+				}
+			}
+
+		}while(nCurrentVal == 0);
+
+		/* set minute */
+		do {
+
+			lcDisplay->CurserPos(7, 2);
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetMinute());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(7, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetMinute() == 59)
+						dtCurrentSetting.SetMinute(0);
+					else
+						dtCurrentSetting.SetMinute(dtCurrentSetting.GetMinute() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 2;
+					break;
+				}
+			}
+		}while(nCurrentVal == 1);
+
+		/* set second */
+		do {
+
+			lcDisplay->CurserPos(10, 2);
+			sprintf(tmpPrint, "%.2d", dtCurrentSetting.GetSecond());
+			lcDisplay->WriteString(tmpPrint);
+			lcDisplay->CurserPos(10, 2);
+
+			/* wait for button press */
+			while(1) {
+				if(ButtonPressed(&PIN_BTN1, BUTTON_ADJUST)) {
+					if(dtCurrentSetting.GetSecond() == 59)
+						dtCurrentSetting.SetSecond(0);
+					else
+						dtCurrentSetting.SetSecond(dtCurrentSetting.GetSecond() + 1);
+
+					break;
+				}
+
+				if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
+					nCurrentVal = 3;
+					bFunctionActive = false;
+					break;
+				}
+			}
+
+		}while(nCurrentVal == 2);
+
+	}while(bFunctionActive);
+
+	tmAlarmTime.SetHour(dtCurrentSetting.GetHour());
+	tmAlarmTime.SetMinute(dtCurrentSetting.GetMinute());
+	tmAlarmTime.SetSecond(dtCurrentSetting.GetSecond());
+
+	lcDisplay->ShowCursor(false);
+	lcDisplay->CursorBlink(false);
 }
 
 void Menu_SwitchAlarm() {
 
 	bool bFunctionActive = true;
+
+	lcDisplay->ShowCursor(true);
+	lcDisplay->CursorBlink(true);
 
 	do {
 		/* print current setting */
@@ -67,6 +287,8 @@ void Menu_SwitchAlarm() {
 		} else {
 			lcDisplay->WriteString("Off");
 		}
+
+		lcDisplay->CurserPos(6, 2);
 
 		/* wait for next button press */
 		while(1) {
@@ -84,6 +306,9 @@ void Menu_SwitchAlarm() {
 		}
 
 	} while(bFunctionActive);
+
+	lcDisplay->ShowCursor(false);
+	lcDisplay->CursorBlink(false);
 }
 
 void Menu_SetSnoozeTime() {
@@ -96,6 +321,9 @@ void Menu_SetSnoozeTime() {
 void Menu_SwitchDCF() {
 	bool bFunctionActive = true;
 
+	lcDisplay->ShowCursor(true);
+	lcDisplay->CursorBlink(true);
+
 	do {
 		/* print current setting */
 		lcDisplay->CurserPos(6, 2);
@@ -105,6 +333,8 @@ void Menu_SwitchDCF() {
 		} else {
 			lcDisplay->WriteString("Off");
 		}
+
+		lcDisplay->CurserPos(6, 2);
 
 		/* wait for next button press */
 		while(1) {
@@ -123,6 +353,8 @@ void Menu_SwitchDCF() {
 
 	} while(bFunctionActive);
 
+	lcDisplay->ShowCursor(false);
+	lcDisplay->CursorBlink(false);
 }
 
 void InitDayLightAlarm() {
@@ -283,6 +515,7 @@ ISR(INT0_vect) {
 		if(nBitSequenceTime > 250) {
 
 			/* check if all bits have been received -- only then update free running time */
+			/* TODO: correct again with new controller */
 			if(nCurrentBitNumber == 59) {
 				/* make the DCF data to update the time */
 				nFlags |= FLAG_REFRESH_DCFTIME;

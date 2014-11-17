@@ -66,19 +66,13 @@ void LCDisplay::InitLCDisplay() volatile {
              LCD_FUNCTION_4BIT );
     _delay_ms( LCD_SET_4BITMODE_MS );
 
-    WriteCommand( LCD_SET_FUNCTION |
-                 LCD_FUNCTION_4BIT |
-                 LCD_FUNCTION_2LINE |
-                 LCD_FUNCTION_5X7 );
+    uCurrentSetFunction = LCD_SET_FUNCTION | LCD_FUNCTION_4BIT | LCD_FUNCTION_2LINE | LCD_FUNCTION_5X7;
+    uCurrentSetDisplay = LCD_SET_DISPLAY | LCD_DISPLAY_ON | LCD_CURSOR_OFF | LCD_BLINKING_OFF;
+    uCurrentSetEntry = LCD_SET_ENTRY | LCD_ENTRY_INCREASE | LCD_ENTRY_NOSHIFT;
 
-    WriteCommand( LCD_SET_DISPLAY |
-                 LCD_DISPLAY_ON |
-                 LCD_CURSOR_OFF |
-                 LCD_BLINKING_OFF);
-
-    WriteCommand( LCD_SET_ENTRY |
-                 LCD_ENTRY_INCREASE |
-                 LCD_ENTRY_NOSHIFT );
+    WriteCommand(uCurrentSetFunction);
+    WriteCommand(uCurrentSetDisplay);
+    WriteCommand(uCurrentSetEntry);
 
     ClearLCDisplay();
 }
@@ -162,4 +156,26 @@ void LCDisplay::WriteCommand(uint8_t nCommand) volatile {
 
     _delay_us( LCD_COMMAND_US );
 
+}
+
+
+void LCDisplay::ShowCursor(bool bShow) volatile {
+    if(bShow) {
+    	uCurrentSetDisplay |= LCD_CURSOR_ON;
+    } else {
+    	uCurrentSetDisplay &= ~LCD_CURSOR_ON;
+    }
+
+    WriteCommand(uCurrentSetDisplay);
+}
+
+void LCDisplay::CursorBlink(bool bBlink) volatile {
+
+	if(bBlink) {
+    	uCurrentSetDisplay |= LCD_BLINKING_ON;
+    } else {
+    	uCurrentSetDisplay &= ~LCD_BLINKING_ON;
+    }
+
+    WriteCommand(uCurrentSetDisplay);
 }
