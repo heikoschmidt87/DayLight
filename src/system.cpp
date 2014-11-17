@@ -267,6 +267,8 @@ void Menu_SetAlarm() {
 	tmAlarmTime.SetMinute(dtCurrentSetting.GetMinute());
 	tmAlarmTime.SetSecond(dtCurrentSetting.GetSecond());
 
+	eeprom_write_block((void*)&tmAlarmTime, (void*)0, sizeof(DateTime));
+
 	lcDisplay->ShowCursor(false);
 	lcDisplay->CursorBlink(false);
 }
@@ -306,6 +308,8 @@ void Menu_SwitchAlarm() {
 		}
 
 	} while(bFunctionActive);
+
+	eeprom_write_block((void*)&nFlags, (void*)(sizeof(DateTime) + 1), sizeof(nFlags));
 
 	lcDisplay->ShowCursor(false);
 	lcDisplay->CursorBlink(false);
@@ -472,6 +476,15 @@ void InitDayLightAlarm() {
 	btnConfig.btnEnter_ = BUTTON_MENU;
 
 	lmLCDMenu = new LcdMenu(btnConfig, lcDisplay, meMenuEntries[0], &nMenuSecondCounter);
+
+	/*
+	 * init eeprom variables
+	 */
+	eeprom_read_block((void*)&tmAlarmTime, (const void*)0, sizeof(DateTime));
+
+	uint16_t nLocalFlags = 0;
+	eeprom_read_block((void*)&nLocalFlags, (const void*)(sizeof(DateTime) + 1), sizeof(nLocalFlags));
+	nFlags = (nLocalFlags & FLAG_DO_ALARM) | (nLocalFlags & FLAG_DO_DCF_RECV);
 }
 
 ISR(TIMER0_OVF_vect) {

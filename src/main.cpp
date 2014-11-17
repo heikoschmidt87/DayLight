@@ -10,6 +10,53 @@
 #include "system.h"
 
 
+/*
+ * symbols
+ */
+uint8_t chrDCFOn_1[8] = {
+		0x00000000,
+		0b00000100,
+		0b00001010,
+		0b00000000,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+uint8_t chrDCFOn_2[8] = {
+		0x00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+uint8_t chrDCFOff[8] = {
+		0x00000000,
+		0b00001010,
+		0b00000100,
+		0b00001010,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+uint8_t chrAlarmOn[8] = {
+		0x00000000,
+		0b00000100,
+		0b00001010,
+		0b00001010,
+		0b00001010,
+		0b00011111,
+		0b00000100,
+		0b00000000
+};
+
 /**
  *
  * @return
@@ -21,6 +68,14 @@ int main() {
 	InitDayLightAlarm();
 
 	lcDisplay->SetDisplayLight(true);
+
+	/*
+	 * generate own chars
+	 */
+	lcDisplay->GenerateChar(LCD_GC_CHAR0, chrDCFOn_1);
+	lcDisplay->GenerateChar(LCD_GC_CHAR1, chrDCFOn_2);
+	lcDisplay->GenerateChar(LCD_GC_CHAR2, chrDCFOff);
+	lcDisplay->GenerateChar(LCD_GC_CHAR3, chrAlarmOn);
 
 	sei();
 
@@ -55,16 +110,27 @@ int main() {
 			lcDisplay->CurserPos(0, 2);
 			lcDisplay->WriteString(dtCurrentDateTime.GetTimestring(true));
 
-			if((nFlags & FLAG_UPDATE_DCF_DOT) > 0) {
+			lcDisplay->CurserPos(13, 2);
 
-				lcDisplay->CurserPos(15, 2);
+			if((nFlags & FLAG_DO_ALARM) > 0) {
+				lcDisplay->WriteData(LCD_GC_CHAR3);
+			} else {
+				lcDisplay->WriteString(" ");
+			}
+
+			lcDisplay->CurserPos(15, 2);
+
+			if ((nFlags & FLAG_DO_DCF_RECV) == 0) {
+				lcDisplay->WriteData(LCD_GC_CHAR2);
+			}
+			else if((nFlags & FLAG_UPDATE_DCF_DOT) > 0) {
 
 				if((nFlags & FLAG_DCFSYMBOL_VISIBLE) > 0) {
 					nFlags &= ~FLAG_DCFSYMBOL_VISIBLE;
-					lcDisplay->WriteData(' ');
+					lcDisplay->WriteData(LCD_GC_CHAR0);
 				} else {
 					nFlags |= FLAG_DCFSYMBOL_VISIBLE;
-					lcDisplay->WriteData('.');
+					lcDisplay->WriteData(LCD_GC_CHAR1);
 				}
 
 				nFlags &= ~FLAG_UPDATE_DCF_DOT;
