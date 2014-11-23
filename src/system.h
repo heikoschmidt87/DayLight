@@ -39,6 +39,11 @@ typedef uint8_t Ret_Err_Def;
 ////////////////////////////////////
 extern void InitFlags();
 extern void InitDayLightAlarm();
+extern void DoDcfRefresh();
+extern void DoDisplayRefresh();
+extern void DoButtonHandling();
+extern void DoAlarmHandling();
+extern uint16_t GetDayLightDutyCycle(uint32_t nDifferenceInSecs);
 
 extern void Menu_SetTime();
 extern void Menu_SetDate();
@@ -123,6 +128,9 @@ extern volatile uint64_t nBitSequenceTime;
 extern volatile uint64_t nBitTime;
 extern volatile uint8_t nLowLevelTicks;
 extern volatile uint8_t nCurrentBitNumber;
+
+extern volatile bool bMenuStartAllowed;
+
 
 /* menu structure
  * 1 - Uhr stellen
