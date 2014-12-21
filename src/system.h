@@ -45,6 +45,8 @@ extern void DoButtonHandling();
 extern void DoAlarmHandling();
 extern uint16_t GetDayLightDutyCycle(uint32_t nDifferenceInSecs);
 
+extern void PlayAlarm();
+
 extern void Menu_SetTime();
 extern void Menu_SetDate();
 extern void Menu_SetAlarm();
@@ -129,6 +131,8 @@ extern volatile uint64_t nBitTime;
 extern volatile uint8_t nLowLevelTicks;
 extern volatile uint8_t nCurrentBitNumber;
 
+extern volatile uint8_t nDisplayLightCountdown;
+
 extern volatile bool bMenuStartAllowed;
 
 
@@ -143,5 +147,6 @@ extern volatile bool bMenuStartAllowed;
 extern MenuEntry *meMenuEntries[NO_OF_MENU_ENTRIES];
 extern LcdMenu *lmLCDMenu;
 
+extern volatile uint32_t nAlarmTime;
 
 #endif /* SYSTEM_H_ */

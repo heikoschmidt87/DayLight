@@ -30,12 +30,62 @@ volatile uint64_t nBitTime;
 volatile uint8_t nLowLevelTicks;
 volatile uint8_t nCurrentBitNumber;
 
+volatile uint32_t nAlarmTime;
+
+volatile uint8_t nDisplayLightCountdown;
+
 volatile bool bMenuStartAllowed = true;
 
 
 MenuEntry *meMenuEntries[NO_OF_MENU_ENTRIES];
 LcdMenu *lmLCDMenu;
 
+/*
+ * symbols
+ */
+static const uint8_t chrDCFOn_1[8] = {
+		0x00000000,
+		0b00000100,
+		0b00001010,
+		0b00000000,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+static const uint8_t chrDCFOn_2[8] = {
+		0x00000000,
+		0b00000000,
+		0b00000000,
+		0b00000000,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+static const uint8_t chrDCFOff[8] = {
+		0x00000000,
+		0b00001010,
+		0b00000100,
+		0b00001010,
+		0b00000100,
+		0b00000100,
+		0b00001110,
+		0b00011111
+};
+
+static const uint8_t chrAlarmOn[8] = {
+		0x00000000,
+		0b00000100,
+		0b00001010,
+		0b00001010,
+		0b00001010,
+		0b00011111,
+		0b00000100,
+		0b00000000
+};
 
 static const uint16_t nLinearMapping[] = {	900, 896, 892, 888, 884, 880, 876, 872, 868, 864, 860, 856, 852, 848, 844, 840, 836, 832, 828, 824,
 											820, 816, 812, 808, 804, 800, 796, 792, 788, 784, 780, 776, 772, 768, 764, 763, 760, 756, 752, 748,
@@ -98,16 +148,48 @@ void DoDcfRefresh() {
 
 void DoButtonHandling() {
 
-	/* check for menu */
-	if(ButtonPressed(&PIN_BTN1, BUTTON_MENU) && bMenuStartAllowed) {
-		bMenuStartAllowed = false;
+	/* check for alarm active and snooze + stop button */
+	if((nFlags & FLAG_ALARM_ACTIVE) > 0) {
+		if(ButtonPressed(&PIN_BTN1, BUTTON_MENU)) {
 
-		lmLCDMenu->RunMenu();
+			/*
+			 * restore original pwm config
+			 */
+			TCCR1A = (1<<WGM10) | (1 << WGM11)| (1<<COM1A1) | (1<<COM1B1);
+			TCCR1B = (1<<WGM12) | (1 << CS10);
 
-		lcDisplay->ClearLCDisplay();
-		lcDisplay->CursorHome();
+			OCR1A = 0;
+			OCR1B = 0;
 
-		nFlags |= FLAG_REFRESH_DISPLAY;
+			/* switch off both pwm signals */
+			TCCR1A &= ~((1 << COM1A1) | (1 << COM1B1));
+		}
+	} else {
+
+		/* check for menu */
+		if(ButtonPressed(&PIN_BTN1, BUTTON_MENU) && bMenuStartAllowed) {
+			bMenuStartAllowed = false;
+
+
+			/* switch light on maximum */
+			nDisplayLightCountdown = 255;
+
+			lmLCDMenu->RunMenu();
+
+			lcDisplay->ClearLCDisplay();
+			lcDisplay->CursorHome();
+
+			nFlags |= FLAG_REFRESH_DISPLAY;
+
+			/* after menu return, leave light on for 10 seconds */
+			nDisplayLightCountdown = 10;
+
+		}
+
+		/* switch light on for 10 seconds when light button is pressed */
+		if(ButtonPressed(&PIN_BTN2, BUTTON_LIGHT) && (nDisplayLightCountdown <= 10)) {
+			nDisplayLightCountdown = 10;
+		}
 	}
 }
 
@@ -149,7 +231,37 @@ void DoDisplayRefresh() {
 
 		nFlags &= ~FLAG_REFRESH_DISPLAY;
 	}
+
+	if(nDisplayLightCountdown <= 0) {
+		lcDisplay->SetDisplayLight(false);
+	} else {
+		lcDisplay->SetDisplayLight(true);
+	}
 }
+
+void PlayAlarm() {
+
+	if(nAlarmTime < 10) {
+		OCR1B = 10;
+	} else if(nAlarmTime < 20){
+		OCR1B = 30;
+	} else if(nAlarmTime < 30){
+		OCR1B = 50;
+	} else if(nAlarmTime < 40){
+		OCR1B = 80;
+	} else if(nAlarmTime < 50){
+		OCR1B = 100;
+	} else {
+		OCR1B = 150;
+	}
+
+	if(nAlarmTime % 2) {
+		TCCR1A |= (1 << COM1B1);
+	} else {
+		TCCR1A &= ~(1 << COM1B1);
+	}
+}
+
 
 void DoAlarmHandling() {
 
@@ -158,6 +270,14 @@ void DoAlarmHandling() {
 		/* check if alarm is already active */
 		if((nFlags & FLAG_ALARM_ACTIVE) > 0) {
 			/* TODO: alarm sound handling */
+
+			/* switch off pwm for output light and turn it on fixed */
+			TCCR1A = (1 << COM1B1);
+			TCCR1B = (1 << WGM13) | (1 << CS11); // prescaler 8
+			ICR1 = 379;
+
+			PlayAlarm();
+
 		} else {
 			uint32_t nDiff = dtCurrentDateTime.GetTimeDifferenceInSecs((DateTime*)&tmAlarmTime);
 
@@ -165,6 +285,9 @@ void DoAlarmHandling() {
 			if(nDiff == 0) {
 				/* switch alarm on */
 				nFlags |= FLAG_ALARM_ACTIVE;
+
+				nAlarmTime = 0;
+
 			} else if(nDiff <= 900){
 				/* be sure to switch on PWM and set correct OCR1A */
 				if(OCR1A != GetDayLightDutyCycle(nDiff)) {
@@ -541,6 +664,11 @@ void Menu_SwitchDCF() {
 void InitDayLightAlarm() {
 
 	/*
+	 * init variables
+	 */
+	nDisplayLightCountdown = 0;
+
+	/*
 	 * init flags
 	 */
 	/* TODO: read from EEPROM */
@@ -614,6 +742,14 @@ void InitDayLightAlarm() {
 	lcDisplay->InitLCDisplay();
 	lcDisplay->ClearLCDisplay();
 
+	/*
+	 * generate own chars
+	 */
+	lcDisplay->GenerateChar(LCD_GC_CHAR0, chrDCFOn_1);
+	lcDisplay->GenerateChar(LCD_GC_CHAR1, chrDCFOn_2);
+	lcDisplay->GenerateChar(LCD_GC_CHAR2, chrDCFOff);
+	lcDisplay->GenerateChar(LCD_GC_CHAR3, chrAlarmOn);
+
 
 	/*
 	 * init DCF77
@@ -671,6 +807,11 @@ ISR(TIMER0_OVF_vect) {
 		nClockOverflows = 0;
 
 		nMenuSecondCounter++;
+		nAlarmTime++;
+
+		if(nDisplayLightCountdown > 0) {
+			nDisplayLightCountdown--;
+		}
 
 		/* increase the time and adjust date if needed */
 		dtCurrentDateTime.Increase();

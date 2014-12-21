@@ -41,6 +41,9 @@ void LcdMenu::RunMenu() {
 
 	bool bMenuActive = true;
 
+	/* switch on display light while menu is running */
+	this->lcDisplay_->SetDisplayLight(true);
+
 	/* TODO: avoid menu function start on accidentially long press of menu button */
 
 	do {
